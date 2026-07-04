@@ -1,0 +1,100 @@
+/* Sharp — Clean corporate look with minimal rounding */
+.filacraft-sharp .fi-sidebar-item .fi-sidebar-item-btn {
+    @apply rounded-lg px-3;
+}
+
+.filacraft-sharp .fi-sidebar-item.fi-active .fi-sidebar-item-btn {
+    @apply rounded-lg;
+}
+
+.filacraft-sharp .fi-sidebar-group-dropdown-trigger-btn {
+    @apply rounded-lg;
+}
+
+.filacraft-sharp .fi-topbar-item .fi-topbar-item-btn {
+    @apply rounded-lg px-3;
+}
+
+.filacraft-sharp .fi-topbar-item.fi-active .fi-topbar-item-btn {
+    @apply rounded-lg;
+}
+
+.filacraft-sharp .fi-topbar-group-dropdown-trigger-btn {
+    @apply rounded-lg;
+}
+
+.filacraft-sharp .fi-simple-main {
+    @apply rounded-xl;
+}
+
+.filacraft-sharp .fi-btn {
+    @apply rounded-lg px-4;
+}
+
+.filacraft-sharp .fi-badge {
+    @apply rounded-md;
+}
+
+.filacraft-sharp .fi-input-wrp {
+    @apply rounded-lg;
+}
+
+.filacraft-sharp .fi-section {
+    @apply rounded-xl;
+}
+
+.filacraft-sharp .fi-ta-ctn {
+    @apply rounded-xl;
+}
+
+.filacraft-sharp .fi-wi-stats-overview-stat {
+    @apply rounded-xl;
+}
+
+.filacraft-sharp .fi-wi-stats-overview-stat-chart {
+    @apply rounded-b-xl;
+}
+
+.filacraft-sharp .fi-dropdown-panel {
+    @apply rounded-xl;
+}
+
+.filacraft-sharp .fi-dropdown-list-item {
+    @apply rounded-lg;
+}
+
+.filacraft-sharp .fi-modal-window {
+    @apply rounded-xl;
+}
+
+.filacraft-sharp .fi-tabs {
+    @apply rounded-xl p-1;
+}
+
+.filacraft-sharp .fi-tabs-item {
+    @apply rounded-lg;
+}
+
+.filacraft-sharp .fi-no-notification {
+    @apply rounded-xl;
+}
+
+.filacraft-sharp .fi-tenant-menu-trigger {
+    @apply rounded-xl px-4;
+}
+
+.filacraft-sharp .fi-theme-switcher-btn {
+    @apply rounded-lg;
+}
+
+.filacraft-sharp .fi-global-search-results-ctn {
+    @apply rounded-l-xl;
+}
+
+.filacraft-sharp .fi-page-header-main-ctn .fi-header .fi-header-heading::after {
+    display: none;
+}
+
+.filacraft-sharp .fi-icon-btn-badge-ctn {
+    @apply -ml-1.5 mt-0.5;
+}

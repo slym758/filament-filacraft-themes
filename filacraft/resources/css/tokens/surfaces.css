@@ -1,0 +1,16 @@
+/* FilaCraft Design Tokens — Surfaces */
+:root {
+    --fc-surface: #ffffff;
+    --fc-surface-dim: #f9fafb;
+    --fc-surface-card: #ffffff;
+    --fc-surface-inset: #f3f4f6;
+    --fc-surface-deep: #e5e7eb;
+}
+
+:root.dark {
+    --fc-surface: #111827;
+    --fc-surface-dim: #0f172a;
+    --fc-surface-card: #1f2937;
+    --fc-surface-inset: #0d1117;
+    --fc-surface-deep: #030712;
+}

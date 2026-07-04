@@ -1,0 +1,23 @@
+/* Card / Section Styles */
+
+/* Flat — no shadow, minimal */
+[data-card-style="flat"] .fi-section,
+[data-card-style="flat"] .fi-ta-ctn,
+[data-card-style="flat"] .fi-wi-stats-overview-stat {
+    @apply shadow-none;
+}
+
+/* Raised — prominent shadow */
+[data-card-style="raised"] .fi-section,
+[data-card-style="raised"] .fi-ta-ctn,
+[data-card-style="raised"] .fi-wi-stats-overview-stat {
+    @apply shadow-lg;
+}
+
+
+/* Bordered — no shadow */
+[data-card-style="bordered"] .fi-section,
+[data-card-style="bordered"] .fi-ta-ctn,
+[data-card-style="bordered"] .fi-wi-stats-overview-stat {
+    @apply shadow-none;
+}

@@ -1,0 +1,109 @@
+/* Vapor — Glassmorphism with soft blur and transparency */
+.filacraft-vapor .fi-section {
+    @apply rounded-2xl border-0;
+    background: rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(12px);
+}
+
+.dark .filacraft-vapor .fi-section {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.filacraft-vapor .fi-ta-ctn {
+    @apply rounded-2xl border border-white/20 dark:border-white/10;
+    background: rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04) !important;
+}
+
+.dark .filacraft-vapor .fi-ta-ctn {
+    background: rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2) !important;
+}
+
+.filacraft-vapor .fi-wi-stats-overview-stat {
+    @apply rounded-2xl border border-white/20 dark:border-white/10;
+    background: rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04) !important;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.filacraft-vapor .fi-wi-stats-overview-stat:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08) !important;
+}
+
+.dark .filacraft-vapor .fi-wi-stats-overview-stat {
+    background: rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2) !important;
+}
+
+.filacraft-vapor .fi-modal-window {
+    @apply rounded-2xl border border-white/20 dark:border-white/10;
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(20px);
+}
+
+.dark .filacraft-vapor .fi-modal-window {
+    background: rgba(30, 30, 40, 0.85) !important;
+}
+
+.filacraft-vapor .fi-modal-close-overlay {
+    @apply backdrop-blur-sm;
+}
+
+.filacraft-vapor .fi-dropdown-panel {
+    @apply rounded-2xl border border-white/20 dark:border-white/10;
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(16px);
+}
+
+.dark .filacraft-vapor .fi-dropdown-panel {
+    background: rgba(30, 30, 40, 0.85) !important;
+}
+
+.filacraft-vapor .fi-input-wrp {
+    @apply rounded-2xl;
+    background: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(4px);
+}
+
+.dark .filacraft-vapor .fi-input-wrp {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.filacraft-vapor .fi-simple-main {
+    @apply rounded-2xl border border-white/20 dark:border-white/10;
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(16px);
+}
+
+.dark .filacraft-vapor .fi-simple-main {
+    background: rgba(30, 30, 40, 0.7) !important;
+}
+
+.filacraft-vapor .fi-no-notification {
+    @apply rounded-2xl;
+}
+
+.filacraft-vapor .fi-btn {
+    @apply rounded-full px-4 shadow-sm;
+    backdrop-filter: blur(4px);
+}
+
+.filacraft-vapor .fi-sidebar-item .fi-sidebar-item-btn {
+    @apply rounded-full px-4;
+}
+
+.filacraft-vapor .fi-tabs {
+    @apply rounded-2xl p-1;
+}
+
+.filacraft-vapor .fi-tabs-item {
+    @apply rounded-full;
+}
+
+.filacraft-vapor .fi-badge {
+    @apply rounded-full;
+}

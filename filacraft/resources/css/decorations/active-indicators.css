@@ -1,0 +1,57 @@
+/* FilaCraft Decorations — Active Indicators */
+
+/* Stats card hover top-border accent */
+[data-decorations="on"] .fi-wi-stats-overview-stat {
+    position: relative;
+    overflow: hidden;
+}
+
+[data-decorations="on"] .fi-wi-stats-overview-stat::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--fc-accent, var(--primary-500));
+    opacity: 0;
+    transition: opacity var(--fc-transition-normal, 200ms cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+[data-decorations="on"] .fi-wi-stats-overview-stat:hover::after {
+    opacity: 1;
+}
+
+/* Tab underline accent (active tab) */
+[data-decorations="on"] .fi-tabs-item[aria-selected="true"],
+[data-decorations="on"] .fi-tabs-item[data-active] {
+    position: relative;
+}
+
+[data-decorations="on"] .fi-tabs-item[aria-selected="true"]::after,
+[data-decorations="on"] .fi-tabs-item[data-active]::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0.5rem;
+    right: 0.5rem;
+    height: 2px;
+    background: var(--fc-accent, var(--primary-500));
+    border-radius: 9999px;
+}
+
+/* Sidebar active item left-bar indicator */
+[data-decorations="on"] .fi-sidebar-item-active .fi-sidebar-item-btn {
+    position: relative;
+}
+
+[data-decorations="on"] .fi-sidebar-item-active .fi-sidebar-item-btn::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 25%;
+    bottom: 25%;
+    width: 3px;
+    background: var(--fc-accent, var(--primary-500));
+    border-radius: 0 9999px 9999px 0;
+}

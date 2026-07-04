@@ -1,0 +1,219 @@
+/* Border Radius Presets */
+
+/* Sharp — no rounding */
+[data-radius="sharp"] .fi-btn,
+[data-radius="sharp"] .fi-badge,
+[data-radius="sharp"] .fi-input-wrp,
+[data-radius="sharp"] .fi-section,
+[data-radius="sharp"] .fi-ta,
+[data-radius="sharp"] .fi-ta-ctn,
+[data-radius="sharp"] .fi-tabs,
+[data-radius="sharp"] .fi-tabs-item,
+[data-radius="sharp"] .fi-dropdown-panel,
+[data-radius="sharp"] .fi-dropdown-list-item,
+[data-radius="sharp"] .fi-modal-window,
+[data-radius="sharp"] .fi-no-notification,
+[data-radius="sharp"] .fi-wi-stats-overview-stat,
+[data-radius="sharp"] .fi-wi-widget,
+[data-radius="sharp"] .fi-global-search-results-ctn,
+[data-radius="sharp"] .fi-sidebar-item .fi-sidebar-item-btn,
+[data-radius="sharp"] .fi-topbar-item .fi-topbar-item-btn,
+[data-radius="sharp"] .fi-simple-main,
+[data-radius="sharp"] .fi-main-ctn,
+[data-radius="sharp"] .fi-tenant-menu-trigger,
+[data-radius="sharp"] .fi-theme-switcher-btn {
+    border-radius: 0.25rem !important;
+}
+
+[data-radius="sharp"] .fi-main-ctn {
+    border-start-start-radius: 0.25rem !important;
+}
+
+/* Small — subtle rounding */
+[data-radius="small"] .fi-btn,
+[data-radius="small"] .fi-input-wrp,
+[data-radius="small"] .fi-tabs-item,
+[data-radius="small"] .fi-dropdown-list-item,
+[data-radius="small"] .fi-sidebar-item .fi-sidebar-item-btn,
+[data-radius="small"] .fi-topbar-item .fi-topbar-item-btn,
+[data-radius="small"] .fi-tenant-menu-trigger,
+[data-radius="small"] .fi-theme-switcher-btn {
+    border-radius: 0.5rem !important;
+}
+
+[data-radius="small"] .fi-badge {
+    border-radius: 0.375rem !important;
+}
+
+[data-radius="small"] .fi-section,
+[data-radius="small"] .fi-ta,
+[data-radius="small"] .fi-tabs,
+[data-radius="small"] .fi-modal-window,
+[data-radius="small"] .fi-no-notification,
+[data-radius="small"] .fi-wi-stats-overview-stat,
+[data-radius="small"] .fi-wi-widget,
+[data-radius="small"] .fi-global-search-results-ctn,
+[data-radius="small"] .fi-simple-main,
+[data-radius="small"] .fi-dropdown-panel {
+    border-radius: 0.75rem !important;
+}
+
+[data-radius="small"] .fi-ta-ctn {
+    border-radius: 0.5rem !important;
+}
+
+[data-radius="small"] .fi-main-ctn {
+    border-start-start-radius: 0.75rem !important;
+}
+
+/* Large — extra round (default is already rounded, this goes bigger) */
+[data-radius="large"] .fi-btn,
+[data-radius="large"] .fi-input-wrp,
+[data-radius="large"] .fi-tabs-item,
+[data-radius="large"] .fi-dropdown-list-item,
+[data-radius="large"] .fi-sidebar-item .fi-sidebar-item-btn,
+[data-radius="large"] .fi-topbar-item .fi-topbar-item-btn,
+[data-radius="large"] .fi-tenant-menu-trigger,
+[data-radius="large"] .fi-theme-switcher-btn {
+    border-radius: 9999px !important;
+}
+
+[data-radius="large"] .fi-badge {
+    border-radius: 9999px !important;
+}
+
+[data-radius="large"] .fi-section,
+[data-radius="large"] .fi-ta,
+[data-radius="large"] .fi-tabs,
+[data-radius="large"] .fi-modal-window,
+[data-radius="large"] .fi-no-notification,
+[data-radius="large"] .fi-wi-stats-overview-stat,
+[data-radius="large"] .fi-wi-widget,
+[data-radius="large"] .fi-global-search-results-ctn,
+[data-radius="large"] .fi-simple-main,
+[data-radius="large"] .fi-dropdown-panel {
+    border-radius: 2rem !important;
+}
+
+[data-radius="large"] .fi-ta-ctn {
+    border-radius: 1.5rem !important;
+}
+
+[data-radius="large"] .fi-main-ctn {
+    border-start-start-radius: 3rem !important;
+}
+
+/* Mega selector — covers additional fi-* components across all radius presets */
+[data-radius="sharp"] .fi-ac-btn-group,
+[data-radius="sharp"] .fi-ac-modal-btn-group,
+[data-radius="sharp"] .fi-fo-field-wrp,
+[data-radius="sharp"] .fi-fo-component-ctn,
+[data-radius="sharp"] .fi-fo-repeater-item,
+[data-radius="sharp"] .fi-fo-builder-block,
+[data-radius="sharp"] .fi-fo-key-value-item,
+[data-radius="sharp"] .fi-fo-checkbox-list-option,
+[data-radius="sharp"] .fi-fo-radio-option,
+[data-radius="sharp"] .fi-fo-select-option,
+[data-radius="sharp"] .fi-fo-toggle,
+[data-radius="sharp"] .fi-fo-file-upload,
+[data-radius="sharp"] .fi-fo-color-picker-preview,
+[data-radius="sharp"] .fi-fo-tags-input-tag,
+[data-radius="sharp"] .fi-in-entry-wrp,
+[data-radius="sharp"] .fi-in-text,
+[data-radius="sharp"] .fi-in-icon,
+[data-radius="sharp"] .fi-in-key-value,
+[data-radius="sharp"] .fi-in-repeatable,
+[data-radius="sharp"] .fi-in-image,
+[data-radius="sharp"] .fi-ta-filter,
+[data-radius="sharp"] .fi-ta-bulk-actions,
+[data-radius="sharp"] .fi-ta-empty-state,
+[data-radius="sharp"] .fi-ta-search-field,
+[data-radius="sharp"] .fi-ta-pagination,
+[data-radius="sharp"] .fi-ta-reorder-handle,
+[data-radius="sharp"] .fi-sidebar-group-btn,
+[data-radius="sharp"] .fi-topbar-breadcrumbs,
+[data-radius="sharp"] .fi-global-search-field,
+[data-radius="sharp"] .fi-avatar,
+[data-radius="sharp"] .fi-icon-btn,
+[data-radius="sharp"] .fi-page-header-actions,
+[data-radius="sharp"] .fi-page-sub-navigation,
+[data-radius="sharp"] .fi-wi-chart,
+[data-radius="sharp"] .fi-wi-stats-overview {
+    border-radius: 0.25rem !important;
+}
+
+[data-radius="small"] .fi-ac-btn-group,
+[data-radius="small"] .fi-ac-modal-btn-group,
+[data-radius="small"] .fi-fo-field-wrp,
+[data-radius="small"] .fi-fo-component-ctn,
+[data-radius="small"] .fi-fo-repeater-item,
+[data-radius="small"] .fi-fo-builder-block,
+[data-radius="small"] .fi-fo-key-value-item,
+[data-radius="small"] .fi-fo-checkbox-list-option,
+[data-radius="small"] .fi-fo-radio-option,
+[data-radius="small"] .fi-fo-select-option,
+[data-radius="small"] .fi-fo-toggle,
+[data-radius="small"] .fi-fo-file-upload,
+[data-radius="small"] .fi-fo-color-picker-preview,
+[data-radius="small"] .fi-fo-tags-input-tag,
+[data-radius="small"] .fi-in-entry-wrp,
+[data-radius="small"] .fi-in-text,
+[data-radius="small"] .fi-in-icon,
+[data-radius="small"] .fi-in-key-value,
+[data-radius="small"] .fi-in-repeatable,
+[data-radius="small"] .fi-in-image,
+[data-radius="small"] .fi-ta-filter,
+[data-radius="small"] .fi-ta-bulk-actions,
+[data-radius="small"] .fi-ta-empty-state,
+[data-radius="small"] .fi-ta-search-field,
+[data-radius="small"] .fi-ta-pagination,
+[data-radius="small"] .fi-ta-reorder-handle,
+[data-radius="small"] .fi-sidebar-group-btn,
+[data-radius="small"] .fi-topbar-breadcrumbs,
+[data-radius="small"] .fi-global-search-field,
+[data-radius="small"] .fi-avatar,
+[data-radius="small"] .fi-icon-btn,
+[data-radius="small"] .fi-page-header-actions,
+[data-radius="small"] .fi-page-sub-navigation,
+[data-radius="small"] .fi-wi-chart,
+[data-radius="small"] .fi-wi-stats-overview {
+    border-radius: 0.5rem !important;
+}
+
+[data-radius="large"] .fi-ac-btn-group,
+[data-radius="large"] .fi-ac-modal-btn-group,
+[data-radius="large"] .fi-fo-field-wrp,
+[data-radius="large"] .fi-fo-component-ctn,
+[data-radius="large"] .fi-fo-repeater-item,
+[data-radius="large"] .fi-fo-builder-block,
+[data-radius="large"] .fi-fo-key-value-item,
+[data-radius="large"] .fi-fo-checkbox-list-option,
+[data-radius="large"] .fi-fo-radio-option,
+[data-radius="large"] .fi-fo-select-option,
+[data-radius="large"] .fi-fo-toggle,
+[data-radius="large"] .fi-fo-file-upload,
+[data-radius="large"] .fi-fo-color-picker-preview,
+[data-radius="large"] .fi-fo-tags-input-tag,
+[data-radius="large"] .fi-in-entry-wrp,
+[data-radius="large"] .fi-in-text,
+[data-radius="large"] .fi-in-icon,
+[data-radius="large"] .fi-in-key-value,
+[data-radius="large"] .fi-in-repeatable,
+[data-radius="large"] .fi-in-image,
+[data-radius="large"] .fi-ta-filter,
+[data-radius="large"] .fi-ta-bulk-actions,
+[data-radius="large"] .fi-ta-empty-state,
+[data-radius="large"] .fi-ta-search-field,
+[data-radius="large"] .fi-ta-pagination,
+[data-radius="large"] .fi-ta-reorder-handle,
+[data-radius="large"] .fi-sidebar-group-btn,
+[data-radius="large"] .fi-topbar-breadcrumbs,
+[data-radius="large"] .fi-global-search-field,
+[data-radius="large"] .fi-avatar,
+[data-radius="large"] .fi-icon-btn,
+[data-radius="large"] .fi-page-header-actions,
+[data-radius="large"] .fi-page-sub-navigation,
+[data-radius="large"] .fi-wi-chart,
+[data-radius="large"] .fi-wi-stats-overview {
+    border-radius: 1.5rem !important;
+}

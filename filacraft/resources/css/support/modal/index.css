@@ -1,0 +1,12 @@
+.fi-modal-window {
+    @apply rounded-3xl;
+}
+
+.fi-modal-close-overlay {
+    backdrop-filter: blur(8px) saturate(150%);
+    -webkit-backdrop-filter: blur(8px) saturate(150%);
+}
+
+.fi-modal-slide-over .fi-modal-window {
+    @apply mt-2 mr-3 h-[calc(100vh-2rem)];
+}

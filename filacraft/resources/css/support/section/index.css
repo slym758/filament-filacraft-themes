@@ -1,0 +1,7 @@
+.fi-section {
+    @apply rounded-3xl border-0;
+}
+
+.dark .fi-section {
+    @apply border-0;
+}

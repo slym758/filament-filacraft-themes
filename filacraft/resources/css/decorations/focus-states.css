@@ -1,0 +1,35 @@
+/* FilaCraft Decorations — Focus States */
+
+/* Accent-colored focus ring for inputs */
+[data-decorations="on"] .fi-input-wrp:focus-within {
+    box-shadow: 0 0 0 1px var(--fc-accent-ring, var(--primary-300)),
+                0 0 0 4px oklch(from var(--fc-accent, var(--primary-500)) l c h / 0.1);
+}
+
+.dark [data-decorations="on"] .fi-input-wrp:focus-within,
+:root.dark [data-decorations="on"] .fi-input-wrp:focus-within {
+    box-shadow: 0 0 0 1px var(--fc-accent-ring, var(--primary-600)),
+                0 0 0 4px oklch(from var(--fc-accent, var(--primary-400)) l c h / 0.15);
+}
+
+/* Button focus glow */
+[data-decorations="on"] .fi-btn:focus-visible {
+    box-shadow: 0 0 0 2px var(--fc-surface, #ffffff),
+                0 0 0 4px var(--fc-accent-ring, var(--primary-300));
+}
+
+.dark [data-decorations="on"] .fi-btn:focus-visible,
+:root.dark [data-decorations="on"] .fi-btn:focus-visible {
+    box-shadow: 0 0 0 2px var(--fc-surface, #111827),
+                0 0 0 4px var(--fc-accent-ring, var(--primary-600));
+}
+
+/* Dropdown focus item highlight */
+[data-decorations="on"] .fi-dropdown-list-item:focus {
+    background-color: var(--fc-accent-subtle, var(--primary-50));
+}
+
+.dark [data-decorations="on"] .fi-dropdown-list-item:focus,
+:root.dark [data-decorations="on"] .fi-dropdown-list-item:focus {
+    background-color: var(--fc-accent-subtle, var(--primary-950));
+}

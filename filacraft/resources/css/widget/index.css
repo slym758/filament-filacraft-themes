@@ -1,0 +1,25 @@
+.fi-wi-stats-overview-stat {
+    @apply rounded-3xl;
+    border: 1px solid oklch(from var(--primary-200) l c h / 0.5) !important;
+}
+
+.dark .fi-wi-stats-overview-stat {
+    border: 1px solid oklch(from var(--primary-400) l c h / 0.2) !important;
+}
+
+.fi-wi-stats-overview-stat-chart {
+    @apply rounded-b-3xl;
+}
+
+.fi-wi-widget.fi-wi-stats-overview {
+    @apply bg-transparent border-0 ring-0 shadow-none p-0;
+}
+
+.fi-wi-widget:not(.fi-wi-stats-overview) {
+    @apply rounded-3xl;
+    border: 1px solid oklch(from var(--primary-200) l c h / 0.5) !important;
+}
+
+.dark .fi-wi-widget:not(.fi-wi-stats-overview) {
+    border: 1px solid oklch(from var(--primary-400) l c h / 0.2) !important;
+}

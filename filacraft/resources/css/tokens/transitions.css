@@ -1,0 +1,7 @@
+/* FilaCraft Design Tokens — Transitions */
+:root {
+    --fc-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --fc-transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --fc-transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --fc-transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}

@@ -1,0 +1,1397 @@
+/* Safir (Sapphire) — Bankaci estetiginde guven veren tonlar & kristal netlik */
+/* Tum aksanlar --primary-* degiskenlerine bagli, renk paleti ile uyumlu */
+
+/* ══════════════════════════════════════════════
+   LAYOUT & BODY
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-body {
+    background-color: var(--primary-100);
+}
+
+.dark .filacraft-safir .fi-body,
+.dark.filacraft-safir .fi-body {
+    background-color: #0b1120;
+}
+
+.filacraft-safir .fi-main-ctn {
+    background-color: var(--primary-100);
+    border: none !important;
+}
+
+.dark .filacraft-safir .fi-main-ctn,
+.dark.filacraft-safir .fi-main-ctn {
+    background-color: #0b1120;
+}
+
+.filacraft-safir .fi-main {
+    @apply bg-white;
+    overflow-y: auto !important;
+    /* Always reserve scrollbar space so main content's right edge stays consistent
+       whether the scrollbar is visible or not. Matches topbar's right edge. */
+    scrollbar-gutter: stable;
+    flex-grow: 1;
+}
+
+.dark .filacraft-safir .fi-main,
+.dark.filacraft-safir .fi-main {
+    background-color: #111827;
+}
+
+@media (min-width: 1024px) {
+    .filacraft-safir .fi-main {
+        border-radius: 1rem !important;
+        box-shadow: 0 4px 24px -6px oklch(from var(--primary-500) l c h / 0.1);
+        margin: 0.75rem;
+        margin-left: 0;
+    }
+
+    .dark .filacraft-safir .fi-main,
+    .dark.filacraft-safir .fi-main {
+        box-shadow: 0 4px 24px -6px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* Login / Simple pages */
+.filacraft-safir .fi-simple-main-ctn {
+    background-color: var(--primary-100);
+}
+
+.dark .filacraft-safir .fi-simple-main-ctn,
+.dark.filacraft-safir .fi-simple-main-ctn {
+    background-color: #0b1120;
+}
+
+.filacraft-safir .fi-simple-main {
+    @apply rounded-2xl ring-0 shadow-xl border-0
+        bg-white;
+}
+
+.dark .filacraft-safir .fi-simple-main,
+.dark.filacraft-safir .fi-simple-main {
+    background-color: #1e293b;
+}
+
+/* ══════════════════════════════════════════════
+   SCROLLBAR
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-main::-webkit-scrollbar {
+    width: 4px;
+}
+
+.filacraft-safir .fi-main::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.filacraft-safir .fi-main::-webkit-scrollbar-thumb {
+    background-color: var(--primary-300);
+    border-radius: 9999px;
+}
+
+.filacraft-safir .fi-main::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-400);
+}
+
+.dark .filacraft-safir .fi-main::-webkit-scrollbar-thumb,
+.dark.filacraft-safir .fi-main::-webkit-scrollbar-thumb {
+    background-color: #334155;
+}
+
+.dark .filacraft-safir .fi-main::-webkit-scrollbar-thumb:hover,
+.dark.filacraft-safir .fi-main::-webkit-scrollbar-thumb:hover {
+    background-color: #475569;
+}
+
+/* ══════════════════════════════════════════════
+   TOPBAR — Shared base styles
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-topbar nav {
+    background: transparent;
+    @apply ring-0 shadow-none;
+}
+
+.filacraft-safir .fi-topbar-item .fi-topbar-item-btn {
+    @apply rounded-lg px-3 py-1.5;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.filacraft-safir .fi-topbar-item.fi-active .fi-topbar-item-btn {
+    @apply rounded-lg bg-white shadow-sm;
+    outline: 1px solid oklch(from var(--primary-500) l c h / 0.15);
+    outline-offset: -1px;
+}
+
+.dark .filacraft-safir .fi-topbar-item.fi-active .fi-topbar-item-btn,
+.dark.filacraft-safir .fi-topbar-item.fi-active .fi-topbar-item-btn {
+    background-color: #1e293b;
+    outline-color: rgba(51, 65, 85, 0.4);
+}
+
+.filacraft-safir .fi-topbar-item.fi-active .fi-topbar-item-label {
+    @apply font-medium text-primary-900 dark:text-white;
+}
+
+.filacraft-safir .fi-topbar-item.fi-active .fi-topbar-item-icon {
+    @apply text-primary-600 dark:text-primary-400;
+}
+
+.filacraft-safir .fi-topbar-item > .fi-topbar-item-btn:hover {
+    background-color: oklch(from var(--primary-100) l c h / 0.5);
+    @apply rounded-lg;
+}
+
+.dark .filacraft-safir .fi-topbar-item > .fi-topbar-item-btn:hover,
+.dark.filacraft-safir .fi-topbar-item > .fi-topbar-item-btn:hover {
+    background-color: rgba(30, 41, 59, 0.6);
+}
+
+/* ── TOPBAR VARIANT: Floating Island ───────── */
+
+/* Mobile: solid bar */
+.filacraft-safir .fi-topbar {
+    @apply bg-white ring-0 shadow-none border-0;
+    border-bottom: 1px solid oklch(from var(--primary-200) l c h / 0.4) !important;
+}
+
+.dark .filacraft-safir .fi-topbar,
+.dark.filacraft-safir .fi-topbar {
+    background-color: #111827;
+    border-bottom-color: rgba(51, 65, 85, 0.4) !important;
+}
+
+/* Desktop: topbar pulled out of block flow (position: fixed) so .fi-layout can
+   start at viewport top — sidebar naturally reaches the top edge of the screen.
+    Outer box aligns with .fi-main (left = sidebar-width + 1.5rem, right = 0.75rem);
+   internal padding matches .fi-main's lg:px-8 so items align vertically with page content. */
+@media (min-width: 1024px) {
+    .filacraft-safir .fi-topbar-ctn {
+        position: fixed;
+        top: 0.75rem;
+        right: calc(0.75rem + -12px);
+        left: calc(var(--sidebar-width) + 1.5rem);
+        z-index: 25;
+        /* Default hidden state: revealed only after Alpine hydrates .fi-main-ctn
+           (which sets inline style="opacity:1"). Prevents any pre-hydration flash. */
+        opacity: 0;
+        transition: left 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Alpine has hydrated (main-ctn now has inline style) → reveal topbar in place */
+    html.filacraft-safir:has(.fi-main-ctn[style*="opacity"]) .fi-topbar-ctn {
+        opacity: 1;
+        transition: left 350ms cubic-bezier(0.4, 0, 0.2, 1),
+                    opacity 150ms ease;
+    }
+
+    .filacraft-safir .fi-topbar {
+        @apply bg-white ring-1;
+        --tw-ring-color: oklch(from var(--primary-300) l c h / 0.3);
+        border-radius: 1rem;
+        margin: 0 !important;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        border-bottom: none !important;
+        box-shadow:
+            0 4px 16px -4px oklch(from var(--primary-600) l c h / 0.08),
+            0 1px 3px oklch(from var(--primary-600) l c h / 0.04);
+    }
+
+    .dark .filacraft-safir .fi-topbar,
+    .dark.filacraft-safir .fi-topbar {
+        background-color: #111827;
+        --tw-ring-color: rgba(51, 65, 85, 0.35);
+        box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.4);
+        border-bottom: none !important;
+    }
+
+    /* Reserve vertical space for the fixed topbar so main content is not hidden underneath. */
+    .filacraft-safir .fi-main-ctn {
+        padding-top: 4.5rem;
+    }
+
+    /* Collapsed-sidebar rule requires BOTH Alpine hydration (style attr) AND absence of
+       sidebar-open class. Without the [style*="opacity"] guard, this rule would fire
+       during pre-hydration (when the open class hasn't been added yet), causing a flash. */
+    html.filacraft-safir body.fi-body-has-sidebar-collapsible-on-desktop:has(.fi-main-ctn[style*="opacity"]:not(.fi-main-ctn-sidebar-open)) .fi-topbar-ctn {
+        left: calc(var(--collapsed-sidebar-width, 4.5rem) + 1.5rem);
+    }
+
+    html.filacraft-safir body.fi-body-has-sidebar-fully-collapsible-on-desktop:has(.fi-main-ctn[style*="opacity"]:not(.fi-main-ctn-sidebar-open)) .fi-topbar-ctn {
+        left: 0.75rem;
+    }
+}
+
+/* ── TOPBAR VARIANT: Vault ─────────────────── */
+
+[data-topbar="vault"].filacraft-safir .fi-topbar-ctn {
+    padding: 0 !important;
+}
+
+[data-topbar="vault"].filacraft-safir .fi-topbar {
+    @apply bg-white ring-0 shadow-none;
+    border-radius: 0 !important;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    --tw-ring-color: transparent;
+    position: relative;
+}
+
+[data-topbar="vault"].filacraft-safir .fi-topbar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-400), var(--primary-600));
+}
+
+.dark [data-topbar="vault"].filacraft-safir .fi-topbar,
+.dark[data-topbar="vault"].filacraft-safir .fi-topbar {
+    background-color: #111827;
+}
+
+.dark [data-topbar="vault"].filacraft-safir .fi-topbar::after,
+.dark[data-topbar="vault"].filacraft-safir .fi-topbar::after {
+    background: linear-gradient(90deg, oklch(from var(--primary-500) l c h / 0.5), oklch(from var(--primary-700) l c h / 0.5));
+}
+
+[data-topbar="vault"].filacraft-safir .fi-topbar-item.fi-active .fi-topbar-item-btn {
+    @apply bg-primary-50 shadow-none;
+    outline: none;
+}
+
+.dark [data-topbar="vault"].filacraft-safir .fi-topbar-item.fi-active .fi-topbar-item-btn,
+.dark[data-topbar="vault"].filacraft-safir .fi-topbar-item.fi-active .fi-topbar-item-btn {
+    background-color: oklch(from var(--primary-800) l c h / 0.15);
+}
+
+[data-topbar="vault"].filacraft-safir .fi-topbar-item > .fi-topbar-item-btn:hover {
+    @apply bg-gray-50;
+}
+
+.dark [data-topbar="vault"].filacraft-safir .fi-topbar-item > .fi-topbar-item-btn:hover,
+.dark[data-topbar="vault"].filacraft-safir .fi-topbar-item > .fi-topbar-item-btn:hover {
+    background-color: rgba(30, 41, 59, 0.5);
+}
+
+/* ══════════════════════════════════════════════
+   COLLAPSE SIDEBAR BUTTON — Custom icon & position
+   ══════════════════════════════════════════════ */
+
+/* Move collapse button to the right of logo via flex order */
+@media (min-width: 1024px) {
+    .filacraft-safir .fi-topbar-start {
+        @apply flex items-center;
+    }
+
+    .filacraft-safir .fi-topbar-collapse-sidebar-btn-ctn {
+        order: 2;
+        margin-left: 0.25rem;
+    }
+
+    .filacraft-safir .fi-topbar-start > a,
+    .filacraft-safir .fi-topbar-start > div:not(.fi-topbar-collapse-sidebar-btn-ctn) {
+        order: 1;
+    }
+}
+
+/* Custom icon: replace chevron with sidebar toggle icon */
+.filacraft-safir .fi-topbar-open-collapse-sidebar-btn .fi-icon,
+.filacraft-safir .fi-topbar-close-collapse-sidebar-btn .fi-icon {
+    display: none;
+}
+
+.filacraft-safir .fi-topbar-open-collapse-sidebar-btn,
+.filacraft-safir .fi-topbar-close-collapse-sidebar-btn {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+}
+
+.filacraft-safir .fi-topbar-open-collapse-sidebar-btn::after,
+.filacraft-safir .fi-topbar-close-collapse-sidebar-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: 1.125rem 1.125rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    transition: opacity 0.2s ease, transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.filacraft-safir .fi-topbar-open-collapse-sidebar-btn:hover::after,
+.filacraft-safir .fi-topbar-close-collapse-sidebar-btn:hover::after {
+    opacity: 0.85;
+}
+
+/* Expand icon (sidebar collapsed → panel with right arrow: "open sidebar") */
+.filacraft-safir .fi-topbar-open-collapse-sidebar-btn::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23334155'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5z'/%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 3v18'/%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M14 9l3 3-3 3'/%3E%3C/svg%3E");
+}
+
+/* Collapse icon (sidebar open → panel with left arrow: "close sidebar") */
+.filacraft-safir .fi-topbar-close-collapse-sidebar-btn::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23334155'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5z'/%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 3v18'/%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M16 9l-3 3 3 3'/%3E%3C/svg%3E");
+}
+
+/* Dark mode icons */
+.dark .filacraft-safir .fi-topbar-open-collapse-sidebar-btn::after,
+.dark.filacraft-safir .fi-topbar-open-collapse-sidebar-btn::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5z'/%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 3v18'/%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M14 9l3 3-3 3'/%3E%3C/svg%3E");
+}
+
+.dark .filacraft-safir .fi-topbar-close-collapse-sidebar-btn::after,
+.dark.filacraft-safir .fi-topbar-close-collapse-sidebar-btn::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5z'/%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 3v18'/%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M16 9l-3 3 3 3'/%3E%3C/svg%3E");
+}
+
+/* Hover background */
+.filacraft-safir .fi-topbar-open-collapse-sidebar-btn:hover,
+.filacraft-safir .fi-topbar-close-collapse-sidebar-btn:hover {
+    @apply rounded-lg;
+    background-color: oklch(from var(--primary-100) l c h / 0.5);
+}
+
+.dark .filacraft-safir .fi-topbar-open-collapse-sidebar-btn:hover,
+.dark.filacraft-safir .fi-topbar-open-collapse-sidebar-btn:hover,
+.dark .filacraft-safir .fi-topbar-close-collapse-sidebar-btn:hover,
+.dark.filacraft-safir .fi-topbar-close-collapse-sidebar-btn:hover {
+    background-color: rgba(30, 41, 59, 0.5);
+}
+
+/* ══════════════════════════════════════════════
+   SIDEBAR — Floating premium sidebar
+   ══════════════════════════════════════════════ */
+
+/* Base sidebar colors + smooth collapse/expand animation */
+.filacraft-safir .fi-sidebar {
+    @apply bg-white ring-1;
+    --tw-ring-color: oklch(from var(--primary-300) l c h / 0.35);
+    border-radius: 1rem;
+    margin: 0.75rem;
+    box-shadow:
+        0 8px 32px -6px oklch(from var(--primary-600) l c h / 0.12),
+        0 2px 6px oklch(from var(--primary-600) l c h / 0.06);
+}
+
+@media (min-width: 1024px) {
+    .filacraft-safir .fi-sidebar {
+        will-change: width;
+        contain: layout style;
+        transition: width 350ms cubic-bezier(0.4, 0, 0.2, 1),
+                    box-shadow 350ms ease !important;
+        overflow: visible !important;
+    }
+
+    /* Open state — explicit width for smooth transition */
+    .filacraft-safir .fi-sidebar.fi-sidebar-open {
+        width: var(--sidebar-width);
+    }
+
+    /* Collapsed state — explicit width so CSS can transition */
+    .filacraft-safir .fi-sidebar:not(.fi-sidebar-open) {
+        width: var(--collapsed-sidebar-width, 4.5rem);
+        box-shadow:
+            0 4px 16px -4px oklch(from var(--primary-600) l c h / 0.08),
+            0 1px 3px oklch(from var(--primary-600) l c h / 0.04);
+    }
+
+    /* Reduce nav padding when collapsed so icons fit */
+    .filacraft-safir .fi-sidebar:not(.fi-sidebar-open) .fi-sidebar-nav {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        overflow-x: visible;
+    }
+
+    /* Items stay left-aligned during collapse */
+    .filacraft-safir .fi-sidebar .fi-sidebar-item-btn {
+        justify-content: flex-start;
+    }
+
+    /* Sidebar inner content fade transition */
+    .filacraft-safir .fi-sidebar-group-btn,
+    .filacraft-safir .fi-sidebar-group-items,
+    .filacraft-safir .fi-sidebar-item-label,
+    .filacraft-safir .fi-sidebar-item-badge-ctn {
+        transition: opacity 200ms ease 50ms;
+    }
+}
+
+.dark .filacraft-safir .fi-sidebar,
+.dark.filacraft-safir .fi-sidebar {
+    background-color: #111827;
+    --tw-ring-color: rgba(51, 65, 85, 0.4);
+    box-shadow: 0 8px 32px -6px rgba(0, 0, 0, 0.5);
+}
+
+/* Full-height sidebar — sticky positioning naturally reaches viewport top because
+   the topbar is now fixed (see topbar rules above) and no longer pushes the layout down. */
+@media (min-width: 1024px) {
+    .filacraft-safir .fi-body-has-topbar .fi-sidebar {
+        top: 0.75rem !important;
+        height: calc(100dvh - 1.5rem) !important;
+    }
+}
+
+/* Sidebar header */
+.filacraft-safir .fi-sidebar-header {
+    @apply bg-transparent ring-0 shadow-none border-0
+        pb-2;
+    border-bottom: 1px solid oklch(from var(--primary-100) l c h / 0.6);
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.dark .filacraft-safir .fi-sidebar-header,
+.dark.filacraft-safir .fi-sidebar-header {
+    border-bottom-color: rgba(51, 65, 85, 0.3);
+}
+
+/* Group labels — styled with primary accent */
+.filacraft-safir .fi-sidebar-group-label {
+    @apply text-[0.65rem] font-bold uppercase tracking-[0.1em] text-primary-400;
+    padding-left: 0.25rem;
+}
+
+.dark .filacraft-safir .fi-sidebar-group-label,
+.dark.filacraft-safir .fi-sidebar-group-label {
+    color: #64748b;
+}
+
+/* Group items — left vertical connector bar */
+.filacraft-safir .fi-sidebar-open .fi-sidebar-group-items {
+    position: relative;
+    margin-left: 0.75rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid oklch(from var(--primary-200) l c h / 0.5);
+}
+
+.dark .filacraft-safir .fi-sidebar-open .fi-sidebar-group-items,
+.dark.filacraft-safir .fi-sidebar-open .fi-sidebar-group-items {
+    border-left-color: oklch(from var(--primary-700) l c h / 0.25);
+}
+
+/* Active group — connector bar becomes primary */
+.filacraft-safir .fi-sidebar-open .fi-sidebar-group.fi-active > .fi-sidebar-group-items {
+    border-left-color: oklch(from var(--primary-400) l c h / 0.6);
+}
+
+.dark .filacraft-safir .fi-sidebar-open .fi-sidebar-group.fi-active > .fi-sidebar-group-items,
+.dark.filacraft-safir .fi-sidebar-open .fi-sidebar-group.fi-active > .fi-sidebar-group-items {
+    border-left-color: oklch(from var(--primary-500) l c h / 0.35);
+}
+
+/* Active group label — stronger color */
+.filacraft-safir .fi-sidebar-group.fi-active .fi-sidebar-group-label {
+    @apply text-primary-600;
+}
+
+.dark .filacraft-safir .fi-sidebar-group.fi-active .fi-sidebar-group-label,
+.dark.filacraft-safir .fi-sidebar-group.fi-active .fi-sidebar-group-label {
+    @apply text-primary-400;
+}
+
+.filacraft-safir .fi-sidebar-open .fi-sidebar-item .fi-sidebar-item-btn {
+    @apply px-3 rounded-lg relative;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filacraft-safir .fi-sidebar-item .fi-sidebar-item-label {
+    @apply text-sm;
+    color: #64748b;
+}
+
+.dark .filacraft-safir .fi-sidebar-item .fi-sidebar-item-label,
+.dark.filacraft-safir .fi-sidebar-item .fi-sidebar-item-label {
+    color: #94a3b8;
+}
+
+.filacraft-safir .fi-sidebar-item .fi-sidebar-item-icon {
+    @apply text-primary-300;
+}
+
+.dark .filacraft-safir .fi-sidebar-item .fi-sidebar-item-icon,
+.dark.filacraft-safir .fi-sidebar-item .fi-sidebar-item-icon {
+    color: #475569;
+}
+
+/* Active state — left accent bar with color bleed */
+.filacraft-safir .fi-sidebar-item.fi-active .fi-sidebar-item-btn {
+    @apply rounded-lg border-0;
+    background: linear-gradient(
+        to right,
+        oklch(from var(--primary-100) l c h / 0.8),
+        oklch(from var(--primary-50) l c h / 0.4) 50%,
+        transparent
+    );
+    transition: background 0.2s ease;
+}
+
+.dark .filacraft-safir .fi-sidebar-item.fi-active .fi-sidebar-item-btn,
+.dark.filacraft-safir .fi-sidebar-item.fi-active .fi-sidebar-item-btn {
+    background: linear-gradient(
+        to right,
+        oklch(from var(--primary-700) l c h / 0.2),
+        oklch(from var(--primary-800) l c h / 0.1) 50%,
+        transparent
+    );
+}
+
+.filacraft-safir .fi-sidebar-item.fi-active .fi-sidebar-item-btn::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 1.25rem;
+    border-radius: 9999px;
+    background: linear-gradient(180deg, var(--primary-500), var(--primary-400));
+    box-shadow: 0 0 8px oklch(from var(--primary-500) l c h / 0.3);
+}
+
+.filacraft-safir .fi-sidebar-item.fi-active .fi-sidebar-item-label {
+    @apply font-semibold text-primary-900;
+}
+
+.dark .filacraft-safir .fi-sidebar-item.fi-active .fi-sidebar-item-label,
+.dark.filacraft-safir .fi-sidebar-item.fi-active .fi-sidebar-item-label {
+    @apply text-white;
+}
+
+.filacraft-safir .fi-sidebar-item.fi-active .fi-sidebar-item-icon {
+    @apply text-primary-600 dark:text-primary-400;
+}
+
+/* Hover */
+.filacraft-safir .fi-sidebar-item:not(.fi-active) > .fi-sidebar-item-btn:hover {
+    background-color: oklch(from var(--primary-50) l c h / 0.5);
+    @apply rounded-lg;
+}
+
+.dark .filacraft-safir .fi-sidebar-item:not(.fi-active) > .fi-sidebar-item-btn:hover,
+.dark.filacraft-safir .fi-sidebar-item:not(.fi-active) > .fi-sidebar-item-btn:hover {
+    background-color: rgba(30, 41, 59, 0.5);
+}
+
+.filacraft-safir .fi-sidebar-item:not(.fi-active):hover .fi-sidebar-item-label {
+    @apply text-primary-900;
+}
+
+.dark .filacraft-safir .fi-sidebar-item:not(.fi-active):hover .fi-sidebar-item-label,
+.dark.filacraft-safir .fi-sidebar-item:not(.fi-active):hover .fi-sidebar-item-label {
+    color: #e2e8f0;
+}
+
+.filacraft-safir .fi-sidebar-item:not(.fi-active):hover .fi-sidebar-item-icon {
+    @apply text-primary-500;
+}
+
+.dark .filacraft-safir .fi-sidebar-item:not(.fi-active):hover .fi-sidebar-item-icon,
+.dark.filacraft-safir .fi-sidebar-item:not(.fi-active):hover .fi-sidebar-item-icon {
+    @apply text-primary-400;
+}
+
+/* Sidebar badges */
+.filacraft-safir .fi-sidebar-item .fi-sidebar-item-badge-ctn .fi-badge {
+    @apply rounded-md text-[0.65rem] font-semibold
+        bg-primary-50 text-primary-600
+        dark:bg-primary-500/10 dark:text-primary-400;
+}
+
+/* Group toggle icons */
+.filacraft-safir .fi-sidebar-group-toggle-icon,
+.filacraft-safir .fi-sidebar-group-collapsible-toggle-icon {
+    @apply text-primary-200;
+}
+
+.dark .filacraft-safir .fi-sidebar-group-toggle-icon,
+.dark.filacraft-safir .fi-sidebar-group-toggle-icon,
+.dark .filacraft-safir .fi-sidebar-group-collapsible-toggle-icon,
+.dark.filacraft-safir .fi-sidebar-group-collapsible-toggle-icon {
+    color: #334155;
+}
+
+/* Tenant menu */
+.filacraft-safir .fi-tenant-menu-trigger {
+    @apply px-3 rounded-lg bg-white shadow-sm;
+    outline: 1px solid oklch(from var(--primary-200) l c h / 0.5);
+    outline-offset: -1px;
+}
+
+.dark .filacraft-safir .fi-tenant-menu-trigger,
+.dark.filacraft-safir .fi-tenant-menu-trigger {
+    background-color: #1e293b;
+    outline-color: rgba(51, 65, 85, 0.5);
+}
+
+/* ══════════════════════════════════════════════
+   PAGE HEADER & BREADCRUMBS
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-page-header-main-ctn .fi-header .fi-header-heading {
+    @apply text-primary-950;
+}
+
+.dark .filacraft-safir .fi-page-header-main-ctn .fi-header .fi-header-heading,
+.dark.filacraft-safir .fi-page-header-main-ctn .fi-header .fi-header-heading {
+    @apply text-white;
+}
+
+.filacraft-safir .fi-page-header-main-ctn .fi-header .fi-header-heading::after {
+    display: none !important;
+}
+
+.filacraft-safir .fi-breadcrumbs li a {
+    @apply text-primary-300;
+}
+
+.dark .filacraft-safir .fi-breadcrumbs li a,
+.dark.filacraft-safir .fi-breadcrumbs li a {
+    color: #475569;
+}
+
+.filacraft-safir .fi-breadcrumbs li a:hover {
+    @apply text-primary-600 dark:text-primary-400;
+}
+
+/* ══════════════════════════════════════════════
+   SECTIONS — Double-layer: primary-50 shell + white inner
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-section {
+    @apply rounded-xl border-0 shadow-none ring-0 p-1.5
+        bg-primary-50;
+}
+
+.dark .filacraft-safir .fi-section,
+.dark.filacraft-safir .fi-section {
+    background-color: oklch(from var(--primary-900) l c h / 0.1);
+}
+
+.filacraft-safir .fi-section .fi-section-content-ctn {
+    @apply rounded-lg ring-0 shadow-none border-0
+        bg-white;
+    box-shadow: none !important;
+}
+
+.dark .filacraft-safir .fi-section .fi-section-content-ctn,
+.dark.filacraft-safir .fi-section .fi-section-content-ctn {
+    background-color: #1e293b;
+}
+
+.filacraft-safir .fi-section .fi-section-header {
+    @apply rounded-t-lg mb-2 bg-white ring-1;
+    --tw-ring-color: oklch(from var(--primary-200) l c h / 0.5);
+}
+
+.dark .filacraft-safir .fi-section .fi-section-header,
+.dark.filacraft-safir .fi-section .fi-section-header {
+    background-color: #1e293b;
+    --tw-ring-color: rgba(51, 65, 85, 0.3);
+}
+
+.filacraft-safir .fi-section-header-heading {
+    @apply text-sm font-semibold text-primary-950;
+}
+
+.dark .filacraft-safir .fi-section-header-heading,
+.dark.filacraft-safir .fi-section-header-heading {
+    @apply text-white;
+}
+
+.filacraft-safir .fi-section-header-description {
+    @apply text-xs text-gray-500 dark:text-gray-400;
+}
+
+.filacraft-safir .fi-sc-section {
+    @apply rounded-lg border-0 bg-primary-50;
+}
+
+.dark .filacraft-safir .fi-sc-section,
+.dark.filacraft-safir .fi-sc-section {
+    background-color: oklch(from var(--primary-900) l c h / 0.08);
+}
+
+/* ══════════════════════════════════════════════
+   TABLES — Subtle gradient header & tinted hover
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-ta {
+    @apply bg-transparent rounded-xl p-0 border-0;
+}
+
+.filacraft-safir .fi-ta-ctn {
+    @apply rounded-xl ring-0 shadow-none border-0 p-1.5 bg-primary-50;
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.dark .filacraft-safir .fi-ta-ctn,
+.dark.filacraft-safir .fi-ta-ctn {
+    background-color: oklch(from var(--primary-900) l c h / 0.1);
+}
+
+.filacraft-safir .fi-ta-ctn .fi-ta-header-ctn {
+    margin-bottom: 4px;
+}
+
+.filacraft-safir .fi-ta-ctn .fi-ta-header-toolbar {
+    @apply border-0 rounded-lg bg-white px-3 mt-2;
+    box-shadow: 0 1px 2px oklch(from var(--primary-600) l c h / 0.04);
+}
+
+.dark .filacraft-safir .fi-ta-ctn .fi-ta-header-toolbar,
+.dark.filacraft-safir .fi-ta-ctn .fi-ta-header-toolbar {
+    background-color: #1e293b;
+    box-shadow: none;
+}
+
+.filacraft-safir .fi-ta-content {
+    @apply rounded-lg overflow-hidden ring-1;
+    --tw-ring-color: oklch(from var(--primary-200) l c h / 0.4);
+}
+
+.dark .filacraft-safir .fi-ta-content,
+.dark.filacraft-safir .fi-ta-content {
+    --tw-ring-color: rgba(51, 65, 85, 0.3);
+}
+
+.filacraft-safir .fi-ta-header-cell {
+    @apply text-[0.7rem] font-semibold uppercase tracking-wider text-primary-900;
+    background: linear-gradient(135deg, #ffffff, var(--primary-50));
+}
+
+.dark .filacraft-safir .fi-ta-header-cell,
+.dark.filacraft-safir .fi-ta-header-cell {
+    background: linear-gradient(135deg, #1e293b, oklch(from var(--primary-900) l c h / 0.15));
+    @apply text-primary-300;
+}
+
+.filacraft-safir .fi-ta-actions-header-cell,
+.filacraft-safir .fi-ta-empty-header-cell {
+    background: linear-gradient(135deg, #ffffff, var(--primary-50));
+}
+
+.dark .filacraft-safir .fi-ta-actions-header-cell,
+.dark.filacraft-safir .fi-ta-actions-header-cell,
+.dark .filacraft-safir .fi-ta-empty-header-cell,
+.dark.filacraft-safir .fi-ta-empty-header-cell {
+    background: linear-gradient(135deg, #1e293b, oklch(from var(--primary-900) l c h / 0.15));
+}
+
+.filacraft-safir .fi-ta-row {
+    @apply bg-white;
+}
+
+.dark .filacraft-safir .fi-ta-row,
+.dark.filacraft-safir .fi-ta-row {
+    background-color: #1e293b;
+}
+
+.filacraft-safir .fi-ta-row:hover td {
+    background-color: oklch(from var(--primary-50) l c h / 0.8);
+}
+
+.dark .filacraft-safir .fi-ta-row:hover td,
+.dark.filacraft-safir .fi-ta-row:hover td {
+    background-color: oklch(from var(--primary-900) l c h / 0.1);
+}
+
+.filacraft-safir .fi-ta-cell {
+    border-bottom: 1px solid var(--primary-50);
+}
+
+.dark .filacraft-safir .fi-ta-cell,
+.dark.filacraft-safir .fi-ta-cell {
+    border-bottom-color: rgba(51, 65, 85, 0.3);
+}
+
+/* Selection cell */
+.filacraft-safir .fi-ta-cell.fi-ta-selection-cell {
+    background-color: transparent;
+}
+
+.dark .filacraft-safir .fi-ta-cell.fi-ta-selection-cell,
+.dark.filacraft-safir .fi-ta-cell.fi-ta-selection-cell {
+    background-color: color-mix(in oklab, #1e293b 60%, transparent);
+}
+
+.filacraft-safir .fi-ta-row:hover .fi-ta-selection-cell {
+    background-color: transparent;
+}
+
+/* Empty state */
+.filacraft-safir .fi-ta-empty-state {
+    @apply rounded-lg bg-white ring-1;
+    --tw-ring-color: oklch(from var(--primary-200) l c h / 0.4);
+}
+
+.dark .filacraft-safir .fi-ta-empty-state,
+.dark.filacraft-safir .fi-ta-empty-state {
+    background-color: #1e293b;
+    --tw-ring-color: rgba(51, 65, 85, 0.3);
+}
+
+/* Table footer/pagination */
+.filacraft-safir .fi-ta-ctn > .fi-pagination-ctn {
+    @apply rounded-lg bg-white px-3 ring-1;
+    --tw-ring-color: oklch(from var(--primary-200) l c h / 0.4);
+    box-shadow: 0 1px 2px oklch(from var(--primary-600) l c h / 0.04);
+}
+
+.dark .filacraft-safir .fi-ta-ctn > .fi-pagination-ctn,
+.dark.filacraft-safir .fi-ta-ctn > .fi-pagination-ctn {
+    background-color: #1e293b;
+    --tw-ring-color: rgba(51, 65, 85, 0.3);
+    box-shadow: none;
+}
+
+/* ══════════════════════════════════════════════
+   WIDGETS — Premium fintech stat cards
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-wi-stats-overview-stat {
+    @apply rounded-xl border-0 bg-white overflow-hidden ring-1;
+    --tw-ring-color: oklch(from var(--primary-200) l c h / 0.4);
+    position: relative;
+    box-shadow: 0 1px 3px oklch(from var(--primary-600) l c h / 0.04);
+    padding: 1.25rem 1.5rem !important;
+}
+
+.dark .filacraft-safir .fi-wi-stats-overview-stat,
+.dark.filacraft-safir .fi-wi-stats-overview-stat {
+    background-color: #1e293b;
+    --tw-ring-color: rgba(51, 65, 85, 0.3);
+    box-shadow: none;
+}
+
+/* Left accent bar */
+.filacraft-safir .fi-wi-stats-overview-stat::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--primary-500), var(--primary-300), var(--primary-500));
+}
+
+/* Top-right arrow icon */
+.filacraft-safir .fi-wi-stats-overview-stat::after {
+    content: '';
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 0.5rem;
+    background-color: #f8fafc;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25'/%3E%3C/svg%3E");
+    background-size: 1rem 1rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #e2e8f0;
+}
+
+.dark .filacraft-safir .fi-wi-stats-overview-stat::after,
+.dark.filacraft-safir .fi-wi-stats-overview-stat::after {
+    background-color: #0f172a;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%23475569'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25'/%3E%3C/svg%3E");
+    border-color: #334155;
+}
+
+/* Label row — icon + text */
+.filacraft-safir .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-label-ctn {
+    @apply flex items-center gap-x-2;
+}
+
+.filacraft-safir .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-label-ctn .fi-icon {
+    @apply shrink-0;
+    color: #64748b;
+    width: 1rem;
+    height: 1rem;
+}
+
+.dark .filacraft-safir .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-label-ctn .fi-icon,
+.dark.filacraft-safir .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-label-ctn .fi-icon {
+    color: #94a3b8;
+}
+
+.filacraft-safir .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-label {
+    @apply text-xs font-semibold uppercase tracking-wider;
+    color: #64748b;
+}
+
+.dark .filacraft-safir .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-label,
+.dark.filacraft-safir .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-label {
+    color: #94a3b8;
+}
+
+/* Value */
+.filacraft-safir .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-value {
+    @apply text-2xl font-bold tracking-tight;
+    color: #0f172a;
+    margin-top: 0.75rem;
+}
+
+.dark .filacraft-safir .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-value,
+.dark.filacraft-safir .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-value {
+    @apply text-white;
+}
+
+/* Description row */
+.filacraft-safir .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-description {
+    @apply text-xs;
+    margin-top: 0.25rem;
+}
+
+/* Chart area */
+.filacraft-safir .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-chart {
+    @apply absolute inset-x-0 bottom-0 overflow-hidden rounded-b-xl;
+    opacity: 0.5;
+}
+
+/* Overview container */
+.filacraft-safir .fi-wi-widget.fi-wi-stats-overview {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+    --tw-ring-offset-shadow: 0 0 #0000 !important;
+}
+
+.filacraft-safir .fi-wi-widget:not(.fi-wi-stats-overview) {
+    @apply border-0 bg-transparent rounded-xl p-0;
+}
+
+.filacraft-safir .fi-wi-widget.fi-wi-table {
+    @apply p-0;
+}
+
+/* Chart widget container */
+.filacraft-safir .fi-wi-chart {
+    @apply rounded-xl bg-white shadow-none border-0 ring-1;
+    --tw-ring-color: oklch(from var(--primary-200) l c h / 0.4);
+}
+
+.dark .filacraft-safir .fi-wi-chart,
+.dark.filacraft-safir .fi-wi-chart {
+    background-color: #1e293b;
+    --tw-ring-color: rgba(51, 65, 85, 0.3);
+}
+
+/* ══════════════════════════════════════════════
+   FORMS — Primary focus ring & shadow
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-input-wrp {
+    @apply rounded-lg shadow-none bg-white ring-1;
+    --tw-ring-color: var(--primary-100);
+}
+
+.dark .filacraft-safir .fi-input-wrp,
+.dark.filacraft-safir .fi-input-wrp {
+    background-color: #1e293b;
+    --tw-ring-color: #334155;
+}
+
+.filacraft-safir .fi-input-wrp:focus-within {
+    @apply ring-2;
+    --tw-ring-color: oklch(from var(--primary-500) l c h / 0.5);
+    box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color), 0 0 0 4px oklch(from var(--primary-500) l c h / 0.1);
+}
+
+.dark .filacraft-safir .fi-input-wrp:focus-within,
+.dark.filacraft-safir .fi-input-wrp:focus-within {
+    --tw-ring-color: oklch(from var(--primary-400) l c h / 0.4);
+    box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color), 0 0 0 4px oklch(from var(--primary-500) l c h / 0.08);
+}
+
+/* Tabs inside forms */
+.filacraft-safir .fi-fo-tabs {
+    @apply shadow-none rounded-xl border-0 ring-1;
+    --tw-ring-color: oklch(from var(--primary-200) l c h / 0.4);
+}
+
+.dark .filacraft-safir .fi-fo-tabs,
+.dark.filacraft-safir .fi-fo-tabs {
+    --tw-ring-color: rgba(51, 65, 85, 0.3);
+}
+
+/* ══════════════════════════════════════════════
+   BUTTONS
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-btn {
+    @apply rounded-lg px-4 shadow-none;
+}
+
+.filacraft-safir .fi-btn.fi-color-primary {
+    box-shadow: 0 1px 3px oklch(from var(--primary-600) l c h / 0.15);
+}
+
+/* ══════════════════════════════════════════════
+   BADGES
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-badge {
+    @apply rounded-md text-[0.65rem] font-semibold;
+}
+
+/* ══════════════════════════════════════════════
+   TABS — Primary pill tabs
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-tabs {
+    @apply rounded-xl ring-0 shadow-none border-0 p-1 bg-primary-50;
+}
+
+.dark .filacraft-safir .fi-tabs,
+.dark.filacraft-safir .fi-tabs {
+    background-color: oklch(from var(--primary-900) l c h / 0.15);
+}
+
+.filacraft-safir .fi-tabs-item {
+    @apply rounded-lg;
+}
+
+.filacraft-safir .fi-tabs-item.fi-active {
+    @apply bg-white shadow-sm ring-1;
+    --tw-ring-color: oklch(from var(--primary-200) l c h / 0.5);
+}
+
+.dark .filacraft-safir .fi-tabs-item.fi-active,
+.dark.filacraft-safir .fi-tabs-item.fi-active {
+    background-color: #1e293b;
+    --tw-ring-color: rgba(51, 65, 85, 0.3);
+}
+
+/* ══════════════════════════════════════════════
+   DROPDOWN
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-dropdown-panel {
+    @apply rounded-xl bg-white border-0 ring-1;
+    --tw-ring-color: var(--primary-100);
+    box-shadow: 0 4px 24px -4px oklch(from var(--primary-600) l c h / 0.1);
+}
+
+.dark .filacraft-safir .fi-dropdown-panel,
+.dark.filacraft-safir .fi-dropdown-panel {
+    background-color: #1e293b;
+    --tw-ring-color: #334155;
+    box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.4);
+}
+
+.filacraft-safir .fi-dropdown-list-item {
+    @apply rounded-lg;
+}
+
+/* ══════════════════════════════════════════════
+   MODAL & SLIDE-OVER — Tinted frosted backdrop
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-modal-window {
+    @apply rounded-2xl border-0 shadow-2xl bg-white ring-1;
+    --tw-ring-color: oklch(from var(--primary-200) l c h / 0.4);
+}
+
+.dark .filacraft-safir .fi-modal-window,
+.dark.filacraft-safir .fi-modal-window {
+    background-color: #1e293b;
+    --tw-ring-color: rgba(51, 65, 85, 0.3);
+}
+
+.filacraft-safir .fi-modal-close-overlay {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background-color: oklch(from var(--primary-900) l c h / 0.15);
+}
+
+.dark .filacraft-safir .fi-modal-close-overlay,
+.dark.filacraft-safir .fi-modal-close-overlay {
+    background-color: rgba(15, 23, 42, 0.6);
+}
+
+/* Slide-over floating effect — keep ms-auto so it stays right-aligned */
+.filacraft-safir .fi-modal.fi-modal-slide-over .fi-modal-window {
+    margin-inline-start: auto;
+    margin-inline-end: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    height: calc(100dvh - 1rem);
+    @apply rounded-xl;
+}
+
+/* ══════════════════════════════════════════════
+   NOTIFICATIONS
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-no-notification {
+    @apply rounded-xl shadow-lg ring-1;
+    --tw-ring-color: oklch(from var(--primary-200) l c h / 0.4);
+}
+
+.dark .filacraft-safir .fi-no-notification,
+.dark.filacraft-safir .fi-no-notification {
+    --tw-ring-color: rgba(51, 65, 85, 0.3);
+}
+
+/* ══════════════════════════════════════════════
+   GLOBAL SEARCH — Premium search bar & results
+   ══════════════════════════════════════════════ */
+
+/* ── Search field wrapper ─────────────────── */
+.filacraft-safir .fi-topbar .fi-global-search-field .fi-input-wrp {
+    @apply rounded-xl;
+    background-color: #f1f5f9;
+    --tw-ring-color: #cbd5e1;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 16rem;
+}
+
+.filacraft-safir .fi-topbar .fi-global-search-field .fi-input-wrp:focus-within {
+    @apply bg-white ring-2;
+    --tw-ring-color: var(--primary-500);
+    box-shadow: 0 0 0 4px oklch(from var(--primary-500) l c h / 0.12),
+                0 4px 12px -2px rgba(0, 0, 0, 0.08);
+    min-width: 22rem;
+}
+
+.dark .filacraft-safir .fi-topbar .fi-global-search-field .fi-input-wrp,
+.dark.filacraft-safir .fi-topbar .fi-global-search-field .fi-input-wrp {
+    background-color: #1e293b;
+    --tw-ring-color: #475569;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.dark .filacraft-safir .fi-topbar .fi-global-search-field .fi-input-wrp:focus-within,
+.dark.filacraft-safir .fi-topbar .fi-global-search-field .fi-input-wrp:focus-within {
+    background-color: #0f172a;
+    --tw-ring-color: var(--primary-500);
+    box-shadow: 0 0 0 4px oklch(from var(--primary-500) l c h / 0.1);
+}
+
+/* ── Magnifying glass icon ────────────────── */
+.filacraft-safir .fi-topbar .fi-global-search-field .fi-input-wrp-prefix .fi-icon {
+    color: #94a3b8;
+    transition: color 0.2s ease;
+}
+
+.filacraft-safir .fi-topbar .fi-global-search-field .fi-input-wrp:focus-within .fi-input-wrp-prefix .fi-icon {
+    @apply text-primary-600;
+}
+
+.dark .filacraft-safir .fi-topbar .fi-global-search-field .fi-input-wrp-prefix .fi-icon,
+.dark.filacraft-safir .fi-topbar .fi-global-search-field .fi-input-wrp-prefix .fi-icon {
+    color: #64748b;
+}
+
+.dark .filacraft-safir .fi-topbar .fi-global-search-field .fi-input-wrp:focus-within .fi-input-wrp-prefix .fi-icon,
+.dark.filacraft-safir .fi-topbar .fi-global-search-field .fi-input-wrp:focus-within .fi-input-wrp-prefix .fi-icon {
+    @apply text-primary-400;
+}
+
+/* ── Keyboard shortcut badge (Ctrl+K) ─────── */
+.filacraft-safir .fi-topbar .fi-global-search-field .fi-input-wrp-label {
+    @apply text-[0.65rem] font-semibold px-1.5 py-0.5 rounded-md;
+    background-color: #e2e8f0;
+    color: #64748b;
+    border: 1px solid #cbd5e1;
+}
+
+.dark .filacraft-safir .fi-topbar .fi-global-search-field .fi-input-wrp-label,
+.dark.filacraft-safir .fi-topbar .fi-global-search-field .fi-input-wrp-label {
+    background-color: #334155;
+    color: #94a3b8;
+    border-color: #475569;
+}
+
+/* ── Input text ───────────────────────────── */
+.filacraft-safir .fi-topbar .fi-global-search-field .fi-input {
+    @apply text-sm;
+    color: #0f172a;
+}
+
+.filacraft-safir .fi-topbar .fi-global-search-field .fi-input::placeholder {
+    color: #94a3b8;
+}
+
+.dark .filacraft-safir .fi-topbar .fi-global-search-field .fi-input {
+    color: #e2e8f0;
+}
+
+.dark .filacraft-safir .fi-topbar .fi-global-search-field .fi-input::placeholder,
+.dark.filacraft-safir .fi-topbar .fi-global-search-field .fi-input::placeholder {
+    color: #64748b;
+}
+
+/* ── Results dropdown ─────────────────────── */
+.filacraft-safir .fi-global-search-results-ctn {
+    @apply rounded-xl border-0 bg-white ring-1;
+    --tw-ring-color: oklch(from var(--primary-200) l c h / 0.4);
+    box-shadow: 0 8px 32px -4px oklch(from var(--primary-600) l c h / 0.12),
+                0 2px 8px oklch(from var(--primary-600) l c h / 0.06);
+}
+
+.dark .filacraft-safir .fi-global-search-results-ctn,
+.dark.filacraft-safir .fi-global-search-results-ctn {
+    background-color: #1e293b;
+    --tw-ring-color: rgba(51, 65, 85, 0.4);
+    box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.5);
+}
+
+/* Result group header */
+.filacraft-safir .fi-global-search-result-group-header {
+    @apply text-primary-900 text-xs font-bold uppercase tracking-wider;
+    background: linear-gradient(135deg, #ffffff, var(--primary-50));
+    border-bottom: 1px solid oklch(from var(--primary-200) l c h / 0.4);
+}
+
+.dark .filacraft-safir .fi-global-search-result-group-header,
+.dark.filacraft-safir .fi-global-search-result-group-header {
+    background: linear-gradient(135deg, #1e293b, oklch(from var(--primary-900) l c h / 0.15));
+    color: #e2e8f0;
+    border-bottom-color: rgba(51, 65, 85, 0.3);
+}
+
+/* Result items */
+.filacraft-safir .fi-global-search-results {
+    border-color: oklch(from var(--primary-100) l c h / 0.5);
+}
+
+.filacraft-safir .fi-global-search-result {
+    transition: background-color 0.15s ease;
+}
+
+.filacraft-safir .fi-global-search-result:hover {
+    background-color: oklch(from var(--primary-50) l c h / 0.6);
+}
+
+.dark .filacraft-safir .fi-global-search-result:hover,
+.dark.filacraft-safir .fi-global-search-result:hover {
+    background-color: rgba(30, 41, 59, 0.5);
+}
+
+/* Result heading */
+.filacraft-safir .fi-global-search-result-heading {
+    @apply text-sm font-semibold text-primary-950;
+}
+
+.dark .filacraft-safir .fi-global-search-result-heading,
+.dark.filacraft-safir .fi-global-search-result-heading {
+    @apply text-white;
+}
+
+/* Result detail label */
+.filacraft-safir .fi-global-search-result-detail-label {
+    @apply text-primary-600;
+}
+
+.dark .filacraft-safir .fi-global-search-result-detail-label,
+.dark.filacraft-safir .fi-global-search-result-detail-label {
+    @apply text-primary-400;
+}
+
+/* No results message */
+.filacraft-safir .fi-global-search-no-results-message {
+    @apply text-center py-8;
+    color: oklch(from var(--primary-400) l c h / 0.7);
+}
+
+/* ══════════════════════════════════════════════
+   USER MENU — Topbar avatar & dropdown
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-topbar .fi-user-menu-trigger {
+    @apply rounded-full;
+    transition: box-shadow 0.2s ease;
+}
+
+.filacraft-safir .fi-topbar .fi-user-menu-trigger:hover {
+    box-shadow: 0 0 0 3px oklch(from var(--primary-500) l c h / 0.15);
+}
+
+.dark .filacraft-safir .fi-topbar .fi-user-menu-trigger:hover,
+.dark.filacraft-safir .fi-topbar .fi-user-menu-trigger:hover {
+    box-shadow: 0 0 0 3px oklch(from var(--primary-400) l c h / 0.15);
+}
+
+/* User avatar ring */
+.filacraft-safir .fi-topbar .fi-user-avatar {
+    @apply ring-2;
+    --tw-ring-color: oklch(from var(--primary-200) l c h / 0.5);
+}
+
+.dark .filacraft-safir .fi-topbar .fi-user-avatar,
+.dark.filacraft-safir .fi-topbar .fi-user-avatar {
+    --tw-ring-color: rgba(51, 65, 85, 0.5);
+}
+
+/* ══════════════════════════════════════════════
+   DATABASE NOTIFICATIONS — Bell icon & panel
+   ══════════════════════════════════════════════ */
+
+/* Notification bell badge */
+.filacraft-safir .fi-topbar .fi-icon-btn-badge-ctn .fi-badge {
+    @apply bg-primary-500 text-white;
+    box-shadow: 0 0 0 2px white, 0 0 8px oklch(from var(--primary-500) l c h / 0.3);
+}
+
+.dark .filacraft-safir .fi-topbar .fi-icon-btn-badge-ctn .fi-badge,
+.dark.filacraft-safir .fi-topbar .fi-icon-btn-badge-ctn .fi-badge {
+    box-shadow: 0 0 0 2px #111827, 0 0 8px oklch(from var(--primary-500) l c h / 0.2);
+}
+
+/* ══════════════════════════════════════════════
+   THEME SWITCHER
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-theme-switcher-btn {
+    @apply rounded-lg;
+}
+
+/* ══════════════════════════════════════════════
+   ICON BUTTON BADGE
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-icon-btn-badge-ctn {
+    @apply bg-white;
+}
+
+.dark .filacraft-safir .fi-icon-btn-badge-ctn,
+.dark.filacraft-safir .fi-icon-btn-badge-ctn {
+    background-color: #1e293b;
+}
+
+/* ══════════════════════════════════════════════
+   FIELDSET
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-fieldset {
+    @apply rounded-xl border-0 ring-1;
+    --tw-ring-color: oklch(from var(--primary-200) l c h / 0.5);
+}
+
+.dark .filacraft-safir .fi-fieldset,
+.dark.filacraft-safir .fi-fieldset {
+    --tw-ring-color: rgba(51, 65, 85, 0.3);
+}
+
+/* ══════════════════════════════════════════════
+   PAGINATION
+   ══════════════════════════════════════════════ */
+
+.filacraft-safir .fi-pagination-items .fi-pagination-item-btn {
+    @apply rounded-lg;
+}

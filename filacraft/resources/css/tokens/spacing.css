@@ -1,0 +1,11 @@
+/* FilaCraft Design Tokens — Spacing */
+:root {
+    --fc-spacing-xs: 0.25rem;
+    --fc-spacing-sm: 0.5rem;
+    --fc-spacing-md: 0.75rem;
+    --fc-spacing-lg: 1rem;
+    --fc-spacing-xl: 1.5rem;
+    --fc-spacing-2xl: 2rem;
+    --fc-spacing-section: 1.5rem;
+    --fc-spacing-card: 1.25rem;
+}

@@ -1,0 +1,11 @@
+.fi-simple-main {
+    @apply rounded-3xl;
+}
+
+.fi-main-ctn {
+    @apply lg:rounded-ss-3xl overflow-hidden;
+}
+
+.fi-page-header-main-ctn .fi-header .fi-header-heading {
+    @apply relative inline-block;
+}

@@ -1,0 +1,10 @@
+@import './tokens/index.css';
+@import './form/index.css';
+@import './notifications/index.css';
+@import './panel/index.css';
+@import './support/index.css';
+@import './table/index.css';
+@import './widget/index.css';
+@import './presets/index.css';
+@import './customization/index.css';
+@import './decorations/index.css';

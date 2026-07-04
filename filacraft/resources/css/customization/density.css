@@ -1,0 +1,81 @@
+/* Compact Mode */
+[data-density="compact"] .fi-section {
+    @apply p-0.5 pt-1 pb-1;
+}
+
+[data-density="compact"] .fi-section-content-ctn {
+    @apply p-3;
+}
+
+[data-density="compact"] .fi-ta-cell {
+    @apply py-1.5 px-3;
+}
+
+[data-density="compact"] .fi-ta-header-cell {
+    @apply py-1.5 px-3;
+}
+
+[data-density="compact"] .fi-wi-stats-overview-stat {
+    @apply p-3;
+}
+
+[data-density="compact"] .fi-sidebar-item .fi-sidebar-item-btn {
+    @apply py-1.5;
+}
+
+[data-density="compact"] .fi-topbar-item .fi-topbar-item-btn {
+    @apply py-1.5 px-3;
+}
+
+[data-density="compact"] .fi-btn {
+    @apply py-1.5 px-3 text-sm;
+}
+
+[data-density="compact"] .fi-input-wrp {
+    @apply text-sm;
+}
+
+[data-density="compact"] .fi-fo-field-wrp {
+    @apply gap-1;
+}
+
+[data-density="compact"] .fi-page-header-main-ctn {
+    @apply py-3;
+}
+
+/* Comfortable Mode — more spacing */
+[data-density="comfortable"] .fi-section {
+    @apply p-2 pt-3 pb-3;
+}
+
+[data-density="comfortable"] .fi-section-content-ctn {
+    @apply p-6;
+}
+
+[data-density="comfortable"] .fi-ta-cell {
+    @apply py-4 px-5;
+}
+
+[data-density="comfortable"] .fi-ta-header-cell {
+    @apply py-3 px-5;
+}
+
+[data-density="comfortable"] .fi-wi-stats-overview-stat {
+    @apply p-6;
+}
+
+[data-density="comfortable"] .fi-sidebar-item .fi-sidebar-item-btn {
+    @apply py-3;
+}
+
+[data-density="comfortable"] .fi-btn {
+    @apply py-3 px-6;
+}
+
+[data-density="comfortable"] .fi-fo-field-wrp {
+    @apply gap-3;
+}
+
+[data-density="comfortable"] .fi-page-header-main-ctn {
+    @apply py-6;
+}

@@ -1,0 +1,20 @@
+.fi-ta-ctn {
+    border: 1px solid oklch(from var(--primary-200) l c h / 0.5) !important;
+}
+
+.dark .fi-ta-ctn {
+    border: 1px solid oklch(from var(--primary-400) l c h / 0.2) !important;
+}
+
+.fi-ta-actions-header-cell,
+.fi-ta-empty-header-cell {
+    background-color: transparent !important;
+}
+
+/* Table header formatting */
+.fi-ta-header-cell {
+    font-size: var(--fc-font-size-xs, 0.75rem) !important;
+    font-weight: var(--fc-font-weight-semibold, 600) !important;
+    letter-spacing: var(--fc-letter-spacing-wider, 0.05em) !important;
+    text-transform: uppercase;
+}

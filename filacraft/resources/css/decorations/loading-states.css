@@ -1,0 +1,60 @@
+/* FilaCraft Decorations — Loading States */
+
+/* Shimmer animation */
+@keyframes fc-shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Shimmer on loading table rows */
+[data-decorations="on"] .fi-ta-row[wire\:loading] td,
+[data-decorations="on"] [wire\:loading] .fi-ta-cell {
+    background: linear-gradient(
+        90deg,
+        var(--fc-surface-dim, #f9fafb) 25%,
+        var(--fc-surface-card, #ffffff) 50%,
+        var(--fc-surface-dim, #f9fafb) 75%
+    );
+    background-size: 200% 100%;
+    animation: fc-shimmer 1.5s ease-in-out infinite;
+}
+
+/* Diagonal stripe for disabled state */
+@keyframes fc-stripe-slide {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 40px 0;
+    }
+}
+
+[data-decorations="on"] .fi-btn[disabled],
+[data-decorations="on"] .fi-btn:disabled {
+    background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 5px,
+        rgb(0 0 0 / 0.03) 5px,
+        rgb(0 0 0 / 0.03) 10px
+    );
+    background-size: 40px 40px;
+}
+
+.dark [data-decorations="on"] .fi-btn[disabled],
+.dark [data-decorations="on"] .fi-btn:disabled,
+:root.dark [data-decorations="on"] .fi-btn[disabled],
+:root.dark [data-decorations="on"] .fi-btn:disabled {
+    background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 5px,
+        rgb(255 255 255 / 0.03) 5px,
+        rgb(255 255 255 / 0.03) 10px
+    );
+    background-size: 40px 40px;
+}

@@ -1,0 +1,380 @@
+/* Akdeniz Ruhu — Soft pastel sidebar & topbar following selected primary color */
+
+/* ── Body & Layout ── */
+.filacraft-akdeniz .fi-body {
+    @apply bg-primary-50 dark:bg-gray-900;
+}
+
+.filacraft-akdeniz .fi-main-ctn {
+    @apply bg-white
+        sticky top-0;
+    border: none !important;
+    border-start-start-radius: 2.5rem !important;
+}
+
+.dark .filacraft-akdeniz .fi-main-ctn,
+.dark.filacraft-akdeniz .fi-main-ctn {
+    background-color: rgb(39, 39, 42) !important;
+}
+
+.filacraft-akdeniz .fi-simple-main-ctn {
+    @apply bg-primary-50 dark:bg-gray-900;
+}
+
+.filacraft-akdeniz .fi-simple-main {
+    @apply rounded-2xl ring-0 shadow-2xl
+        bg-white dark:bg-gray-900
+        border-0 dark:border dark:border-gray-700
+        relative overflow-hidden;
+}
+
+/* ── Topbar — Same pastel as sidebar ── */
+.filacraft-akdeniz .fi-topbar {
+    @apply ring-0 shadow-none border-0
+        bg-primary-50 dark:bg-gray-900;
+}
+
+.filacraft-akdeniz .fi-topbar-item .fi-topbar-item-btn {
+    @apply rounded-xl px-4;
+}
+
+.filacraft-akdeniz .fi-topbar-item.fi-active .fi-topbar-item-btn {
+    @apply rounded-xl shadow-none border-0
+        bg-primary-100 dark:bg-gray-800;
+}
+
+.filacraft-akdeniz .fi-topbar-item.fi-active .fi-topbar-item-label,
+.filacraft-akdeniz .fi-topbar-item.fi-active .fi-topbar-item-icon,
+.filacraft-akdeniz .fi-topbar-item.fi-active .fi-topbar-group-toggle-icon {
+    @apply text-primary-700 dark:text-gray-300;
+}
+
+.filacraft-akdeniz .fi-topbar-item.fi-active .fi-topbar-item-badge-ctn .fi-badge {
+    @apply bg-primary-500 text-white;
+}
+
+.filacraft-akdeniz .fi-topbar-item .fi-topbar-item-btn .fi-badge {
+    @apply rounded-full bg-primary-500 text-white;
+}
+
+.filacraft-akdeniz .fi-topbar-item > .fi-topbar-item-btn:hover {
+    @apply bg-primary-100 dark:bg-gray-800 rounded-xl;
+}
+
+.filacraft-akdeniz .fi-topbar-group-dropdown-trigger-btn {
+    @apply rounded-xl;
+}
+
+/* ── Sidebar — Same pastel tone as body ── */
+.filacraft-akdeniz .fi-sidebar {
+    @apply bg-primary-50 dark:bg-gray-900;
+}
+
+.filacraft-akdeniz .fi-sidebar-header {
+    @apply border-b border-primary-100 dark:border-gray-800;
+}
+
+.filacraft-akdeniz .fi-sidebar-group-label {
+    @apply text-gray-500 dark:text-gray-500 uppercase tracking-wider text-xs;
+}
+
+.filacraft-akdeniz .fi-sidebar-open .fi-sidebar-item .fi-sidebar-item-btn {
+    @apply px-4 rounded-xl transition-all duration-200;
+}
+
+.filacraft-akdeniz .fi-sidebar-item .fi-sidebar-item-label {
+    @apply text-gray-700 dark:text-gray-300;
+}
+
+.filacraft-akdeniz .fi-sidebar-item .fi-sidebar-item-icon {
+    @apply text-gray-500 dark:text-gray-400;
+}
+
+.filacraft-akdeniz .fi-sidebar-item.fi-active .fi-sidebar-item-btn {
+    @apply rounded-xl shadow-md transition-all duration-300 border-0
+        bg-primary-600 dark:bg-primary-600;
+}
+
+.filacraft-akdeniz .fi-sidebar-item.fi-active .fi-sidebar-item-label,
+.filacraft-akdeniz .fi-sidebar-item.fi-active .fi-sidebar-item-icon {
+    @apply text-white dark:text-white font-medium;
+}
+
+.filacraft-akdeniz .fi-sidebar-item.fi-active .fi-sidebar-item-badge-ctn .fi-badge {
+    @apply bg-primary-500 text-white;
+}
+
+.filacraft-akdeniz .fi-sidebar-item.fi-active .fi-sidebar-item-grouped-border .fi-sidebar-item-grouped-border-part {
+    @apply bg-primary-300 dark:bg-gray-600;
+}
+
+.filacraft-akdeniz .fi-sidebar-item > .fi-sidebar-item-btn:hover {
+    background-color: oklch(from var(--primary-400) l c h / 0.15) !important;
+    @apply rounded-xl transition-all duration-200;
+}
+
+.dark .filacraft-akdeniz .fi-sidebar-item > .fi-sidebar-item-btn:hover {
+    background-color: oklch(from var(--primary-400) l c h / 0.1) !important;
+}
+
+.filacraft-akdeniz .fi-sidebar-item:hover .fi-sidebar-item-btn .fi-sidebar-item-label,
+.filacraft-akdeniz .fi-sidebar-item:hover .fi-sidebar-item-btn .fi-sidebar-item-icon {
+    @apply text-gray-900 dark:text-gray-200 transition-colors duration-200;
+}
+
+.filacraft-akdeniz .fi-sidebar-item:hover.fi-active .fi-sidebar-item-btn {
+    @apply bg-primary-700 dark:bg-primary-700;
+}
+
+.filacraft-akdeniz .fi-sidebar-item:hover.fi-active .fi-sidebar-item-btn .fi-sidebar-item-label,
+.filacraft-akdeniz .fi-sidebar-item:hover.fi-active .fi-sidebar-item-btn .fi-sidebar-item-icon {
+    @apply text-gray-900 dark:text-white;
+}
+
+.filacraft-akdeniz .fi-sidebar-item .fi-sidebar-item-badge-ctn .fi-badge {
+    @apply rounded-full text-white bg-primary-500;
+}
+
+.filacraft-akdeniz .fi-sidebar-group-dropdown-trigger-btn {
+    @apply rounded-xl;
+}
+
+.filacraft-akdeniz .fi-sidebar-group-toggle-icon,
+.filacraft-akdeniz .fi-sidebar-group-collapsible-toggle-icon {
+    @apply text-primary-300 dark:text-primary-700;
+}
+
+.filacraft-akdeniz .fi-tenant-menu-trigger {
+    @apply px-4 rounded-xl border-0
+        bg-primary-100 dark:bg-gray-800;
+}
+
+/* ── Sections ── */
+.filacraft-akdeniz .fi-section {
+    @apply rounded-2xl ring-0 p-1 pt-2 pb-2
+        border-0
+        bg-white dark:bg-gray-800
+        relative overflow-hidden;
+}
+
+.filacraft-akdeniz .fi-sc-section {
+    @apply rounded-xl
+        border-0
+        bg-gray-50 dark:bg-gray-800/50;
+}
+
+/* ── Tables ── */
+.filacraft-akdeniz .fi-ta {
+    @apply bg-gray-50
+        border border-gray-200 dark:border-gray-700
+        rounded-2xl p-1;
+}
+
+.dark .filacraft-akdeniz .fi-ta,
+.dark.filacraft-akdeniz .fi-ta {
+    background-color: rgb(35, 35, 38) !important;
+}
+
+.filacraft-akdeniz .fi-ta-ctn {
+    @apply rounded-xl ring-0 shadow-none
+        border-0
+        bg-white;
+}
+
+.dark .filacraft-akdeniz .fi-ta-ctn,
+.dark.filacraft-akdeniz .fi-ta-ctn {
+    background-color: rgb(39, 39, 42) !important;
+}
+
+.filacraft-akdeniz .fi-ta-ctn .fi-ta-header-toolbar {
+    @apply border-0;
+}
+
+.filacraft-akdeniz .fi-ta-row:hover {
+    @apply bg-primary-50/50 dark:bg-gray-900/30 transition-colors duration-150;
+}
+
+.filacraft-akdeniz .fi-ta-row.fi-striped {
+    @apply bg-gray-50/70 dark:bg-gray-800/50;
+}
+
+.filacraft-akdeniz .fi-ta-row.fi-striped:hover {
+    @apply bg-primary-50/50 dark:bg-gray-900/30;
+}
+
+.filacraft-akdeniz .fi-ta-cell {
+    @apply border-b border-gray-100 dark:border-gray-700/50;
+}
+
+.filacraft-akdeniz tbody .fi-ta-cell,
+.filacraft-akdeniz tbody .fi-ta-cell.fi-ta-selection-cell {
+    background-color: white !important;
+}
+
+.dark .filacraft-akdeniz tbody .fi-ta-cell,
+.dark .filacraft-akdeniz tbody .fi-ta-cell.fi-ta-selection-cell,
+.dark.filacraft-akdeniz tbody .fi-ta-cell,
+.dark.filacraft-akdeniz tbody .fi-ta-cell.fi-ta-selection-cell {
+    background-color: rgb(39, 39, 42) !important;
+}
+
+.filacraft-akdeniz .fi-ta-header-cell {
+    @apply text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400;
+    background-color: transparent !important;
+}
+
+.filacraft-akdeniz .fi-ta-actions-header-cell,
+.filacraft-akdeniz .fi-ta-empty-header-cell {
+    background-color: transparent !important;
+}
+
+/* ── Widgets ── */
+.filacraft-akdeniz .fi-wi-stats-overview-stat {
+    @apply rounded-2xl ring-0 shadow-sm
+        border-0 dark:border dark:border-gray-700
+        bg-white dark:bg-gray-800
+        relative overflow-hidden;
+}
+
+.filacraft-akdeniz .fi-wi-stats-overview-stat::after {
+    content: '';
+    @apply absolute -top-10 -right-10 w-28 h-28 rounded-full;
+    background: radial-gradient(circle, var(--primary-200), transparent 70%);
+    opacity: 0.4;
+}
+
+.filacraft-akdeniz .fi-wi-stats-overview-stat-chart {
+    @apply rounded-b-2xl;
+}
+
+.filacraft-akdeniz .fi-wi-widget.fi-wi-stats-overview {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+    --tw-ring-offset-shadow: 0 0 #0000 !important;
+    outline: none !important;
+}
+
+.filacraft-akdeniz .fi-wi-widget:not(.fi-wi-stats-overview) {
+    @apply border-0
+        bg-gray-50 dark:bg-gray-800
+        rounded-2xl p-1;
+}
+
+.filacraft-akdeniz .fi-wi-widget.fi-wi-table {
+    @apply p-0 border-0;
+}
+
+/* ── Forms ── */
+.filacraft-akdeniz .fi-input-wrp {
+    @apply rounded-xl shadow-none;
+}
+
+.filacraft-akdeniz .fi-input-wrp:focus-within {
+    @apply ring-2 ring-primary-500/30 border-primary-500;
+}
+
+/* ── Buttons ── */
+.filacraft-akdeniz .fi-btn {
+    @apply rounded-xl px-5 shadow-none transition-all duration-200;
+}
+
+.filacraft-akdeniz .fi-btn:hover {
+    @apply -translate-y-px;
+}
+
+.filacraft-akdeniz .fi-btn.fi-color-primary {
+    @apply shadow-md shadow-primary-500/25;
+}
+
+.filacraft-akdeniz .fi-btn.fi-color-primary:hover {
+    @apply shadow-lg shadow-primary-500/35;
+}
+
+/* ── Badges ── */
+.filacraft-akdeniz .fi-badge {
+    @apply rounded-full;
+}
+
+/* ── Tabs ── */
+.filacraft-akdeniz .fi-tabs {
+    @apply rounded-2xl ring-0 shadow-none
+        border-0 dark:border dark:border-gray-700
+        bg-gray-50 dark:bg-gray-800
+        p-1;
+}
+
+.filacraft-akdeniz .fi-tabs-item {
+    @apply rounded-xl;
+}
+
+.filacraft-akdeniz .fi-tabs-item.fi-active {
+    @apply bg-white dark:bg-gray-700 shadow-sm;
+}
+
+/* ── Dropdown ── */
+.filacraft-akdeniz .fi-dropdown-panel {
+    @apply rounded-xl bg-white dark:bg-gray-800
+        border-0 dark:border dark:border-gray-700
+        shadow-lg;
+}
+
+.filacraft-akdeniz .fi-dropdown-list-item {
+    @apply rounded-lg;
+}
+
+/* ── Modal ── */
+.filacraft-akdeniz .fi-modal-window {
+    @apply rounded-2xl
+        border-0 dark:border dark:border-gray-700
+        shadow-2xl relative overflow-hidden
+        bg-white dark:bg-gray-800;
+}
+
+.filacraft-akdeniz .fi-modal-close-overlay {
+    @apply backdrop-blur-sm bg-black/10;
+}
+
+.filacraft-akdeniz .fi-modal-slide-over .fi-modal-window {
+    @apply mt-2 mr-3 h-[calc(100vh-2rem)] rounded-2xl;
+}
+
+/* ── Notifications ── */
+.filacraft-akdeniz .fi-no-notification {
+    @apply rounded-2xl;
+}
+
+.filacraft-akdeniz .fi-no-database .fi-no-notification-unread-ctn {
+    @apply relative mx-3 my-1.5
+        border-0 dark:border dark:border-gray-700
+        bg-gray-50 dark:bg-gray-800
+        rounded-2xl;
+}
+
+/* ── Global Search ── */
+.filacraft-akdeniz .fi-global-search-results-ctn {
+    @apply rounded-xl
+        border-0 dark:border dark:border-gray-700
+        shadow-lg bg-white dark:bg-gray-800;
+}
+
+.filacraft-akdeniz .fi-global-search-result-group-header {
+    @apply bg-gray-50 dark:bg-gray-700/50;
+}
+
+/* ── Page Header — remove highlight behind heading ── */
+.filacraft-akdeniz .fi-page-header-main-ctn .fi-header .fi-header-heading::after {
+    display: none !important;
+}
+
+/* ── Theme Switcher ── */
+.filacraft-akdeniz .fi-theme-switcher-btn {
+    @apply rounded-xl;
+}
+
+/* ── Icon Button Badge ── */
+.filacraft-akdeniz .fi-icon-btn-badge-ctn {
+    @apply dark:bg-gray-800;
+}

@@ -1,0 +1,521 @@
+/* Atlas — Katmanlı yüzeyler, ipeksi geçişler & rafine detaylar */
+
+/* ══════════════════════════════════════════════
+   LAYOUT & BODY
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-body {
+    @apply bg-gray-100 dark:bg-gray-950;
+}
+
+.filacraft-atlas .fi-main-ctn {
+    @apply bg-gray-100 dark:bg-gray-950;
+    border: none !important;
+}
+
+.filacraft-atlas .fi-main {
+    @apply bg-white dark:bg-gray-900;
+    border-start-start-radius: 1.25rem !important;
+    border-end-start-radius: 1.25rem !important;
+    margin-block: 0.5rem;
+    box-shadow: -4px 0 24px -6px rgba(0, 0, 0, 0.06);
+    overflow-y: auto !important;
+    flex-grow: 1;
+}
+
+.dark .filacraft-atlas .fi-main,
+.dark.filacraft-atlas .fi-main {
+    box-shadow: -4px 0 24px -6px rgba(0, 0, 0, 0.3);
+}
+
+/* Login / Simple pages */
+.filacraft-atlas .fi-simple-main-ctn {
+    @apply bg-gray-100 dark:bg-gray-950;
+}
+
+.filacraft-atlas .fi-simple-main {
+    @apply rounded-2xl ring-0 shadow-xl border-0
+        bg-white dark:bg-gray-900;
+}
+
+/* ══════════════════════════════════════════════
+   SCROLLBAR
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-main::-webkit-scrollbar {
+    width: 4px;
+}
+
+.filacraft-atlas .fi-main::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.filacraft-atlas .fi-main::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-700;
+    border-radius: 9999px;
+}
+
+.filacraft-atlas .fi-main::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-600;
+}
+
+/* ══════════════════════════════════════════════
+   TOPBAR
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-topbar {
+    @apply bg-gray-100 dark:bg-gray-950
+        ring-0 shadow-none border-0;
+}
+
+.filacraft-atlas .fi-topbar nav {
+    @apply bg-gray-100 dark:bg-gray-950 ring-0 shadow-none;
+}
+
+/* Top nav items (when topNavigation is used) */
+.filacraft-atlas .fi-topbar-item .fi-topbar-item-btn {
+    @apply rounded-lg px-3 py-1.5;
+}
+
+.filacraft-atlas .fi-topbar-item.fi-active .fi-topbar-item-btn {
+    @apply rounded-lg bg-white dark:bg-gray-800
+        shadow-sm;
+}
+
+.filacraft-atlas .fi-topbar-item.fi-active .fi-topbar-item-label {
+    @apply text-gray-900 dark:text-white font-medium;
+}
+
+.filacraft-atlas .fi-topbar-item.fi-active .fi-topbar-item-icon {
+    @apply text-primary-600 dark:text-primary-400;
+}
+
+.filacraft-atlas .fi-topbar-item > .fi-topbar-item-btn:hover {
+    @apply bg-gray-200/60 dark:bg-gray-800/60 rounded-lg;
+}
+
+/* ══════════════════════════════════════════════
+   SIDEBAR — Premium look with accent indicator
+   ══════════════════════════════════════════════ */
+
+/* Gradient accent bar at top */
+.filacraft-atlas .fi-sidebar::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-500), oklch(from var(--primary-500) l c calc(h + 60)));
+    flex-shrink: 0;
+}
+
+.filacraft-atlas .fi-sidebar {
+    @apply bg-gray-100 dark:bg-gray-950;
+}
+
+.filacraft-atlas .fi-sidebar-header {
+    @apply bg-transparent ring-0 shadow-none border-0
+        pb-2;
+}
+
+.filacraft-atlas .fi-sidebar-group-label {
+    @apply text-[0.65rem] font-semibold uppercase tracking-[0.1em]
+        text-gray-400 dark:text-gray-600;
+}
+
+.filacraft-atlas .fi-sidebar-open .fi-sidebar-item .fi-sidebar-item-btn {
+    @apply px-3 rounded-lg relative;
+}
+
+.filacraft-atlas .fi-sidebar-item .fi-sidebar-item-label {
+    @apply text-gray-600 dark:text-gray-400 text-sm;
+}
+
+.filacraft-atlas .fi-sidebar-item .fi-sidebar-item-icon {
+    @apply text-gray-400 dark:text-gray-600;
+}
+
+/* Active state — left edge colored bar indicator */
+.filacraft-atlas .fi-sidebar-item.fi-active .fi-sidebar-item-btn {
+    @apply rounded-lg border-0
+        bg-gray-50 dark:bg-white/5;
+}
+
+.filacraft-atlas .fi-sidebar-item.fi-active .fi-sidebar-item-btn::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 1.25rem;
+    border-radius: 9999px;
+    background: var(--primary-500);
+}
+
+.filacraft-atlas .fi-sidebar-item.fi-active .fi-sidebar-item-label {
+    @apply text-gray-900 dark:text-white font-medium;
+}
+
+.filacraft-atlas .fi-sidebar-item.fi-active .fi-sidebar-item-icon {
+    @apply text-primary-600 dark:text-primary-400;
+}
+
+/* Hover */
+.filacraft-atlas .fi-sidebar-item:not(.fi-active) > .fi-sidebar-item-btn:hover {
+    @apply bg-gray-200/50 dark:bg-white/5 rounded-lg;
+}
+
+.filacraft-atlas .fi-sidebar-item:not(.fi-active):hover .fi-sidebar-item-label {
+    @apply text-gray-900 dark:text-gray-200;
+}
+
+.filacraft-atlas .fi-sidebar-item:not(.fi-active):hover .fi-sidebar-item-icon {
+    @apply text-gray-600 dark:text-gray-400;
+}
+
+/* Sidebar badges */
+.filacraft-atlas .fi-sidebar-item .fi-sidebar-item-badge-ctn .fi-badge {
+    @apply rounded-md bg-primary-50 text-primary-700
+        dark:bg-primary-500/10 dark:text-primary-400
+        text-[0.65rem] font-semibold;
+}
+
+/* Group toggle icons */
+.filacraft-atlas .fi-sidebar-group-toggle-icon,
+.filacraft-atlas .fi-sidebar-group-collapsible-toggle-icon {
+    @apply text-gray-300 dark:text-gray-700;
+}
+
+/* Tenant menu */
+.filacraft-atlas .fi-tenant-menu-trigger {
+    @apply px-3 rounded-lg bg-white dark:bg-gray-900
+        ring-1 ring-gray-200 dark:ring-gray-800
+        shadow-sm;
+}
+
+/* ══════════════════════════════════════════════
+   PAGE HEADER & BREADCRUMBS
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-page-header-main-ctn .fi-header .fi-header-heading {
+    @apply text-gray-900 dark:text-white;
+}
+
+.filacraft-atlas .fi-page-header-main-ctn .fi-header .fi-header-heading::after {
+    display: none !important;
+}
+
+.filacraft-atlas .fi-breadcrumbs li a {
+    @apply text-gray-400 dark:text-gray-500;
+}
+
+.filacraft-atlas .fi-breadcrumbs li a:hover {
+    @apply text-primary-600 dark:text-primary-400;
+}
+
+/* ══════════════════════════════════════════════
+   SECTIONS — Nested card (Shopper signature look)
+   Gray outer shell → white inner content
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-section {
+    @apply rounded-xl border-0 shadow-none ring-0
+        bg-gray-50 dark:bg-gray-800/40
+        p-1.5;
+}
+
+.filacraft-atlas .fi-section .fi-section-content-ctn {
+    @apply rounded-lg ring-0 shadow-none border-0
+        bg-white dark:bg-gray-900;
+    box-shadow: none !important;
+}
+
+.filacraft-atlas .fi-section .fi-section-header {
+    @apply rounded-t-lg mb-2
+        bg-white dark:bg-gray-900
+        ring-1 ring-gray-200/80 dark:ring-white/10;
+}
+
+.filacraft-atlas .fi-section-header-heading {
+    @apply text-sm font-semibold text-gray-900 dark:text-white;
+}
+
+.filacraft-atlas .fi-section-header-description {
+    @apply text-xs text-gray-500 dark:text-gray-400;
+}
+
+.filacraft-atlas .fi-sc-section {
+    @apply rounded-lg bg-gray-50 dark:bg-gray-800/30 border-0;
+}
+
+/* ══════════════════════════════════════════════
+   TABLES — Header band & clean rows
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-ta {
+    @apply bg-transparent rounded-xl p-0 border-0;
+}
+
+.filacraft-atlas .fi-ta-ctn {
+    @apply rounded-xl ring-0 shadow-none border-0
+        bg-gray-50 dark:bg-gray-800/40
+        p-1.5;
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.filacraft-atlas .fi-ta-ctn .fi-ta-header-ctn {
+    margin-bottom: 4px;
+}
+
+.filacraft-atlas .fi-ta-ctn .fi-ta-header-toolbar {
+    @apply border-0 rounded-lg
+        bg-white dark:bg-gray-900
+        ring-1 ring-gray-200/80 dark:ring-white/10
+        px-3 mt-2;
+}
+
+.filacraft-atlas .fi-ta-content {
+    @apply rounded-lg overflow-hidden
+        ring-1 ring-gray-200/80 dark:ring-white/10;
+}
+
+.filacraft-atlas .fi-ta-header-cell {
+    @apply text-[0.7rem] font-semibold uppercase tracking-wider
+        text-gray-500 dark:text-gray-400
+        bg-gray-50 dark:bg-gray-800/60;
+}
+
+.filacraft-atlas .fi-ta-actions-header-cell,
+.filacraft-atlas .fi-ta-empty-header-cell {
+    @apply bg-gray-50 dark:bg-gray-800/60;
+}
+
+.filacraft-atlas .fi-ta-row {
+    @apply bg-white dark:bg-gray-900;
+}
+
+.filacraft-atlas .fi-ta-row:hover td {
+    @apply bg-gray-50/80 dark:bg-gray-800/40;
+}
+
+.filacraft-atlas .fi-ta-cell {
+    @apply border-b border-gray-100 dark:border-gray-800/60;
+}
+
+/* Selection cell */
+.filacraft-atlas .fi-ta-cell.fi-ta-selection-cell {
+    background-color: transparent;
+}
+
+.dark .filacraft-atlas .fi-ta-cell.fi-ta-selection-cell,
+.dark.filacraft-atlas .fi-ta-cell.fi-ta-selection-cell {
+    background-color: color-mix(in oklab, var(--gray-800) 60%, transparent);
+}
+
+.filacraft-atlas .fi-ta-row:hover .fi-ta-selection-cell {
+    background-color: transparent;
+}
+
+/* Empty state */
+.filacraft-atlas .fi-ta-empty-state {
+    @apply rounded-lg ring-1 ring-gray-200/80 dark:ring-white/10
+        bg-white dark:bg-gray-900;
+}
+
+/* Table footer/pagination */
+.filacraft-atlas .fi-ta-ctn > .fi-pagination-ctn {
+    @apply rounded-lg
+        bg-white dark:bg-gray-900
+        ring-1 ring-gray-200/80 dark:ring-white/10
+        px-3;
+}
+
+/* ══════════════════════════════════════════════
+   WIDGETS — Stats with accent top line
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-wi-stats-overview-stat {
+    @apply rounded-xl ring-1 ring-gray-200/80 dark:ring-white/10
+        shadow-none border-0
+        bg-white dark:bg-gray-900
+        overflow-hidden;
+}
+
+/* Thin accent line at top of each stat card */
+.filacraft-atlas .fi-wi-stats-overview-stat::before {
+    content: '';
+    display: block;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-400), oklch(from var(--primary-400) l c calc(h + 40)));
+    opacity: 0.6;
+}
+
+.filacraft-atlas .fi-wi-widget.fi-wi-stats-overview {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+    --tw-ring-offset-shadow: 0 0 #0000 !important;
+}
+
+.filacraft-atlas .fi-wi-widget:not(.fi-wi-stats-overview) {
+    @apply border-0 bg-transparent rounded-xl p-0;
+}
+
+.filacraft-atlas .fi-wi-widget.fi-wi-table {
+    @apply p-0;
+}
+
+/* Chart widget container */
+.filacraft-atlas .fi-wi-chart {
+    @apply rounded-xl ring-1 ring-gray-200/80 dark:ring-white/10
+        bg-white dark:bg-gray-900 shadow-none border-0;
+}
+
+/* ══════════════════════════════════════════════
+   FORMS — Refined inputs
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-input-wrp {
+    @apply rounded-lg shadow-none
+        ring-1 ring-gray-200 dark:ring-gray-700
+        bg-white dark:bg-gray-900;
+}
+
+.filacraft-atlas .fi-input-wrp:focus-within {
+    @apply ring-2 ring-primary-500/40 border-primary-500;
+}
+
+/* Tabs inside forms */
+.filacraft-atlas .fi-fo-tabs {
+    @apply ring-1 ring-gray-200/80 dark:ring-white/10
+        shadow-none rounded-xl border-0;
+}
+
+/* ══════════════════════════════════════════════
+   BUTTONS
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-btn {
+    @apply rounded-lg px-4 shadow-none;
+}
+
+.filacraft-atlas .fi-btn.fi-color-primary {
+    @apply shadow-sm;
+}
+
+/* ══════════════════════════════════════════════
+   BADGES
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-badge {
+    @apply rounded-md text-[0.65rem] font-semibold;
+}
+
+/* ══════════════════════════════════════════════
+   TABS
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-tabs {
+    @apply rounded-xl ring-0 shadow-none border-0
+        bg-gray-100 dark:bg-gray-800 p-1;
+}
+
+.filacraft-atlas .fi-tabs-item {
+    @apply rounded-lg;
+}
+
+.filacraft-atlas .fi-tabs-item.fi-active {
+    @apply bg-white dark:bg-gray-900 shadow-sm
+        ring-1 ring-gray-200/50 dark:ring-white/5;
+}
+
+/* ══════════════════════════════════════════════
+   DROPDOWN
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-dropdown-panel {
+    @apply rounded-xl bg-white dark:bg-gray-900
+        ring-1 ring-gray-200 dark:ring-gray-700
+        shadow-lg shadow-gray-200/50 dark:shadow-black/30
+        border-0;
+}
+
+.filacraft-atlas .fi-dropdown-list-item {
+    @apply rounded-lg;
+}
+
+/* ══════════════════════════════════════════════
+   MODAL & SLIDE-OVER
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-modal-window {
+    @apply rounded-2xl border-0 shadow-2xl
+        bg-white dark:bg-gray-900
+        ring-1 ring-gray-200/50 dark:ring-white/10;
+}
+
+.filacraft-atlas .fi-modal-close-overlay {
+    @apply backdrop-blur-sm bg-gray-900/20 dark:bg-black/40;
+}
+
+/* Slide-over floating effect */
+.filacraft-atlas .fi-modal.fi-modal-slide-over .fi-modal-window {
+    margin: 0.5rem;
+    height: calc(100dvh - 1rem);
+    @apply rounded-xl;
+}
+
+/* ══════════════════════════════════════════════
+   NOTIFICATIONS
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-no-notification {
+    @apply rounded-xl shadow-lg
+        ring-1 ring-gray-200/50 dark:ring-white/10;
+}
+
+/* ══════════════════════════════════════════════
+   GLOBAL SEARCH
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-global-search-results-ctn {
+    @apply rounded-xl border-0
+        ring-1 ring-gray-200 dark:ring-gray-700
+        shadow-lg bg-white dark:bg-gray-900;
+}
+
+/* ══════════════════════════════════════════════
+   THEME SWITCHER
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-theme-switcher-btn {
+    @apply rounded-lg;
+}
+
+/* ══════════════════════════════════════════════
+   ICON BUTTON BADGE
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-icon-btn-badge-ctn {
+    @apply dark:bg-gray-900;
+}
+
+/* ══════════════════════════════════════════════
+   FIELDSET
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-fieldset {
+    @apply rounded-xl ring-1 ring-gray-200/80 dark:ring-white/10
+        border-0;
+}
+
+/* ══════════════════════════════════════════════
+   PAGINATION
+   ══════════════════════════════════════════════ */
+
+.filacraft-atlas .fi-pagination-items .fi-pagination-item-btn {
+    @apply rounded-lg;
+}

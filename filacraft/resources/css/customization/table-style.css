@@ -1,0 +1,716 @@
+/* Table Style Variants */
+
+
+/* Remove Filament's default vertical bar — on card and glass styles */
+[data-table-style="card"] .fi-ta-row.fi-selected > :first-child::before,
+[data-table-style="glass"] .fi-ta-row.fi-selected > :first-child::before {
+    content: none !important;
+    display: none !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   CARD — each row is a floating card with gap, shadow, rounded
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Container: no border, transparent background */
+[data-table-style="card"] .fi-ta-ctn {
+    @apply rounded-xl overflow-hidden;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* Table: separate rows with gap */
+[data-table-style="card"] .fi-ta-table {
+    border-collapse: separate !important;
+    border-spacing: 0 8px !important;
+}
+
+/* Remove default dividers */
+[data-table-style="card"] .fi-ta-table,
+[data-table-style="card"] .fi-ta-table > thead,
+[data-table-style="card"] .fi-ta-table > tbody {
+    @apply divide-y-0;
+}
+
+/* Header row: transparent, no card effect */
+[data-table-style="card"] thead > tr {
+    background: transparent !important;
+}
+
+/* Header cells + actions/empty header cells */
+[data-table-style="card"] .fi-ta-header-cell,
+[data-table-style="card"] .fi-ta-actions-header-cell,
+[data-table-style="card"] .fi-ta-empty-header-cell {
+    @apply text-[0.65rem] font-semibold uppercase tracking-[0.08em] text-gray-400 dark:text-gray-500 pb-1;
+    background: transparent !important;
+    border: none !important;
+}
+
+/* Row cells: card appearance — light mode enhanced */
+[data-table-style="card"] .fi-ta-row > td {
+    background-color: #fff !important;
+    border-top: 1px solid rgb(209 213 219) !important;
+    border-bottom: 1px solid rgb(209 213 219) !important;
+    padding-top: 0.875rem !important;
+    padding-bottom: 0.875rem !important;
+    transition: all 0.15s ease;
+    box-shadow:
+        0 1px 4px rgba(0, 0, 0, 0.06),
+        0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.dark[data-table-style="card"] .fi-ta-row > td,
+.dark [data-table-style="card"] .fi-ta-row > td {
+    background-color: rgb(30 41 59) !important;
+    border-color: rgba(55, 65, 81, 0.5) !important;
+    box-shadow:
+        0 1px 4px rgba(0, 0, 0, 0.2),
+        0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+/* First cell: left border + rounded left corners */
+[data-table-style="card"] .fi-ta-row > td:first-child {
+    border-left: 1px solid rgb(209 213 219) !important;
+    border-radius: 12px 0 0 12px;
+    padding-left: 1.25rem !important;
+}
+
+.dark[data-table-style="card"] .fi-ta-row > td:first-child,
+.dark [data-table-style="card"] .fi-ta-row > td:first-child {
+    border-left-color: rgba(55, 65, 81, 0.5) !important;
+}
+
+/* Last cell: right border + rounded right corners */
+[data-table-style="card"] .fi-ta-row > td:last-child {
+    border-right: 1px solid rgb(209 213 219) !important;
+    border-radius: 0 12px 12px 0;
+    padding-right: 1.25rem !important;
+}
+
+.dark[data-table-style="card"] .fi-ta-row > td:last-child,
+.dark [data-table-style="card"] .fi-ta-row > td:last-child {
+    border-right-color: rgba(55, 65, 81, 0.5) !important;
+}
+
+/* Hover: lift effect with stronger shadow */
+[data-table-style="card"] .fi-ta-row:hover > td {
+    background-color: rgb(249 250 251) !important;
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.08),
+        0 2px 6px rgba(0, 0, 0, 0.05);
+    border-color: rgb(191 199 210) !important;
+}
+
+.dark[data-table-style="card"] .fi-ta-row:hover > td,
+.dark [data-table-style="card"] .fi-ta-row:hover > td {
+    background-color: rgb(36 48 66) !important;
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.3),
+        0 2px 6px rgba(0, 0, 0, 0.15);
+    border-color: rgba(75, 85, 99, 0.7) !important;
+}
+
+/* Selected: tinted bg (gradient on first cell handled globally) */
+[data-table-style="card"] .fi-ta-row.fi-selected > td {
+    background: color-mix(in oklab, var(--primary-500) 5%, white) !important;
+    border-color: color-mix(in oklab, var(--primary-500) 20%, #d1d5db) !important;
+}
+
+.dark[data-table-style="card"] .fi-ta-row.fi-selected > td,
+.dark [data-table-style="card"] .fi-ta-row.fi-selected > td {
+    background: color-mix(in oklab, var(--primary-500) 10%, rgb(30 41 59)) !important;
+    border-color: color-mix(in oklab, var(--primary-500) 20%, #374151) !important;
+}
+
+/* Toolbar: clean, no border */
+[data-table-style="card"] .fi-ta-header-toolbar {
+    border-bottom: none !important;
+    @apply pb-2;
+}
+
+/* Pagination: no border */
+[data-table-style="card"] .fi-ta-ctn > .fi-pagination-ctn,
+[data-table-style="card"] .fi-ta-ctn .fi-pagination {
+    border-top: none !important;
+    @apply pt-2;
+}
+
+/* Selection indicator */
+[data-table-style="card"] .fi-ta-selection-indicator {
+    @apply rounded-xl mb-1;
+    background: color-mix(in oklab, var(--primary-500) 6%, white);
+    border: 1px solid color-mix(in oklab, var(--primary-500) 15%, #e5e7eb);
+}
+
+.dark[data-table-style="card"] .fi-ta-selection-indicator,
+.dark [data-table-style="card"] .fi-ta-selection-indicator {
+    background: color-mix(in oklab, var(--primary-500) 8%, rgb(30 41 59));
+    border-color: color-mix(in oklab, var(--primary-500) 15%, #374151);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   GLASS — each row is a frosted glass card, modern Vision-style
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Container: subtle gradient backdrop, no chrome */
+[data-table-style="glass"] .fi-ta-ctn {
+    @apply rounded-2xl overflow-hidden;
+    background: linear-gradient(135deg, rgba(243, 244, 246, 0.4), rgba(229, 231, 235, 0.2)) !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.dark[data-table-style="glass"] .fi-ta-ctn,
+.dark [data-table-style="glass"] .fi-ta-ctn {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.3)) !important;
+}
+
+/* Table: separated rows */
+[data-table-style="glass"] .fi-ta-table {
+    border-collapse: separate !important;
+    border-spacing: 0 10px !important;
+    padding: 4px 8px !important;
+}
+
+/* Remove default dividers */
+[data-table-style="glass"] .fi-ta-table,
+[data-table-style="glass"] .fi-ta-table > thead,
+[data-table-style="glass"] .fi-ta-table > tbody {
+    @apply divide-y-0;
+}
+
+/* Header row: transparent */
+[data-table-style="glass"] thead > tr {
+    background: transparent !important;
+}
+
+/* Header cells */
+[data-table-style="glass"] .fi-ta-header-cell,
+[data-table-style="glass"] .fi-ta-actions-header-cell,
+[data-table-style="glass"] .fi-ta-empty-header-cell {
+    @apply text-[0.65rem] font-semibold uppercase tracking-[0.08em] pb-1;
+    color: rgba(75, 85, 99, 0.7) !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.dark[data-table-style="glass"] .fi-ta-header-cell,
+.dark[data-table-style="glass"] .fi-ta-actions-header-cell,
+.dark[data-table-style="glass"] .fi-ta-empty-header-cell,
+.dark [data-table-style="glass"] .fi-ta-header-cell,
+.dark [data-table-style="glass"] .fi-ta-actions-header-cell,
+.dark [data-table-style="glass"] .fi-ta-empty-header-cell {
+    color: rgba(203, 213, 225, 0.6) !important;
+}
+
+/* Row cells: real frosted glass */
+[data-table-style="glass"] .fi-ta-row > td {
+    background: rgba(255, 255, 255, 0.55) !important;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-top: 1px solid rgba(255, 255, 255, 0.7) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+    padding-top: 0.875rem !important;
+    padding-bottom: 0.875rem !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 4px 14px rgba(31, 38, 135, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.dark[data-table-style="glass"] .fi-ta-row > td,
+.dark [data-table-style="glass"] .fi-ta-row > td {
+    background: rgba(30, 41, 59, 0.55) !important;
+    border-top-color: rgba(255, 255, 255, 0.08) !important;
+    border-bottom-color: rgba(0, 0, 0, 0.2) !important;
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* First cell: rounded left + glass left edge */
+[data-table-style="glass"] .fi-ta-row > td:first-child {
+    border-left: 1px solid rgba(255, 255, 255, 0.7) !important;
+    border-radius: 14px 0 0 14px;
+    padding-left: 1.25rem !important;
+}
+
+.dark[data-table-style="glass"] .fi-ta-row > td:first-child,
+.dark [data-table-style="glass"] .fi-ta-row > td:first-child {
+    border-left-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Last cell: rounded right + glass right edge */
+[data-table-style="glass"] .fi-ta-row > td:last-child {
+    border-right: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 0 14px 14px 0;
+    padding-right: 1.25rem !important;
+}
+
+.dark[data-table-style="glass"] .fi-ta-row > td:last-child,
+.dark [data-table-style="glass"] .fi-ta-row > td:last-child {
+    border-right-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Hover: brighter frost + lift */
+[data-table-style="glass"] .fi-ta-row:hover > td {
+    background: rgba(255, 255, 255, 0.8) !important;
+    box-shadow:
+        0 8px 24px rgba(31, 38, 135, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transform: translateY(-1px);
+}
+
+.dark[data-table-style="glass"] .fi-ta-row:hover > td,
+.dark [data-table-style="glass"] .fi-ta-row:hover > td {
+    background: rgba(51, 65, 85, 0.7) !important;
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Selected: primary tinted glass */
+[data-table-style="glass"] .fi-ta-row.fi-selected > td {
+    background: color-mix(in oklab, var(--primary-500) 12%, rgba(255, 255, 255, 0.7)) !important;
+    border-color: color-mix(in oklab, var(--primary-500) 25%, rgba(255, 255, 255, 0.5)) !important;
+}
+
+.dark[data-table-style="glass"] .fi-ta-row.fi-selected > td,
+.dark [data-table-style="glass"] .fi-ta-row.fi-selected > td {
+    background: color-mix(in oklab, var(--primary-500) 18%, rgba(30, 41, 59, 0.65)) !important;
+    border-color: color-mix(in oklab, var(--primary-500) 25%, rgba(255, 255, 255, 0.08)) !important;
+}
+
+/* Selection indicator: glass bar */
+[data-table-style="glass"] .fi-ta-selection-indicator {
+    @apply rounded-2xl mb-2;
+    background: color-mix(in oklab, var(--primary-500) 8%, rgba(255, 255, 255, 0.6));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid color-mix(in oklab, var(--primary-500) 18%, rgba(255, 255, 255, 0.5));
+}
+
+.dark[data-table-style="glass"] .fi-ta-selection-indicator,
+.dark [data-table-style="glass"] .fi-ta-selection-indicator {
+    background: color-mix(in oklab, var(--primary-500) 12%, rgba(30, 41, 59, 0.6));
+    border-color: color-mix(in oklab, var(--primary-500) 20%, rgba(255, 255, 255, 0.08));
+}
+
+/* Toolbar: clean, no border */
+[data-table-style="glass"] .fi-ta-header-toolbar {
+    border-bottom: none !important;
+    background: transparent !important;
+    @apply pb-2;
+}
+
+/* Pagination: clean */
+[data-table-style="glass"] .fi-ta-ctn > .fi-pagination-ctn,
+[data-table-style="glass"] .fi-ta-ctn .fi-pagination {
+    border-top: none !important;
+    background: transparent !important;
+    @apply pt-2;
+}
+
+/* Filter indicators: subtle glass */
+[data-table-style="glass"] .fi-ta-filter-indicators {
+    @apply rounded-xl mb-2;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.dark[data-table-style="glass"] .fi-ta-filter-indicators,
+.dark [data-table-style="glass"] .fi-ta-filter-indicators {
+    background: rgba(30, 41, 59, 0.5);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   ACCENT — soft tinted container with gradient primary header
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Container: rounded with soft primary glow */
+[data-table-style="accent"] .fi-ta-ctn {
+    @apply rounded-2xl overflow-hidden;
+    background: color-mix(in oklab, var(--primary-500) 2%, #fff) !important;
+    border: 1px solid color-mix(in oklab, var(--primary-500) 8%, #e5e7eb) !important;
+    box-shadow:
+        0 4px 16px color-mix(in oklab, var(--primary-500) 8%, rgba(0, 0, 0, 0.04)),
+        0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.dark[data-table-style="accent"] .fi-ta-ctn,
+.dark [data-table-style="accent"] .fi-ta-ctn {
+    background: color-mix(in oklab, var(--primary-500) 4%, rgb(17 24 39)) !important;
+    border-color: color-mix(in oklab, var(--primary-500) 12%, rgb(55 65 81)) !important;
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Header row: gradient primary background */
+[data-table-style="accent"] thead > tr {
+    background: linear-gradient(135deg, var(--primary-500), var(--primary-600)) !important;
+    position: relative;
+}
+
+/* Header cells */
+[data-table-style="accent"] .fi-ta-header-cell,
+[data-table-style="accent"] .fi-ta-actions-header-cell,
+[data-table-style="accent"] .fi-ta-empty-header-cell {
+    @apply text-[0.7rem] font-semibold uppercase tracking-[0.06em] py-3.5;
+    color: rgba(255, 255, 255, 0.95) !important;
+    border-bottom: none !important;
+    background: transparent !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+/* First/last header cells: rounded inside container */
+[data-table-style="accent"] thead > tr > th:first-child {
+    padding-left: 1.5rem !important;
+}
+
+[data-table-style="accent"] thead > tr > th:last-child {
+    padding-right: 1.5rem !important;
+}
+
+/* Sort icons in header */
+[data-table-style="accent"] .fi-ta-header-cell .fi-icon {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+[data-table-style="accent"] .fi-ta-header-cell-sorted .fi-icon {
+    color: #fff !important;
+}
+
+/* Remove default dividers */
+[data-table-style="accent"] .fi-ta-table > tbody {
+    @apply divide-y-0;
+}
+
+/* Cells: subtle divider */
+[data-table-style="accent"] .fi-ta-cell {
+    border-bottom: 1px solid color-mix(in oklab, var(--primary-500) 4%, rgb(243 244 246));
+    padding-top: 0.875rem !important;
+    padding-bottom: 0.875rem !important;
+}
+
+.dark[data-table-style="accent"] .fi-ta-cell,
+.dark [data-table-style="accent"] .fi-ta-cell {
+    border-bottom-color: color-mix(in oklab, var(--primary-500) 8%, rgba(55, 65, 81, 0.5));
+}
+
+/* First/last cells: padding to match header */
+[data-table-style="accent"] .fi-ta-row > td:first-child {
+    padding-left: 1.5rem !important;
+}
+
+[data-table-style="accent"] .fi-ta-row > td:last-child {
+    padding-right: 1.5rem !important;
+}
+
+/* Rows: transparent (use container bg) */
+[data-table-style="accent"] .fi-ta-row > td {
+    background-color: transparent !important;
+    transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+/* Hover: primary tint + left accent line */
+[data-table-style="accent"] .fi-ta-row:hover > td {
+    background: color-mix(in oklab, var(--primary-500) 6%, transparent) !important;
+}
+
+[data-table-style="accent"] .fi-ta-row:hover > td:first-child {
+    box-shadow: inset 3px 0 0 var(--primary-400);
+}
+
+.dark[data-table-style="accent"] .fi-ta-row:hover > td,
+.dark [data-table-style="accent"] .fi-ta-row:hover > td {
+    background: color-mix(in oklab, var(--primary-500) 10%, transparent) !important;
+}
+
+/* Selected: stronger primary tint + accent line */
+[data-table-style="accent"] .fi-ta-row.fi-selected > td {
+    background: color-mix(in oklab, var(--primary-500) 10%, transparent) !important;
+}
+
+[data-table-style="accent"] .fi-ta-row.fi-selected > td:first-child {
+    box-shadow: inset 3px 0 0 var(--primary-500);
+}
+
+.dark[data-table-style="accent"] .fi-ta-row.fi-selected > td,
+.dark [data-table-style="accent"] .fi-ta-row.fi-selected > td {
+    background: color-mix(in oklab, var(--primary-500) 16%, transparent) !important;
+}
+
+/* Selection indicator */
+[data-table-style="accent"] .fi-ta-selection-indicator {
+    background: linear-gradient(90deg,
+        color-mix(in oklab, var(--primary-500) 10%, #fff),
+        color-mix(in oklab, var(--primary-500) 4%, #fff));
+    border-bottom: 1px solid color-mix(in oklab, var(--primary-500) 12%, #e5e7eb);
+}
+
+.dark[data-table-style="accent"] .fi-ta-selection-indicator,
+.dark [data-table-style="accent"] .fi-ta-selection-indicator {
+    background: linear-gradient(90deg,
+        color-mix(in oklab, var(--primary-500) 14%, rgb(17 24 39)),
+        color-mix(in oklab, var(--primary-500) 6%, rgb(17 24 39)));
+    border-bottom-color: color-mix(in oklab, var(--primary-500) 15%, rgb(55 65 81));
+}
+
+/* Toolbar: clean divider */
+[data-table-style="accent"] .fi-ta-header-toolbar {
+    border-bottom: 1px solid color-mix(in oklab, var(--primary-500) 6%, rgb(229 231 235)) !important;
+    background: transparent !important;
+    @apply py-3 px-4;
+}
+
+.dark[data-table-style="accent"] .fi-ta-header-toolbar,
+.dark [data-table-style="accent"] .fi-ta-header-toolbar {
+    border-bottom-color: color-mix(in oklab, var(--primary-500) 10%, rgb(55 65 81)) !important;
+}
+
+/* Pagination */
+[data-table-style="accent"] .fi-ta-ctn > .fi-pagination-ctn,
+[data-table-style="accent"] .fi-ta-ctn .fi-pagination {
+    border-top: 1px solid color-mix(in oklab, var(--primary-500) 4%, rgb(243 244 246));
+    background: transparent !important;
+}
+
+.dark[data-table-style="accent"] .fi-ta-ctn > .fi-pagination-ctn,
+.dark [data-table-style="accent"] .fi-ta-ctn > .fi-pagination-ctn,
+.dark[data-table-style="accent"] .fi-ta-ctn .fi-pagination,
+.dark [data-table-style="accent"] .fi-ta-ctn .fi-pagination {
+    border-top-color: color-mix(in oklab, var(--primary-500) 8%, rgba(55, 65, 81, 0.5));
+}
+
+/* Last row: no bottom border */
+[data-table-style="accent"] .fi-ta-row:last-child > td {
+    border-bottom: none;
+}
+
+/* Filter indicators */
+[data-table-style="accent"] .fi-ta-filter-indicators {
+    background: color-mix(in oklab, var(--primary-500) 5%, #f9fafb);
+    border-bottom: 1px solid color-mix(in oklab, var(--primary-500) 8%, rgb(229 231 235));
+}
+
+.dark[data-table-style="accent"] .fi-ta-filter-indicators,
+.dark [data-table-style="accent"] .fi-ta-filter-indicators {
+    background: color-mix(in oklab, var(--primary-500) 8%, rgb(17 24 39));
+    border-bottom-color: color-mix(in oklab, var(--primary-500) 12%, rgba(55, 65, 81, 0.5));
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   FLAT — clean minimal, Notion-style, soft borders only
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Container: clean rounded white card */
+[data-table-style="flat"] .fi-ta-ctn {
+    @apply rounded-2xl overflow-hidden;
+    background-color: #fff !important;
+    border: 1px solid rgb(243 244 246) !important;
+    box-shadow: none !important;
+}
+
+.dark[data-table-style="flat"] .fi-ta-ctn,
+.dark [data-table-style="flat"] .fi-ta-ctn {
+    background-color: rgb(17 24 39) !important;
+    border-color: rgba(55, 65, 81, 0.4) !important;
+}
+
+/* Header row: very subtle off-white (not dark) */
+[data-table-style="flat"] thead > tr {
+    background-color: rgb(249 250 251) !important;
+}
+
+.dark[data-table-style="flat"] thead > tr,
+.dark [data-table-style="flat"] thead > tr {
+    background-color: rgba(31, 41, 55, 0.4) !important;
+}
+
+/* Header cells: minimal modern typography */
+[data-table-style="flat"] .fi-ta-header-cell,
+[data-table-style="flat"] .fi-ta-actions-header-cell,
+[data-table-style="flat"] .fi-ta-empty-header-cell {
+    @apply text-[0.7rem] font-medium uppercase tracking-[0.05em] py-3;
+    color: rgb(107 114 128) !important;
+    border-bottom: 1px solid rgb(243 244 246) !important;
+    background: transparent !important;
+}
+
+.dark[data-table-style="flat"] .fi-ta-header-cell,
+.dark[data-table-style="flat"] .fi-ta-actions-header-cell,
+.dark[data-table-style="flat"] .fi-ta-empty-header-cell,
+.dark [data-table-style="flat"] .fi-ta-header-cell,
+.dark [data-table-style="flat"] .fi-ta-actions-header-cell,
+.dark [data-table-style="flat"] .fi-ta-empty-header-cell {
+    color: rgb(156 163 175) !important;
+    border-bottom-color: rgba(55, 65, 81, 0.3) !important;
+}
+
+/* First/last header cells: extra padding */
+[data-table-style="flat"] thead > tr > th:first-child {
+    padding-left: 1.5rem !important;
+}
+
+[data-table-style="flat"] thead > tr > th:last-child {
+    padding-right: 1.5rem !important;
+}
+
+/* Sort icons */
+[data-table-style="flat"] .fi-ta-header-cell .fi-icon {
+    color: rgb(156 163 175) !important;
+}
+
+[data-table-style="flat"] .fi-ta-header-cell-sorted .fi-icon {
+    color: rgb(75 85 99) !important;
+}
+
+.dark[data-table-style="flat"] .fi-ta-header-cell-sorted .fi-icon,
+.dark [data-table-style="flat"] .fi-ta-header-cell-sorted .fi-icon {
+    color: rgb(229 231 235) !important;
+}
+
+/* Remove default dividers */
+[data-table-style="flat"] .fi-ta-table,
+[data-table-style="flat"] .fi-ta-table > thead,
+[data-table-style="flat"] .fi-ta-table > tbody {
+    @apply divide-y-0;
+}
+
+/* Rows: clean white with hairline divider */
+[data-table-style="flat"] .fi-ta-row > td {
+    background-color: transparent !important;
+    border-bottom: 1px solid rgb(243 244 246) !important;
+    padding-top: 0.875rem !important;
+    padding-bottom: 0.875rem !important;
+    transition: background-color 0.15s ease;
+}
+
+.dark[data-table-style="flat"] .fi-ta-row > td,
+.dark [data-table-style="flat"] .fi-ta-row > td {
+    border-bottom-color: rgba(55, 65, 81, 0.3) !important;
+}
+
+/* First/last cells: padding to match header */
+[data-table-style="flat"] .fi-ta-row > td:first-child {
+    padding-left: 1.5rem !important;
+}
+
+[data-table-style="flat"] .fi-ta-row > td:last-child {
+    padding-right: 1.5rem !important;
+}
+
+/* Hover: very subtle gray tint */
+[data-table-style="flat"] .fi-ta-row:hover > td {
+    background-color: rgb(249 250 251) !important;
+}
+
+.dark[data-table-style="flat"] .fi-ta-row:hover > td,
+.dark [data-table-style="flat"] .fi-ta-row:hover > td {
+    background-color: rgba(31, 41, 55, 0.4) !important;
+}
+
+/* Selected: primary-tinted background */
+[data-table-style="flat"] .fi-ta-row.fi-selected > td {
+    background: color-mix(in oklab, var(--primary-500) 5%, #fff) !important;
+}
+
+.dark[data-table-style="flat"] .fi-ta-row.fi-selected > td,
+.dark [data-table-style="flat"] .fi-ta-row.fi-selected > td {
+    background: color-mix(in oklab, var(--primary-500) 10%, rgb(17 24 39)) !important;
+}
+
+/* Last row: no bottom border */
+[data-table-style="flat"] .fi-ta-row:last-child > td {
+    border-bottom: none !important;
+}
+
+/* Selection indicator */
+[data-table-style="flat"] .fi-ta-selection-indicator {
+    background: color-mix(in oklab, var(--primary-500) 5%, rgb(249 250 251));
+    border-bottom: 1px solid color-mix(in oklab, var(--primary-500) 8%, rgb(229 231 235));
+}
+
+.dark[data-table-style="flat"] .fi-ta-selection-indicator,
+.dark [data-table-style="flat"] .fi-ta-selection-indicator {
+    background: color-mix(in oklab, var(--primary-500) 8%, rgba(31, 41, 55, 0.5));
+    border-bottom-color: color-mix(in oklab, var(--primary-500) 10%, rgba(55, 65, 81, 0.4));
+}
+
+/* Toolbar: clean, hairline divider */
+[data-table-style="flat"] .fi-ta-header-toolbar {
+    background-color: transparent !important;
+    border-bottom: 1px solid rgb(243 244 246) !important;
+    @apply py-3 px-4;
+}
+
+.dark[data-table-style="flat"] .fi-ta-header-toolbar,
+.dark [data-table-style="flat"] .fi-ta-header-toolbar {
+    border-bottom-color: rgba(55, 65, 81, 0.3) !important;
+}
+
+/* Pagination: clean, hairline divider */
+[data-table-style="flat"] .fi-ta-ctn > .fi-pagination-ctn,
+[data-table-style="flat"] .fi-ta-ctn .fi-pagination {
+    background-color: transparent !important;
+    border-top: 1px solid rgb(243 244 246);
+}
+
+.dark[data-table-style="flat"] .fi-ta-ctn > .fi-pagination-ctn,
+.dark[data-table-style="flat"] .fi-ta-ctn > .fi-pagination-ctn,
+.dark[data-table-style="flat"] .fi-ta-ctn .fi-pagination,
+.dark [data-table-style="flat"] .fi-ta-ctn .fi-pagination {
+    border-top-color: rgba(55, 65, 81, 0.3);
+}
+
+/* Filter indicators */
+[data-table-style="flat"] .fi-ta-filter-indicators {
+    background: rgb(249 250 251);
+    border-bottom: 1px solid rgb(243 244 246);
+}
+
+.dark[data-table-style="flat"] .fi-ta-filter-indicators,
+.dark [data-table-style="flat"] .fi-ta-filter-indicators {
+    background: rgba(31, 41, 55, 0.4);
+    border-bottom-color: rgba(55, 65, 81, 0.3);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   GRADIENT HIGHLIGHT — checkbox/first cell on selected rows
+   Applied LAST so it overrides per-style backgrounds
+   ═══════════════════════════════════════════════════════════════ */
+
+[data-table-style="card"] .fi-ta-row.fi-selected > td:first-child,
+[data-table-style="glass"] .fi-ta-row.fi-selected > td:first-child,
+[data-table-style="accent"] .fi-ta-row.fi-selected > td:first-child,
+[data-table-style="flat"] .fi-ta-row.fi-selected > td:first-child {
+    background: linear-gradient(to right,
+        color-mix(in oklab, var(--primary-500) 28%, white) 0%,
+        color-mix(in oklab, var(--primary-500) 18%, white) 40px,
+        color-mix(in oklab, var(--primary-500) 5%, white) 90px) !important;
+}
+
+.dark[data-table-style="card"] .fi-ta-row.fi-selected > td:first-child,
+.dark [data-table-style="card"] .fi-ta-row.fi-selected > td:first-child,
+.dark[data-table-style="glass"] .fi-ta-row.fi-selected > td:first-child,
+.dark [data-table-style="glass"] .fi-ta-row.fi-selected > td:first-child,
+.dark[data-table-style="accent"] .fi-ta-row.fi-selected > td:first-child,
+.dark [data-table-style="accent"] .fi-ta-row.fi-selected > td:first-child,
+.dark[data-table-style="flat"] .fi-ta-row.fi-selected > td:first-child,
+.dark [data-table-style="flat"] .fi-ta-row.fi-selected > td:first-child {
+    background: linear-gradient(to right,
+        color-mix(in oklab, var(--primary-500) 35%, rgb(30 41 59)) 0%,
+        color-mix(in oklab, var(--primary-500) 24%, rgb(30 41 59)) 40px,
+        color-mix(in oklab, var(--primary-500) 10%, rgb(30 41 59)) 90px) !important;
+}

@@ -1,0 +1,61 @@
+/* Custom Login Page Styling */
+
+/* Login container background */
+.fi-simple-main-ctn {
+    @apply min-h-screen flex items-center justify-center;
+    background: linear-gradient(135deg, var(--primary-50) 0%, white 50%, var(--primary-50) 100%);
+}
+
+.dark .fi-simple-main-ctn {
+    background: linear-gradient(135deg, rgb(17, 17, 20) 0%, rgb(24, 24, 27) 50%, rgb(17, 17, 20) 100%);
+}
+
+/* Login card */
+.fi-simple-main {
+    @apply shadow-2xl;
+    backdrop-filter: blur(10px);
+}
+
+/* Login card top accent */
+.fi-simple-main::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-1 z-10;
+    background: linear-gradient(90deg, var(--primary-400), var(--primary-500), var(--primary-600));
+}
+
+/* Login heading */
+.fi-simple-main .fi-simple-header-heading {
+    @apply text-2xl;
+}
+
+/* Login form inputs */
+.fi-simple-main .fi-input-wrp {
+    @apply rounded-xl;
+}
+
+/* Login button */
+.fi-simple-main .fi-btn.fi-color-primary {
+    @apply rounded-xl shadow-lg shadow-primary-500/30 py-3 font-semibold;
+}
+
+.fi-simple-main .fi-btn.fi-color-primary:hover {
+    @apply shadow-xl shadow-primary-500/40 -translate-y-px;
+}
+
+/* Floating decorative elements */
+.fi-simple-main-ctn::before {
+    content: '';
+    @apply fixed top-[-10%] right-[-5%] w-72 h-72 rounded-full opacity-20 pointer-events-none;
+    background: radial-gradient(circle, var(--primary-300), transparent 70%);
+}
+
+.fi-simple-main-ctn::after {
+    content: '';
+    @apply fixed bottom-[-10%] left-[-5%] w-96 h-96 rounded-full opacity-15 pointer-events-none;
+    background: radial-gradient(circle, var(--primary-400), transparent 70%);
+}
+
+.dark .fi-simple-main-ctn::before,
+.dark .fi-simple-main-ctn::after {
+    opacity: 0.05;
+}

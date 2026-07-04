@@ -1,0 +1,16 @@
+/* FilaCraft Design Tokens — Typography */
+:root {
+    --fc-font-weight-normal: 400;
+    --fc-font-weight-medium: 500;
+    --fc-font-weight-semibold: 600;
+    --fc-font-weight-bold: 700;
+    --fc-letter-spacing-tight: -0.01em;
+    --fc-letter-spacing-normal: 0;
+    --fc-letter-spacing-wide: 0.025em;
+    --fc-letter-spacing-wider: 0.05em;
+    --fc-font-size-xs: 0.75rem;
+    --fc-font-size-sm: 0.8125rem;
+    --fc-font-size-base: 0.875rem;
+    --fc-font-size-lg: 1rem;
+    --fc-font-size-xl: 1.125rem;
+}
