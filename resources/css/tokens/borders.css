@@ -1,0 +1,14 @@
+/* FilaCraft Design Tokens — Borders */
+:root {
+    --fc-border: rgb(229 231 235 / 1);
+    --fc-border-mid: rgb(209 213 219 / 1);
+    --fc-border-heavy: rgb(156 163 175 / 1);
+    --fc-border-ornate: rgb(from var(--primary-300) r g b / 0.4);
+}
+
+:root.dark {
+    --fc-border: rgb(55 65 81 / 1);
+    --fc-border-mid: rgb(75 85 99 / 1);
+    --fc-border-heavy: rgb(107 114 128 / 1);
+    --fc-border-ornate: rgb(from var(--primary-400) r g b / 0.3);
+}

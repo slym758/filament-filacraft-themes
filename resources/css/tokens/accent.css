@@ -1,0 +1,16 @@
+/* FilaCraft Design Tokens — Accent (integrates with Filament --primary-*) */
+:root {
+    --fc-accent: var(--primary-500);
+    --fc-accent-hover: var(--primary-600);
+    --fc-accent-dim: var(--primary-100);
+    --fc-accent-ring: var(--primary-300);
+    --fc-accent-subtle: var(--primary-50);
+}
+
+:root.dark {
+    --fc-accent: var(--primary-400);
+    --fc-accent-hover: var(--primary-300);
+    --fc-accent-dim: var(--primary-900);
+    --fc-accent-ring: var(--primary-600);
+    --fc-accent-subtle: var(--primary-950);
+}

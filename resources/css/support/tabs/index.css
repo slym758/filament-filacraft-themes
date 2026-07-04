@@ -18,3 +18,65 @@
 .fi-tabs-item.fi-active .fi-badge {
     @apply bg-white text-gray-900 dark:bg-gray-900/75 dark:text-white;
 }
+
+/* ── Browser-tab style with inverted bottom corners ── */
+
+.fc-browser-tabs {
+    --fc-tab-bg: white;
+}
+
+.dark .fc-browser-tabs {
+    --fc-tab-bg: rgb(31 41 55);
+}
+
+.fc-browser-tab-active {
+    position: relative;
+    z-index: 2;
+}
+
+.fc-browser-tab-active::before,
+.fc-browser-tab-active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 10px;
+    height: 10px;
+    background-color: var(--fc-tab-bg);
+    pointer-events: none;
+}
+
+.fc-browser-tab-active::before {
+    left: -10px;
+    mask-image:
+        linear-gradient(#000, #000),
+        radial-gradient(circle 10px at 0 0, #000 98%, transparent 100%);
+    mask-size: 100% 100%;
+    mask-position: bottom right;
+    mask-repeat: no-repeat;
+    mask-composite: subtract;
+    -webkit-mask-image:
+        linear-gradient(#000, #000),
+        radial-gradient(circle 10px at 0 0, #000 98%, transparent 100%);
+    -webkit-mask-size: 100% 100%;
+    -webkit-mask-position: bottom right;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-composite: destination-out;
+}
+
+.fc-browser-tab-active::after {
+    right: -10px;
+    mask-image:
+        linear-gradient(#000, #000),
+        radial-gradient(circle 10px at 100% 0, #000 98%, transparent 100%);
+    mask-size: 100% 100%;
+    mask-position: bottom left;
+    mask-repeat: no-repeat;
+    mask-composite: subtract;
+    -webkit-mask-image:
+        linear-gradient(#000, #000),
+        radial-gradient(circle 10px at 100% 0, #000 98%, transparent 100%);
+    -webkit-mask-size: 100% 100%;
+    -webkit-mask-position: bottom left;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-composite: destination-out;
+}

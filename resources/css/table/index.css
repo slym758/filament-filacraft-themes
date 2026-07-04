@@ -10,3 +10,11 @@
 .fi-ta-empty-header-cell {
     background-color: transparent !important;
 }
+
+/* Table header formatting */
+.fi-ta-header-cell {
+    font-size: var(--fc-font-size-xs, 0.75rem) !important;
+    font-weight: var(--fc-font-weight-semibold, 600) !important;
+    letter-spacing: var(--fc-letter-spacing-wider, 0.05em) !important;
+    text-transform: uppercase;
+}
