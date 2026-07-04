@@ -71,8 +71,9 @@ class FilaCraftPlugin implements Plugin
                         var migrations = {"brisk":"ege","nord":"kutup","sunset":"gunbatimi","ege":"ege"};
                         if (theme && migrations[theme] && migrations[theme] !== theme) { theme = migrations[theme]; localStorage.setItem("filacraft-theme", theme); }
                         var presetThemes = ["akdeniz", "kutup", "gunbatimi", "atlas", "safir"];
-                        if (theme && presetThemes.indexOf(theme) !== -1) {
-                            document.documentElement.classList.add("filacraft-" + theme);
+                        var effectiveTheme = theme || "akdeniz";
+                        if (presetThemes.indexOf(effectiveTheme) !== -1) {
+                            document.documentElement.classList.add("filacraft-" + effectiveTheme);
                         }
 
                         var palettes = {
@@ -91,8 +92,8 @@ class FilaCraftPlugin implements Plugin
                             sky:      { 50:"oklch(0.977 0.014 230.00)", 100:"oklch(0.950 0.033 230.00)", 200:"oklch(0.905 0.063 230.00)", 300:"oklch(0.840 0.106 230.00)", 400:"oklch(0.754 0.150 230.00)", 500:"oklch(0.683 0.170 230.00)", 600:"oklch(0.598 0.169 230.00)", 700:"oklch(0.515 0.149 230.00)", 800:"oklch(0.446 0.123 230.00)", 900:"oklch(0.395 0.100 230.00)", 950:"oklch(0.278 0.071 230.00)" },
                         };
 
-                        var colorId = localStorage.getItem("filacraft-color");
-                        if (colorId && colorId !== "default" && palettes[colorId]) {
+                        var colorId = localStorage.getItem("filacraft-color") || "ocean";
+                        if (colorId !== "default" && palettes[colorId]) {
                             var shades = palettes[colorId];
                             var root = document.documentElement;
                             for (var shade in shades) {

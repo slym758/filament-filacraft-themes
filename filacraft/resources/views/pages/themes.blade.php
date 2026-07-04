@@ -767,8 +767,8 @@
                     this.saveToDb();
                 },
 
-                currentTheme: (() => { var t = localStorage.getItem('filacraft-theme'); var m = {'brisk':'ege','nord':'kutup','sunset':'gunbatimi'}; if (t && m[t]) { t = m[t]; localStorage.setItem('filacraft-theme', t); } return t || 'ege'; })(),
-                currentColor: localStorage.getItem('filacraft-color') || 'default',
+                currentTheme: (() => { var t = localStorage.getItem('filacraft-theme'); var m = {'brisk':'ege','nord':'kutup','sunset':'gunbatimi'}; if (t && m[t]) { t = m[t]; localStorage.setItem('filacraft-theme', t); } return t || 'akdeniz'; })(),
+                currentColor: localStorage.getItem('filacraft-color') || 'ocean',
                 currentFont: localStorage.getItem('filacraft-font') || 'default',
                 currentRadius: localStorage.getItem('filacraft-radius') || 'default',
                 currentDensity: localStorage.getItem('filacraft-density') || 'default',
