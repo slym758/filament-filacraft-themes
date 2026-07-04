@@ -162,6 +162,33 @@
                     </div>
                 </div>
 
+                {{-- Safir --}}
+                <div
+                    :class="currentTheme === 'safir' ? 'ring-2 ring-primary-500' : 'ring-1 ring-gray-200 dark:ring-gray-700'"
+                    class="rounded-2xl bg-white dark:bg-gray-900 overflow-hidden transition-all duration-200"
+                >
+                    <div class="flex items-center justify-between px-6 py-4">
+                        <div class="flex items-center gap-3">
+                            <h3 class="text-base font-semibold text-gray-900 dark:text-white" x-text="t.safirTitle"></h3>
+                            <span class="text-sm text-gray-500 dark:text-gray-400" x-text="t.safirDesc"></span>
+                            <div x-show="currentTheme === 'safir'" x-transition class="h-5 w-5 rounded-full bg-primary-500 text-white flex items-center justify-center">
+                                <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                            </div>
+                        </div>
+                        <button
+                            x-on:click="selectTheme('safir')"
+                            :class="currentTheme === 'safir' ? 'bg-primary-500 text-white' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 ring-1 ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'"
+                            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-colors"
+                            x-text="currentTheme === 'safir' ? t.selected : t.select"
+                        ></button>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <div class="rounded-xl overflow-hidden ring-1 ring-gray-200 dark:ring-gray-700">
+                            <img src="{{ asset('vendor/filacraft/img/safir.png') }}" alt="Safir" class="w-full h-auto">
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -400,6 +427,8 @@
                 gunbatimiDesc: 'Sicak tonlar & yumusak kenarlar',
                 atlasTitle: 'Atlas',
                 atlasDesc: 'Katmanli yuzeyler & rafine detaylar',
+                safirTitle: 'Safir',
+                safirDesc: 'Mavi tonlar & kart tabanli arayuz',
                 colorPalette: 'Renk Paleti',
                 colorPaletteDesc: 'Ana rengi secin — tum panel bu renge gore sekillenecek',
                 fontPicker: 'Yazi Tipi',
@@ -444,6 +473,8 @@
                 gunbatimiDesc: 'Warm tones & soft edges',
                 atlasTitle: 'Atlas',
                 atlasDesc: 'Layered surfaces & refined details',
+                safirTitle: 'Sapphire',
+                safirDesc: 'Blue tones & card-based interface',
                 colorPalette: 'Color Palette',
                 colorPaletteDesc: 'Pick a primary color — the entire panel adapts to it',
                 fontPicker: 'Font',
@@ -584,7 +615,7 @@
                     var previousTheme = this.currentTheme;
                     this.currentTheme = id;
                     localStorage.setItem('filacraft-theme', id);
-                    document.documentElement.classList.remove('filacraft-ege', 'filacraft-akdeniz', 'filacraft-kutup', 'filacraft-gunbatimi', 'filacraft-atlas');
+                    document.documentElement.classList.remove('filacraft-ege', 'filacraft-akdeniz', 'filacraft-kutup', 'filacraft-gunbatimi', 'filacraft-atlas', 'filacraft-safir');
                     if (id !== 'ege') {
                         document.documentElement.classList.add('filacraft-' + id);
                     }

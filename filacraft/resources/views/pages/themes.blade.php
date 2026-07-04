@@ -81,7 +81,7 @@
                     </div>
                 </div>
 
-                {{-- Kutup Isigi --}}
+                {{-- Kutup Işığı --}}
                 <div
                     :class="currentTheme === 'kutup' ? 'ring-2 ring-primary-500' : 'ring-1 ring-gray-200 dark:ring-gray-700'"
                     class="rounded-2xl bg-white dark:bg-gray-900 overflow-hidden transition-all duration-200"
@@ -103,12 +103,12 @@
                     </div>
                     <div class="px-6 pb-6">
                         <div class="rounded-xl overflow-hidden ring-1 ring-gray-200 dark:ring-gray-700">
-                            <img src="{{ asset('vendor/filacraft/img/kutup_isigi.png') }}" alt="Kutup Isigi" class="w-full h-auto">
+                            <img src="{{ asset('vendor/filacraft/img/kutup_isigi.png') }}" alt="Kutup Işığı" class="w-full h-auto">
                         </div>
                     </div>
                 </div>
 
-                {{-- Gun Batimi --}}
+                {{-- Gün Batımı --}}
                 <div
                     :class="currentTheme === 'gunbatimi' ? 'ring-2 ring-primary-500' : 'ring-1 ring-gray-200 dark:ring-gray-700'"
                     class="rounded-2xl bg-white dark:bg-gray-900 overflow-hidden transition-all duration-200"
@@ -130,7 +130,7 @@
                     </div>
                     <div class="px-6 pb-6">
                         <div class="rounded-xl overflow-hidden ring-1 ring-gray-200 dark:ring-gray-700">
-                            <img src="{{ asset('vendor/filacraft/img/gun_batimi.png') }}" alt="Gun Batimi" class="w-full h-auto">
+                            <img src="{{ asset('vendor/filacraft/img/gun_batimi.png') }}" alt="Gün Batımı" class="w-full h-auto">
                         </div>
                     </div>
                 </div>
@@ -189,67 +189,6 @@
                     </div>
                 </div>
 
-
-            </div>
-        </div>
-
-        {{-- Section: Topbar Style (only for Safir) --}}
-        <div x-show="currentTheme === 'safir'" x-transition>
-            <div class="border-t border-gray-200 dark:border-gray-700 mb-8"></div>
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1" x-text="t.topbarStyle"></h2>
-            <p class="text-sm text-gray-500 dark:text-gray-400 mb-5" x-text="t.topbarStyleDesc"></p>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {{-- Floating Island --}}
-                <button
-                    x-on:click="selectTopbar('default')"
-                    :class="currentTopbar === 'default'
-                        ? 'ring-2 ring-primary-500 bg-primary-50/50 dark:bg-primary-950/20'
-                        : 'ring-1 ring-gray-200 dark:ring-gray-700 hover:ring-gray-300 dark:hover:ring-gray-600'"
-                    class="rounded-xl p-5 text-left transition-all duration-200"
-                >
-                    <div class="flex items-center gap-3 mb-2">
-                        <div class="h-8 w-8 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
-                            <svg class="h-4 w-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a9 9 0 01-9 9m0 0a9 9 0 01-9-9" /></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-900 dark:text-white" x-text="t.topbarFloating"></h3>
-                            <p class="text-xs text-gray-500 dark:text-gray-400" x-text="t.topbarFloatingDesc"></p>
-                        </div>
-                        <div x-show="currentTopbar === 'default'" x-transition class="ml-auto h-5 w-5 rounded-full bg-primary-500 text-white flex items-center justify-center shrink-0">
-                            <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                        </div>
-                    </div>
-                    <div class="h-12 rounded-lg bg-gray-100 dark:bg-gray-800 p-2 flex items-center gap-2">
-                        <div class="h-full flex-1 rounded-md bg-white dark:bg-gray-700 shadow-sm ring-1 ring-gray-200/50 dark:ring-gray-600/50"></div>
-                    </div>
-                </button>
-
-                {{-- Vault --}}
-                <button
-                    x-on:click="selectTopbar('vault')"
-                    :class="currentTopbar === 'vault'
-                        ? 'ring-2 ring-primary-500 bg-primary-50/50 dark:bg-primary-950/20'
-                        : 'ring-1 ring-gray-200 dark:ring-gray-700 hover:ring-gray-300 dark:hover:ring-gray-600'"
-                    class="rounded-xl p-5 text-left transition-all duration-200"
-                >
-                    <div class="flex items-center gap-3 mb-2">
-                        <div class="h-8 w-8 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
-                            <svg class="h-4 w-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" /></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-900 dark:text-white" x-text="t.topbarVault"></h3>
-                            <p class="text-xs text-gray-500 dark:text-gray-400" x-text="t.topbarVaultDesc"></p>
-                        </div>
-                        <div x-show="currentTopbar === 'vault'" x-transition class="ml-auto h-5 w-5 rounded-full bg-primary-500 text-white flex items-center justify-center shrink-0">
-                            <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                        </div>
-                    </div>
-                    <div class="h-12 rounded-lg bg-gray-100 dark:bg-gray-800 overflow-hidden">
-                        <div class="h-[calc(100%-2px)] bg-white dark:bg-gray-700"></div>
-                        <div class="h-[2px]" style="background:linear-gradient(90deg, var(--primary-400, #60a5fa), var(--primary-600, #2563eb))"></div>
-                    </div>
-                </button>
             </div>
         </div>
 
@@ -340,125 +279,6 @@
                         <span class="text-xs font-medium text-gray-700 dark:text-gray-300" x-text="t.radiusLabels[key]"></span>
                     </button>
                 </template>
-            </div>
-        </div>
-
-        {{-- Divider --}}
-        <div class="border-t border-gray-200 dark:border-gray-700"></div>
-
-        {{-- Section: Table Style --}}
-        <div>
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1" x-text="t.tableStyle"></h2>
-            <p class="text-sm text-gray-500 dark:text-gray-400 mb-5" x-text="t.tableStyleDesc"></p>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-w-4xl">
-                <template x-for="(opt, key) in tableStyleOptions" :key="key">
-                    <button
-                        x-on:click="selectTableStyle(key)"
-                        :class="currentTableStyle === key
-                            ? 'ring-2 ring-primary-500 bg-primary-50 dark:bg-primary-950/30'
-                            : 'ring-1 ring-gray-200 dark:ring-gray-700 bg-white dark:bg-gray-900 hover:ring-gray-300 dark:hover:ring-gray-600'"
-                        class="relative rounded-xl p-4 text-left transition-all duration-200 hover:-translate-y-0.5"
-                    >
-                        {{-- Mini table preview --}}
-                        <div class="mb-3 rounded-lg overflow-hidden" :style="opt.containerStyle">
-                            {{-- Header --}}
-                            <div class="flex gap-px" :style="opt.headerStyle">
-                                <div class="h-2 flex-1 rounded-sm" :style="opt.headerCellStyle"></div>
-                                <div class="h-2 flex-1 rounded-sm" :style="opt.headerCellStyle"></div>
-                                <div class="h-2 flex-[0.6] rounded-sm" :style="opt.headerCellStyle"></div>
-                            </div>
-                            {{-- Rows --}}
-                            <template x-for="(row, ri) in opt.rows" :key="ri">
-                                <div class="flex gap-px mt-px" :style="row.style">
-                                    <div class="h-2 flex-1 rounded-sm" :style="row.cellStyle"></div>
-                                    <div class="h-2 flex-1 rounded-sm" :style="row.cellStyle"></div>
-                                    <div class="h-2 flex-[0.6] rounded-sm" :style="row.cellStyle"></div>
-                                </div>
-                            </template>
-                        </div>
-                        <div class="text-xs font-medium text-gray-700 dark:text-gray-300 text-center" x-text="t.tableStyleLabels[key]"></div>
-                        <div x-show="currentTableStyle === key" x-transition class="absolute top-2 right-2 h-4 w-4 rounded-full bg-primary-500 text-white flex items-center justify-center">
-                            <svg class="h-2.5 w-2.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                        </div>
-                    </button>
-                </template>
-            </div>
-
-            {{-- Live Preview Table --}}
-            <div class="mt-6">
-                <p class="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3" x-text="t.tablePreviewTitle"></p>
-                <div :data-table-style="currentTableStyle === 'default' ? null : currentTableStyle">
-                    <div class="fi-ta">
-                        <div class="fi-ta-ctn rounded-lg overflow-hidden">
-                            {{-- Toolbar --}}
-                            <div class="fi-ta-header-toolbar flex items-center justify-between px-4 py-2.5">
-                                <div class="flex items-center gap-2">
-                                    <div class="h-8 w-48 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center px-3">
-                                        <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
-                                        <span class="ml-2 text-xs text-gray-400" x-text="t.tablePreviewSearch"></span>
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <div class="h-8 px-3 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center">
-                                        <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" /></svg>
-                                        <span class="ml-1.5 text-xs text-gray-500 dark:text-gray-400" x-text="t.tablePreviewFilter"></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {{-- Table --}}
-                            <div class="overflow-x-auto">
-                                <table class="fi-ta-table w-full table-auto divide-y divide-gray-200 dark:divide-white/5 text-start">
-                                    <thead class="divide-y divide-gray-200 dark:divide-white/5">
-                                        <tr class="bg-gray-50 dark:bg-white/5">
-                                            <th class="fi-ta-header-cell px-4 py-2.5 text-start text-sm font-semibold text-gray-950 dark:text-white" x-text="t.tablePreviewCols[0]"></th>
-                                            <th class="fi-ta-header-cell px-4 py-2.5 text-start text-sm font-semibold text-gray-950 dark:text-white" x-text="t.tablePreviewCols[1]"></th>
-                                            <th class="fi-ta-header-cell px-4 py-2.5 text-start text-sm font-semibold text-gray-950 dark:text-white" x-text="t.tablePreviewCols[2]"></th>
-                                            <th class="fi-ta-header-cell px-4 py-2.5 text-start text-sm font-semibold text-gray-950 dark:text-white" x-text="t.tablePreviewCols[3]"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-gray-200 dark:divide-white/5 whitespace-nowrap">
-                                        <template x-for="(row, idx) in tablePreviewRows" :key="idx">
-                                            <tr class="fi-ta-row transition-colors"
-                                                :class="tablePreviewSelected === idx ? 'fi-selected' : ''"
-                                                x-on:click="tablePreviewSelected = (tablePreviewSelected === idx ? null : idx)"
-                                                style="cursor:pointer"
-                                            >
-                                                <td class="fi-ta-cell px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300">
-                                                    <div class="flex items-center gap-2.5">
-                                                        <div class="h-7 w-7 rounded-full flex items-center justify-center text-[10px] font-bold text-white shrink-0" :style="'background:' + row.avatar">
-                                                            <span x-text="row.name.charAt(0)"></span>
-                                                        </div>
-                                                        <span class="font-medium text-gray-950 dark:text-white" x-text="row.name"></span>
-                                                    </div>
-                                                </td>
-                                                <td class="fi-ta-cell px-4 py-2.5 text-sm text-gray-500 dark:text-gray-400" x-text="row.email"></td>
-                                                <td class="fi-ta-cell px-4 py-2.5 text-sm">
-                                                    <span class="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium" :class="row.badgeClass" x-text="t.tablePreviewRoles[row.role] || row.role"></span>
-                                                </td>
-                                                <td class="fi-ta-cell px-4 py-2.5 text-sm text-gray-500 dark:text-gray-400" x-text="row.date"></td>
-                                            </tr>
-                                        </template>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            {{-- Pagination --}}
-                            <div class="fi-pagination-ctn flex items-center justify-between px-4 py-2.5">
-                                <p class="text-xs text-gray-500 dark:text-gray-400" x-text="t.tablePreviewShowing"></p>
-                                <div class="flex items-center gap-1">
-                                    <span class="inline-flex items-center justify-center h-7 w-7 rounded-md text-xs bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed">&lsaquo;</span>
-                                    <span class="inline-flex items-center justify-center h-7 w-7 rounded-md text-xs font-semibold bg-primary-500 text-white">1</span>
-                                    <span class="inline-flex items-center justify-center h-7 w-7 rounded-md text-xs text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer">2</span>
-                                    <span class="inline-flex items-center justify-center h-7 w-7 rounded-md text-xs text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer">3</span>
-                                    <span class="inline-flex items-center justify-center h-7 w-7 rounded-md text-xs text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer">&rsaquo;</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-[10px] text-gray-400 dark:text-gray-600 mt-2" x-text="t.tablePreviewHint"></p>
             </div>
         </div>
 
@@ -577,31 +397,6 @@
         {{-- Divider --}}
         <div class="border-t border-gray-200 dark:border-gray-700"></div>
 
-        {{-- Section: Decoration Effects --}}
-        <div>
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1" x-text="t.decorations"></h2>
-            <p class="text-sm text-gray-500 dark:text-gray-400 mb-5" x-text="t.decorationsDesc"></p>
-
-            <div class="flex items-center gap-4">
-                <button
-                    x-on:click="toggleDecorations()"
-                    :class="currentDecorations === 'on'
-                        ? 'bg-primary-500'
-                        : 'bg-gray-300 dark:bg-gray-600'"
-                    class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
-                >
-                    <span
-                        :class="currentDecorations === 'on' ? 'translate-x-5' : 'translate-x-0'"
-                        class="pointer-events-none relative inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out mt-0.5 ml-0.5"
-                    ></span>
-                </button>
-                <span class="text-sm font-medium text-gray-700 dark:text-gray-300" x-text="currentDecorations === 'on' ? t.decorationsOn : t.decorationsOff"></span>
-            </div>
-        </div>
-
-        {{-- Divider --}}
-        <div class="border-t border-gray-200 dark:border-gray-700"></div>
-
         {{-- Section: Reset --}}
         <div>
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1" x-text="t.themeSettings"></h2>
@@ -633,13 +428,7 @@
                 atlasTitle: 'Atlas',
                 atlasDesc: 'Katmanli yuzeyler & rafine detaylar',
                 safirTitle: 'Safir',
-                safirDesc: 'Bankacilik estetiginde mavi tonlar',
-                topbarStyle: 'Ust Bar Stili',
-                topbarStyleDesc: 'Safir temasinda ust barin gorunumunu secin',
-                topbarFloating: 'Floating Island',
-                topbarFloatingDesc: 'Havada duran buzlu cam bar',
-                topbarVault: 'Vault',
-                topbarVaultDesc: 'Duz beyaz bar + gradient alt cizgi',
+                safirDesc: 'Mavi tonlar & kart tabanli arayuz',
                 colorPalette: 'Renk Paleti',
                 colorPaletteDesc: 'Ana rengi secin — tum panel bu renge gore sekillenecek',
                 fontPicker: 'Yazi Tipi',
@@ -655,10 +444,10 @@
                 themeSettingsDesc: 'Tum ayarlari varsayilana dondur',
                 resetAll: 'Tum Ayarlari Sifirla',
                 resetConfirm: 'Tum tema ayarlarini sifirlamak istediginize emin misiniz?',
-                preview: 'Goster',
-                close: 'Kapat',
                 select: 'Sec',
                 selected: 'Secili',
+                preview: 'Goster',
+                close: 'Kapat',
                 paletteLabels: {
                     'default': 'Varsayilan', 'turquoise': 'Turkuaz', 'ocean': 'Okyanus', 'emerald': 'Zumrut',
                     'violet': 'Mor', 'rose': 'Gul', 'amber': 'Amber', 'indigo': 'Indigo',
@@ -666,24 +455,10 @@
                     'lime': 'Yesil', 'sky': 'Gok'
                 },
                 radiusLabels: { 'sharp': 'Keskin', 'small': 'Hafif', 'default': 'Normal', 'large': 'Yuvarlak' },
-                densityLabels: { 'compact': 'Sıkışık', 'default': 'Normal', 'comfortable': 'Ferah' },
+                densityLabels: { 'compact': 'Sikisik', 'default': 'Normal', 'comfortable': 'Ferah' },
                 densityDescs: { 'compact': 'Daha az bosluk', 'default': 'Varsayilan aralik', 'comfortable': 'Daha fazla bosluk' },
                 errorLabels: { 'default': 'Varsayilan', 'minimal': 'Minimal', 'illustrated': 'Illustrasyonlu', 'gradient': 'Gradient' },
                 errorDescs: { 'default': 'Laravel varsayilani', 'minimal': 'Sade ve temiz', 'illustrated': 'Canli ve renkli', 'gradient': 'Modern ve etkileyici' },
-                tableStyle: 'Tablo Stili',
-                tableStyleDesc: 'Tablolar icin gorsel stil',
-                tableStyleLabels: { 'default': 'Varsayilan', 'card': 'Kart', 'glass': 'Cam', 'accent': 'Vurgulu', 'flat': 'Duz' },
-                tablePreviewTitle: 'Canli Onizleme',
-                tablePreviewSearch: 'Ara...',
-                tablePreviewFilter: 'Filtre',
-                tablePreviewCols: ['Ad', 'E-posta', 'Rol', 'Kayit Tarihi'],
-                tablePreviewShowing: '1-5 / 24 kayit',
-                tablePreviewHint: 'Satira tiklayarak secim onizlemesi yapabilirsiniz',
-                tablePreviewRoles: { admin: 'Yonetici', editor: 'Editör', user: 'Kullanici' },
-                decorations: 'Dekorasyon Efektleri',
-                decorationsDesc: 'Hover vurgulamalari, focus efektleri ve yukleme animasyonlari',
-                decorationsOn: 'Acik',
-                decorationsOff: 'Kapali',
             },
             en: {
                 themeStyle: 'Theme Style',
@@ -699,13 +474,7 @@
                 atlasTitle: 'Atlas',
                 atlasDesc: 'Layered surfaces & refined details',
                 safirTitle: 'Sapphire',
-                safirDesc: 'Banking-grade blue tones & clarity',
-                topbarStyle: 'Topbar Style',
-                topbarStyleDesc: 'Choose the topbar appearance for Sapphire theme',
-                topbarFloating: 'Floating Island',
-                topbarFloatingDesc: 'Frosted glass floating bar',
-                topbarVault: 'Vault',
-                topbarVaultDesc: 'Solid white bar + gradient accent line',
+                safirDesc: 'Blue tones & card-based interface',
                 colorPalette: 'Color Palette',
                 colorPaletteDesc: 'Pick a primary color — the entire panel adapts to it',
                 fontPicker: 'Font',
@@ -721,10 +490,10 @@
                 themeSettingsDesc: 'Reset all settings to defaults',
                 resetAll: 'Reset All Settings',
                 resetConfirm: 'Are you sure you want to reset all theme settings?',
-                preview: 'Preview',
-                close: 'Close',
                 select: 'Select',
                 selected: 'Selected',
+                preview: 'Preview',
+                close: 'Close',
                 paletteLabels: {
                     'default': 'Default', 'turquoise': 'Turquoise', 'ocean': 'Ocean', 'emerald': 'Emerald',
                     'violet': 'Violet', 'rose': 'Rose', 'amber': 'Amber', 'indigo': 'Indigo',
@@ -736,20 +505,6 @@
                 densityDescs: { 'compact': 'Less spacing', 'default': 'Default spacing', 'comfortable': 'More spacing' },
                 errorLabels: { 'default': 'Default', 'minimal': 'Minimal', 'illustrated': 'Illustrated', 'gradient': 'Gradient' },
                 errorDescs: { 'default': 'Laravel default', 'minimal': 'Clean and simple', 'illustrated': 'Vivid and colorful', 'gradient': 'Modern and striking' },
-                tableStyle: 'Table Style',
-                tableStyleDesc: 'Visual style for tables',
-                tableStyleLabels: { 'default': 'Default', 'card': 'Card', 'glass': 'Glass', 'accent': 'Accent', 'flat': 'Flat' },
-                tablePreviewTitle: 'Live Preview',
-                tablePreviewSearch: 'Search...',
-                tablePreviewFilter: 'Filter',
-                tablePreviewCols: ['Name', 'Email', 'Role', 'Created'],
-                tablePreviewShowing: '1-5 of 24 records',
-                tablePreviewHint: 'Click a row to preview selection highlight',
-                tablePreviewRoles: { admin: 'Admin', editor: 'Editor', user: 'User' },
-                decorations: 'Decoration Effects',
-                decorationsDesc: 'Hover highlights, focus effects, and loading animations',
-                decorationsOn: 'On',
-                decorationsOff: 'Off',
             }
         };
 
@@ -772,9 +527,6 @@
                 currentFont: localStorage.getItem('filacraft-font') || 'default',
                 currentRadius: localStorage.getItem('filacraft-radius') || 'default',
                 currentDensity: localStorage.getItem('filacraft-density') || 'default',
-                currentTopbar: localStorage.getItem('filacraft-topbar') || 'default',
-                currentDecorations: localStorage.getItem('filacraft-decorations') || 'off',
-                currentTableStyle: localStorage.getItem('filacraft-table-style') || 'default',
                 currentErrorStyle: (() => {
                     var match = document.cookie.match(/filacraft-error-style=([^;]+)/);
                     return match ? match[1] : 'default';
@@ -802,72 +554,10 @@
                 },
 
                 densityOptions: {
-                    'compact':     { label: 'Sıkışık',  desc: 'Daha az bosluk',     gap: 'gap-0.5' },
+                    'compact':     { label: 'Sikisik',  desc: 'Daha az bosluk',     gap: 'gap-0.5' },
                     'default':     { label: 'Normal',   desc: 'Varsayilan aralik',   gap: 'gap-1.5' },
                     'comfortable': { label: 'Ferah',    desc: 'Daha fazla bosluk',   gap: 'gap-3' },
                 },
-
-                tableStyleOptions: {
-                    'default': {
-                        containerStyle: 'padding:6px; height:60px; border:1px solid #e5e7eb; border-radius:8px; background:#fff',
-                        headerStyle: 'padding:0 4px; margin-bottom:3px',
-                        headerCellStyle: 'background:#f3f4f6; height:7px; border-radius:1px',
-                        rows: [
-                            { style: 'padding:0 4px; border-bottom:1px solid #f3f4f6', cellStyle: 'background:#fff; height:6px' },
-                            { style: 'padding:0 4px; border-bottom:1px solid #f3f4f6', cellStyle: 'background:#fff; height:6px' },
-                            { style: 'padding:0 4px', cellStyle: 'background:#fff; height:6px' },
-                        ]
-                    },
-                    'card': {
-                        containerStyle: 'padding:6px 4px; height:60px; background:transparent',
-                        headerStyle: 'padding:0 4px; margin-bottom:4px',
-                        headerCellStyle: 'background:transparent; height:5px; opacity:0.3; border-radius:1px',
-                        rows: [
-                            { style: 'padding:2px 2px; margin-bottom:3px', cellStyle: 'background:#fff; height:8px; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,0.1); border:1px solid #d1d5db' },
-                            { style: 'padding:2px 2px; margin-bottom:3px', cellStyle: 'background:#fff; height:8px; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,0.1); border:1px solid #d1d5db' },
-                            { style: 'padding:2px 2px', cellStyle: 'background:#fff; height:8px; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,0.1); border:1px solid #d1d5db' },
-                        ]
-                    },
-                    'glass': {
-                        containerStyle: 'padding:6px; height:60px; border-radius:12px; background:rgba(255,255,255,0.55); border:1px solid rgba(255,255,255,0.6); box-shadow:0 4px 16px rgba(0,0,0,0.06),inset 0 1px 0 rgba(255,255,255,0.8); backdrop-filter:blur(8px)',
-                        headerStyle: 'padding:0 4px; margin-bottom:3px; border-bottom:1px solid rgba(209,213,219,0.4)',
-                        headerCellStyle: 'background:linear-gradient(135deg,rgba(249,250,251,0.8),rgba(243,244,246,0.4)); height:7px; border-radius:2px',
-                        rows: [
-                            { style: 'padding:0 4px; border-bottom:1px solid rgba(229,231,235,0.3)', cellStyle: 'background:rgba(255,255,255,0.35); height:6px; border-radius:1px' },
-                            { style: 'padding:0 4px; border-bottom:1px solid rgba(229,231,235,0.3)', cellStyle: 'background:rgba(255,255,255,0.35); height:6px; border-radius:1px' },
-                            { style: 'padding:0 4px', cellStyle: 'background:rgba(255,255,255,0.35); height:6px; border-radius:1px' },
-                        ]
-                    },
-                    'accent': {
-                        containerStyle: 'padding:6px; height:60px; border:1px solid #e5e7eb; border-radius:8px; background:#fff',
-                        headerStyle: 'padding:0; margin-bottom:3px',
-                        headerCellStyle: 'background:var(--primary-500,#6366f1); height:9px; border-radius:2px',
-                        rows: [
-                            { style: 'padding:0 4px; border-bottom:1px solid #f3f4f6; border-left:2px solid transparent', cellStyle: 'background:#fff; height:6px' },
-                            { style: 'padding:0 4px; border-bottom:1px solid #f3f4f6; border-left:2px solid var(--primary-400,#818cf8)', cellStyle: 'background:color-mix(in oklab,var(--primary-500,#6366f1) 4%,#fff); height:6px' },
-                            { style: 'padding:0 4px; border-left:2px solid transparent', cellStyle: 'background:#fff; height:6px' },
-                        ]
-                    },
-                    'flat': {
-                        containerStyle: 'padding:0; height:60px; border-radius:6px; background:#f3f4f6; overflow:hidden',
-                        headerStyle: 'padding:0 4px; margin-bottom:0',
-                        headerCellStyle: 'background:#1f2937; height:9px',
-                        rows: [
-                            { style: 'padding:0 4px', cellStyle: 'background:#f3f4f6; height:7px' },
-                            { style: 'padding:0 4px', cellStyle: 'background:#e5e7eb; height:7px' },
-                            { style: 'padding:0 4px', cellStyle: 'background:#f3f4f6; height:7px' },
-                        ]
-                    },
-                },
-
-                tablePreviewSelected: null,
-                tablePreviewRows: [
-                    { name: 'Ahmet Yilmaz', email: 'ahmet@example.com', role: 'admin', badgeClass: 'bg-primary-50 text-primary-700 ring-1 ring-primary-600/20 dark:bg-primary-400/10 dark:text-primary-400 dark:ring-primary-400/30', date: '12.03.2025', avatar: '#6366f1' },
-                    { name: 'Elif Demir', email: 'elif@example.com', role: 'editor', badgeClass: 'bg-amber-50 text-amber-700 ring-1 ring-amber-600/20 dark:bg-amber-400/10 dark:text-amber-400 dark:ring-amber-400/30', date: '08.01.2025', avatar: '#f59e0b' },
-                    { name: 'Mehmet Kaya', email: 'mehmet@example.com', role: 'user', badgeClass: 'bg-gray-50 text-gray-700 ring-1 ring-gray-600/20 dark:bg-gray-400/10 dark:text-gray-400 dark:ring-gray-400/30', date: '21.11.2024', avatar: '#10b981' },
-                    { name: 'Zeynep Arslan', email: 'zeynep@example.com', role: 'editor', badgeClass: 'bg-amber-50 text-amber-700 ring-1 ring-amber-600/20 dark:bg-amber-400/10 dark:text-amber-400 dark:ring-amber-400/30', date: '15.09.2024', avatar: '#ec4899' },
-                    { name: 'Can Ozturk', email: 'can@example.com', role: 'admin', badgeClass: 'bg-primary-50 text-primary-700 ring-1 ring-primary-600/20 dark:bg-primary-400/10 dark:text-primary-400 dark:ring-primary-400/30', date: '03.07.2024', avatar: '#3b82f6' },
-                ],
 
                 errorStyles: {
                     'default': {
@@ -977,17 +667,6 @@
                     this.saveToDb();
                 },
 
-                selectTopbar(id) {
-                    this.currentTopbar = id;
-                    localStorage.setItem('filacraft-topbar', id);
-                    if (id === 'default') {
-                        document.documentElement.removeAttribute('data-topbar');
-                    } else {
-                        document.documentElement.setAttribute('data-topbar', id);
-                    }
-                    this.saveToDb();
-                },
-
                 selectRadius(id) {
                     this.currentRadius = id;
                     localStorage.setItem('filacraft-radius', id);
@@ -1010,31 +689,9 @@
                     this.saveToDb();
                 },
 
-                selectTableStyle(id) {
-                    this.currentTableStyle = id;
-                    localStorage.setItem('filacraft-table-style', id);
-                    if (id === 'default') {
-                        document.documentElement.removeAttribute('data-table-style');
-                    } else {
-                        document.documentElement.setAttribute('data-table-style', id);
-                    }
-                    this.saveToDb();
-                },
-
                 errorPreviewUrl: null,
                 errorPreviewCode: '404',
                 errorPreviewStyle: null,
-
-                toggleDecorations() {
-                    this.currentDecorations = this.currentDecorations === 'on' ? 'off' : 'on';
-                    localStorage.setItem('filacraft-decorations', this.currentDecorations);
-                    if (this.currentDecorations === 'on') {
-                        document.documentElement.setAttribute('data-decorations', 'on');
-                    } else {
-                        document.documentElement.removeAttribute('data-decorations');
-                    }
-                    this.saveToDb();
-                },
 
                 selectErrorStyle(id) {
                     this.currentErrorStyle = id;
@@ -1093,8 +750,6 @@
                                 font: self.currentFont,
                                 radius: self.currentRadius,
                                 density: self.currentDensity,
-                                decorations: self.currentDecorations,
-                                tableStyle: self.currentTableStyle,
                                 errorStyle: self.currentErrorStyle,
                                 lang: self.lang,
                             }
@@ -1116,8 +771,6 @@
                         if (s.font && s.font !== self.currentFont) { self.selectFont(s.font); changed = true; }
                         if (s.radius && s.radius !== self.currentRadius) { self.selectRadius(s.radius); changed = true; }
                         if (s.density && s.density !== self.currentDensity) { self.selectDensity(s.density); changed = true; }
-                        if (s.decorations && s.decorations !== self.currentDecorations) { self.currentDecorations = s.decorations; localStorage.setItem('filacraft-decorations', s.decorations); if (s.decorations === 'on') { document.documentElement.setAttribute('data-decorations', 'on'); } else { document.documentElement.removeAttribute('data-decorations'); } changed = true; }
-                        if (s.tableStyle && s.tableStyle !== self.currentTableStyle) { self.selectTableStyle(s.tableStyle); changed = true; }
                         if (s.errorStyle && s.errorStyle !== self.currentErrorStyle) { self.selectErrorStyle(s.errorStyle); changed = true; }
                         if (s.lang && s.lang !== self.lang) { self.setLang(s.lang); changed = true; }
                     })
@@ -1131,9 +784,6 @@
                     localStorage.removeItem('filacraft-font');
                     localStorage.removeItem('filacraft-radius');
                     localStorage.removeItem('filacraft-density');
-                    localStorage.removeItem('filacraft-decorations');
-                    localStorage.removeItem('filacraft-table-style');
-                    localStorage.removeItem('filacraft-topbar');
                     localStorage.removeItem('filacraft-lang');
                     document.cookie = 'filacraft-error-style=;path=/;max-age=0';
                     var csrfToken = document.querySelector('meta[name="csrf-token"]');
@@ -1161,12 +811,6 @@
                     }
                     if (this.currentDensity && this.currentDensity !== 'default') {
                         document.documentElement.setAttribute('data-density', this.currentDensity);
-                    }
-                    if (this.currentDecorations === 'on') {
-                        document.documentElement.setAttribute('data-decorations', 'on');
-                    }
-                    if (this.currentTableStyle && this.currentTableStyle !== 'default') {
-                        document.documentElement.setAttribute('data-table-style', this.currentTableStyle);
                     }
                     this.loadFromDb();
                 }
