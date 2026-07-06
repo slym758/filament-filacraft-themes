@@ -13,8 +13,7 @@ class ApplyThemeLayout
     public function handle(Request $request, Closure $next): Response
     {
         if ($user = $request->user()) {
-            $settings = UserThemeSetting::where('user_id', $user->id)->first();
-            $theme = $settings?->settings['theme'] ?? null;
+            $theme = UserThemeSetting::settingsForUser($user->id)['theme'] ?? null;
 
             if ($theme === 'kutup') {
                 Filament::getCurrentPanel()?->topNavigation();

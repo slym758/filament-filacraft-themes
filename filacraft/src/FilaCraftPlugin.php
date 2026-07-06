@@ -7,8 +7,8 @@ use Filament\Navigation\MenuItem;
 use Filament\Panel;
 use Filament\Support\Icons\Heroicon;
 use Filament\View\PanelsRenderHook;
-use Illuminate\Support\Facades\Blade;
 use Slym758\FilaCraft\Http\Middleware\ApplyThemeLayout;
+use Slym758\FilaCraft\Models\UserThemeSetting;
 use Slym758\FilaCraft\Pages\Themes;
 
 class FilaCraftPlugin implements Plugin
@@ -64,16 +64,52 @@ class FilaCraftPlugin implements Plugin
 
         $panel->renderHook(
             PanelsRenderHook::HEAD_END,
-            fn () => Blade::render('
+            function (): string {
+                $user = auth()->user();
+                $settings = $user ? UserThemeSetting::settingsForUser($user->getKey()) : [];
+                $serverSettings = json_encode(
+                    (object) $settings,
+                    JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_SLASHES,
+                );
+                $userId = $user ? json_encode((string) $user->getKey()) : 'null';
+
+                return <<<HTML
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
                 <script>
                     (function() {
-                        var theme = localStorage.getItem("filacraft-theme");
+                        /* Sunucudan gelen kayitli tema ayarlari — localStorage bos ise fallback.
+                           Boylece ilk yuklemede fetch + location.reload() gerekmez (flash/cift yukleme yok). */
+                        var S = {$serverSettings};
+                        var UID = {$userId};
+                        var root = document.documentElement;
+
+                        /* Kullanici bazli izolasyon: localStorage tarayici bazlidir, kullanici bazli
+                           degil. Bu tarayicidaki ayarlar baska bir kullaniciya aitse temizle ki her
+                           kullanici KENDI kayitli temasini gorsun (aksi halde ayni tarayicida ikinci
+                           kullanici birincinin temasini gorur). */
+                        var THEME_KEYS = ["theme", "color", "font", "radius", "density", "decorations", "table-style", "topbar", "lang"];
+                        if (UID !== null && localStorage.getItem("filacraft-uid") !== UID) {
+                            THEME_KEYS.forEach(function (k) { localStorage.removeItem("filacraft-" + k); });
+                            root.style.removeProperty("--font-family");
+                            localStorage.setItem("filacraft-uid", UID);
+                        }
+
+                        function pref(lsKey, dbKey) {
+                            var v = localStorage.getItem("filacraft-" + lsKey);
+                            if (v === null && dbKey && S[dbKey] !== undefined && S[dbKey] !== null && S[dbKey] !== "") {
+                                v = String(S[dbKey]);
+                                localStorage.setItem("filacraft-" + lsKey, v);
+                            }
+                            return v;
+                        }
+
+                        var theme = pref("theme", "theme");
                         var migrations = {"brisk":"ege","nord":"kutup","sunset":"gunbatimi","ege":"ege"};
                         if (theme && migrations[theme] && migrations[theme] !== theme) { theme = migrations[theme]; localStorage.setItem("filacraft-theme", theme); }
                         var presetThemes = ["akdeniz", "kutup", "gunbatimi", "atlas", "safir"];
-                        var effectiveTheme = theme || "akdeniz";
-                        if (presetThemes.indexOf(effectiveTheme) !== -1) {
-                            document.documentElement.classList.add("filacraft-" + effectiveTheme);
+                        if (theme && presetThemes.indexOf(theme) !== -1) {
+                            root.classList.add("filacraft-" + theme);
                         }
 
                         var palettes = {
@@ -92,78 +128,64 @@ class FilaCraftPlugin implements Plugin
                             sky:      { 50:"oklch(0.977 0.014 230.00)", 100:"oklch(0.950 0.033 230.00)", 200:"oklch(0.905 0.063 230.00)", 300:"oklch(0.840 0.106 230.00)", 400:"oklch(0.754 0.150 230.00)", 500:"oklch(0.683 0.170 230.00)", 600:"oklch(0.598 0.169 230.00)", 700:"oklch(0.515 0.149 230.00)", 800:"oklch(0.446 0.123 230.00)", 900:"oklch(0.395 0.100 230.00)", 950:"oklch(0.278 0.071 230.00)" },
                         };
 
-                        var colorId = localStorage.getItem("filacraft-color") || "ocean";
-                        if (colorId !== "default" && palettes[colorId]) {
+                        var colorId = pref("color", "color");
+                        if (colorId && colorId !== "default" && palettes[colorId]) {
                             var shades = palettes[colorId];
-                            var root = document.documentElement;
                             for (var shade in shades) {
                                 root.style.setProperty("--primary-" + shade, shades[shade]);
                             }
                         }
 
                         /* Font */
-                        var font = localStorage.getItem("filacraft-font");
+                        var font = pref("font", "font");
                         if (font && font !== "default") {
                             var link = document.createElement("link");
                             link.rel = "stylesheet";
                             link.href = "https://fonts.googleapis.com/css2?family=" + font.replace(/\+/g, "+") + ":wght@300;400;500;600;700&display=swap";
                             document.head.appendChild(link);
                             var fontName = font.replace(/\+/g, " ");
-                            document.documentElement.style.setProperty("--font-family", fontName + ", sans-serif");
+                            root.style.setProperty("--font-family", fontName + ", sans-serif");
                         }
 
                         /* Border Radius */
-                        var radius = localStorage.getItem("filacraft-radius");
+                        var radius = pref("radius", "radius");
                         if (radius) {
-                            document.documentElement.setAttribute("data-radius", radius);
+                            root.setAttribute("data-radius", radius);
                         }
 
                         /* Compact Mode */
-                        var density = localStorage.getItem("filacraft-density");
+                        var density = pref("density", "density");
                         if (density && density !== "default") {
-                            document.documentElement.setAttribute("data-density", density);
+                            root.setAttribute("data-density", density);
                         }
 
                         /* Decorations */
-                        var decorations = localStorage.getItem("filacraft-decorations");
+                        var decorations = pref("decorations", "decorations");
                         if (decorations === "on") {
-                            document.documentElement.setAttribute("data-decorations", "on");
+                            root.setAttribute("data-decorations", "on");
                         }
 
                         /* Table Style */
-                        var tableStyle = localStorage.getItem("filacraft-table-style");
+                        var tableStyle = pref("table-style", "tableStyle");
                         if (tableStyle && tableStyle !== "default") {
-                            document.documentElement.setAttribute("data-table-style", tableStyle);
+                            root.setAttribute("data-table-style", tableStyle);
                         }
 
-                        /* Topbar variant */
-                        var topbar = localStorage.getItem("filacraft-topbar");
+                        /* Topbar variant (yalnizca localStorage) */
+                        var topbar = pref("topbar", null);
                         if (topbar && topbar !== "default") {
-                            document.documentElement.setAttribute("data-topbar", topbar);
+                            root.setAttribute("data-topbar", topbar);
                         }
 
-                        /* Sync from DB if localStorage is empty */
-                        if (!localStorage.getItem("filacraft-theme")) {
-                            fetch("/api/theme-settings", { headers: { "Accept": "application/json" } })
-                                .then(function(r) { return r.ok ? r.json() : null; })
-                                .then(function(s) {
-                                    if (!s || !s.theme) return;
-                                    if (s.theme) localStorage.setItem("filacraft-theme", s.theme);
-                                    if (s.color) localStorage.setItem("filacraft-color", s.color);
-                                    if (s.font) localStorage.setItem("filacraft-font", s.font);
-                                    if (s.radius) localStorage.setItem("filacraft-radius", s.radius);
-                                    if (s.density) localStorage.setItem("filacraft-density", s.density);
-                                    if (s.decorations) localStorage.setItem("filacraft-decorations", s.decorations);
-                                    if (s.tableStyle) localStorage.setItem("filacraft-table-style", s.tableStyle);
-                                    if (s.lang) localStorage.setItem("filacraft-lang", s.lang);
-                                    if (s.errorStyle) document.cookie = "filacraft-error-style=" + s.errorStyle + ";path=/;max-age=31536000";
-                                    location.reload();
-                                })
-                                .catch(function() {});
+                        /* Dil tercihi + hata sayfasi stili (localStorage bos ise sunucudan doldurulur) */
+                        pref("lang", "lang");
+                        if (S.errorStyle && !/(^|;\s*)filacraft-error-style=/.test(document.cookie)) {
+                            document.cookie = "filacraft-error-style=" + S.errorStyle + ";path=/;max-age=31536000";
                         }
                     })();
                 </script>
-            '),
+                HTML;
+            },
         );
     }
 

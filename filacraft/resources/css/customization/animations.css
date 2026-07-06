@@ -1,75 +1,43 @@
-/* Widget entrance animations */
-@keyframes filacraft-fade-up {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
+ /* FilaCraft — Entrance animations
+ *
+ * PERFORMANS NOTU:
+ * Yüksek sıklıkta DOM morph olan elemanlara (.fi-ta-row, .fi-section, .fi-wi-widget)
+ * entrance animasyonu VERİLMEZ. Bunlar Livewire her güncellediğinde (sayfalama,
+ * arama, sıralama, validasyon, bildirim polling) ve her wire:navigate geçişinde
+ * yeniden tetiklenerek genel kasmaya yol açıyordu. Modal/dropdown/notification
+ * geçişleri de Filament'in kendi Alpine x-transition'larına bırakıldı (çift
+ * animasyonu önlemek için).
+ *
+ * Geriye yalnızca dashboard'a özgü, tek seferlik ve compositor-dostu (opacity +
+ * transform) stat kartı girişi ile ucuz buton basma efekti bırakıldı. Tümü
+ * prefers-reduced-motion altında otomatik kapatılır.
+ */
+
+@media (prefers-reduced-motion: no-preference) {
+    @keyframes filacraft-fade-up {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    /* Stats overview kartları — dashboard imzası, kademeli tek seferlik giriş */
+    .fi-wi-stats-overview-stat {
+        animation: filacraft-fade-up 0.35s ease-out both;
     }
-}
 
-@keyframes filacraft-fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+    .fi-wi-stats-overview-stat:nth-child(2) { animation-delay: 60ms; }
+    .fi-wi-stats-overview-stat:nth-child(3) { animation-delay: 120ms; }
+    .fi-wi-stats-overview-stat:nth-child(4) { animation-delay: 180ms; }
+    .fi-wi-stats-overview-stat:nth-child(5) { animation-delay: 240ms; }
+    .fi-wi-stats-overview-stat:nth-child(6) { animation-delay: 300ms; }
 
-@keyframes filacraft-scale-in {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
+    /* Buton basma efekti — transform, layout tetiklemez */
+    .fi-btn:active {
+        transform: scale(0.97);
     }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* Stats overview cards — staggered fade up */
-.fi-wi-stats-overview-stat {
-    animation: filacraft-fade-up 0.4s ease-out both;
-}
-
-.fi-wi-stats-overview-stat:nth-child(1) { animation-delay: 0ms; }
-.fi-wi-stats-overview-stat:nth-child(2) { animation-delay: 80ms; }
-.fi-wi-stats-overview-stat:nth-child(3) { animation-delay: 160ms; }
-.fi-wi-stats-overview-stat:nth-child(4) { animation-delay: 240ms; }
-.fi-wi-stats-overview-stat:nth-child(5) { animation-delay: 320ms; }
-.fi-wi-stats-overview-stat:nth-child(6) { animation-delay: 400ms; }
-
-/* Widget containers */
-.fi-wi-widget {
-    animation: filacraft-fade-up 0.5s ease-out both;
-}
-
-/* Sections */
-.fi-section {
-    animation: filacraft-fade-in 0.3s ease-out both;
-}
-
-/* Table rows — subtle fade */
-.fi-ta-row {
-    animation: filacraft-fade-in 0.2s ease-out both;
-}
-
-
-/* Button press effect */
-.fi-btn:active {
-    transform: scale(0.97) !important;
-}
-
-/* Modal entrance */
-.fi-modal-window {
-    animation: filacraft-scale-in 0.25s ease-out both;
-}
-
-/* Notification slide in */
-.fi-no-notification {
-    animation: filacraft-fade-up 0.3s ease-out both;
-}
-
-/* Dropdown appearance */
-.fi-dropdown-panel {
-    animation: filacraft-scale-in 0.15s ease-out both;
 }

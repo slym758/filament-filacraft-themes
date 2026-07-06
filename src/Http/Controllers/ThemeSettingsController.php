@@ -11,9 +11,9 @@ class ThemeSettingsController extends Controller
 {
     public function show(Request $request): JsonResponse
     {
-        $record = UserThemeSetting::where('user_id', $request->user()->id)->first();
-
-        return response()->json($record?->settings ?? []);
+        return response()->json(
+            UserThemeSetting::settingsForUser($request->user()->id),
+        );
     }
 
     public function store(Request $request): JsonResponse
@@ -36,12 +36,16 @@ class ThemeSettingsController extends Controller
             ['settings' => $validated['settings']],
         );
 
+        UserThemeSetting::forgetCache($request->user()->id);
+
         return response()->json(['ok' => true]);
     }
 
     public function destroy(Request $request): JsonResponse
     {
         UserThemeSetting::where('user_id', $request->user()->id)->delete();
+
+        UserThemeSetting::forgetCache($request->user()->id);
 
         return response()->json(['ok' => true]);
     }
