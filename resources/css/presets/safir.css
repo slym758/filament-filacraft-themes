@@ -6,7 +6,9 @@
    ══════════════════════════════════════════════ */
 
 .filacraft-safir .fi-body {
-    background-color: var(--primary-100);
+    /* En dis zemin — secili renk/tonu belirgin sekilde yansitir (primary-100 → 200).
+       Daha belirgin/az icin 200'u 300 veya 100 yap. */
+    background-color: var(--primary-200);
 }
 
 .dark .filacraft-safir .fi-body,
@@ -15,7 +17,7 @@
 }
 
 .filacraft-safir .fi-main-ctn {
-    background-color: var(--primary-100);
+    background-color: var(--primary-200);
     border: none !important;
 }
 
@@ -1007,13 +1009,13 @@
 .filacraft-safir .fi-input-wrp:focus-within {
     @apply ring-2;
     --tw-ring-color: oklch(from var(--primary-500) l c h / 0.5);
-    box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color), 0 0 0 4px oklch(from var(--primary-500) l c h / 0.1);
+    box-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width, 0px)) var(--tw-ring-color), 0 0 0 4px oklch(from var(--primary-500) l c h / 0.1);
 }
 
 .dark .filacraft-safir .fi-input-wrp:focus-within,
 .dark.filacraft-safir .fi-input-wrp:focus-within {
     --tw-ring-color: oklch(from var(--primary-400) l c h / 0.4);
-    box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color), 0 0 0 4px oklch(from var(--primary-500) l c h / 0.08);
+    box-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width, 0px)) var(--tw-ring-color), 0 0 0 4px oklch(from var(--primary-500) l c h / 0.08);
 }
 
 /* Tabs inside forms */
@@ -1032,11 +1034,49 @@
    ══════════════════════════════════════════════ */
 
 .filacraft-safir .fi-btn {
-    @apply rounded-lg px-4 shadow-none;
+    @apply rounded-lg px-4 font-semibold;
+    transition: box-shadow 150ms ease, transform 100ms ease;
+}
+
+/* Force white text on solid colored buttons so any palette (including darker
+   ones like ocean) stays readable. Outlined buttons keep their colored text. */
+.filacraft-safir .fi-btn.fi-color:not(.fi-outlined):not(label) {
+    --text: oklch(1 0 0);
+    --dark-text: oklch(1 0 0);
+    --hover-text: oklch(1 0 0);
+    --dark-hover-text: oklch(1 0 0);
+}
+
+.filacraft-safir .fi-btn.fi-color:not(.fi-outlined):not(label) > .fi-icon {
+    color: oklch(1 0 0);
 }
 
 .filacraft-safir .fi-btn.fi-color-primary {
-    box-shadow: 0 1px 3px oklch(from var(--primary-600) l c h / 0.15);
+    box-shadow:
+        0 1px 2px oklch(from var(--primary-700) l c h / 0.2),
+        0 4px 12px -2px oklch(from var(--primary-500) l c h / 0.35),
+        inset 0 1px 0 oklch(from var(--primary-300) l c h / 0.3);
+}
+
+.filacraft-safir .fi-btn.fi-color-primary:hover {
+    box-shadow:
+        0 1px 2px oklch(from var(--primary-700) l c h / 0.25),
+        0 6px 16px -2px oklch(from var(--primary-500) l c h / 0.45),
+        inset 0 1px 0 oklch(from var(--primary-300) l c h / 0.4);
+}
+
+.filacraft-safir .fi-btn.fi-color-primary:active {
+    transform: translateY(1px);
+    box-shadow:
+        0 1px 2px oklch(from var(--primary-700) l c h / 0.2),
+        0 2px 6px -1px oklch(from var(--primary-500) l c h / 0.3);
+}
+
+.dark .filacraft-safir .fi-btn.fi-color-primary,
+.dark.filacraft-safir .fi-btn.fi-color-primary {
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.3),
+        0 4px 12px -2px oklch(from var(--primary-500) l c h / 0.4);
 }
 
 /* ══════════════════════════════════════════════

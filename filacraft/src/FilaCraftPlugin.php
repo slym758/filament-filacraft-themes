@@ -105,34 +105,36 @@ class FilaCraftPlugin implements Plugin
                         }
 
                         var theme = pref("theme", "theme");
-                        var migrations = {"brisk":"ege","nord":"kutup","sunset":"gunbatimi","ege":"ege"};
+                        var migrations = {"brisk":"ege","nord":"ege","kutup":"ege","sunset":"gunbatimi","ege":"ege"};
                         if (theme && migrations[theme] && migrations[theme] !== theme) { theme = migrations[theme]; localStorage.setItem("filacraft-theme", theme); }
-                        var presetThemes = ["akdeniz", "kutup", "gunbatimi", "atlas", "safir"];
+                        var presetThemes = ["akdeniz", "gunbatimi", "atlas", "safir"];
                         if (theme && presetThemes.indexOf(theme) !== -1) {
                             root.classList.add("filacraft-" + theme);
                         }
 
-                        var palettes = {
-                            turquoise:{ 50:"oklch(0.977 0.014 191.96)", 100:"oklch(0.950 0.033 191.96)", 200:"oklch(0.905 0.063 191.96)", 300:"oklch(0.840 0.106 191.96)", 400:"oklch(0.754 0.150 191.96)", 500:"oklch(0.683 0.170 191.96)", 600:"oklch(0.598 0.169 191.96)", 700:"oklch(0.515 0.149 191.96)", 800:"oklch(0.446 0.123 191.96)", 900:"oklch(0.395 0.100 191.96)", 950:"oklch(0.278 0.071 191.96)" },
-                            ocean:    { 50:"oklch(0.977 0.014 259.82)", 100:"oklch(0.950 0.033 259.82)", 200:"oklch(0.905 0.063 259.82)", 300:"oklch(0.840 0.106 259.82)", 400:"oklch(0.754 0.150 259.82)", 500:"oklch(0.683 0.170 259.82)", 600:"oklch(0.598 0.169 259.82)", 700:"oklch(0.515 0.149 259.82)", 800:"oklch(0.446 0.123 259.82)", 900:"oklch(0.395 0.100 259.82)", 950:"oklch(0.278 0.071 259.82)" },
-                            emerald:  { 50:"oklch(0.977 0.014 162.48)", 100:"oklch(0.950 0.033 162.48)", 200:"oklch(0.905 0.063 162.48)", 300:"oklch(0.840 0.106 162.48)", 400:"oklch(0.754 0.150 162.48)", 500:"oklch(0.683 0.170 162.48)", 600:"oklch(0.598 0.169 162.48)", 700:"oklch(0.515 0.149 162.48)", 800:"oklch(0.446 0.123 162.48)", 900:"oklch(0.395 0.100 162.48)", 950:"oklch(0.278 0.071 162.48)" },
-                            violet:   { 50:"oklch(0.977 0.014 292.72)", 100:"oklch(0.950 0.033 292.72)", 200:"oklch(0.905 0.063 292.72)", 300:"oklch(0.840 0.106 292.72)", 400:"oklch(0.754 0.150 292.72)", 500:"oklch(0.683 0.170 292.72)", 600:"oklch(0.598 0.169 292.72)", 700:"oklch(0.515 0.149 292.72)", 800:"oklch(0.446 0.123 292.72)", 900:"oklch(0.395 0.100 292.72)", 950:"oklch(0.278 0.071 292.72)" },
-                            rose:     { 50:"oklch(0.977 0.014 16.44)", 100:"oklch(0.950 0.033 16.44)", 200:"oklch(0.905 0.063 16.44)", 300:"oklch(0.840 0.106 16.44)", 400:"oklch(0.754 0.150 16.44)", 500:"oklch(0.683 0.170 16.44)", 600:"oklch(0.598 0.169 16.44)", 700:"oklch(0.515 0.149 16.44)", 800:"oklch(0.446 0.123 16.44)", 900:"oklch(0.395 0.100 16.44)", 950:"oklch(0.278 0.071 16.44)" },
-                            amber:    { 50:"oklch(0.977 0.014 70.08)", 100:"oklch(0.950 0.033 70.08)", 200:"oklch(0.905 0.063 70.08)", 300:"oklch(0.840 0.106 70.08)", 400:"oklch(0.754 0.150 70.08)", 500:"oklch(0.683 0.170 70.08)", 600:"oklch(0.598 0.169 70.08)", 700:"oklch(0.515 0.149 70.08)", 800:"oklch(0.446 0.123 70.08)", 900:"oklch(0.395 0.100 70.08)", 950:"oklch(0.278 0.071 70.08)" },
-                            indigo:   { 50:"oklch(0.977 0.014 277.12)", 100:"oklch(0.950 0.033 277.12)", 200:"oklch(0.905 0.063 277.12)", 300:"oklch(0.840 0.106 277.12)", 400:"oklch(0.754 0.150 277.12)", 500:"oklch(0.683 0.170 277.12)", 600:"oklch(0.598 0.169 277.12)", 700:"oklch(0.515 0.149 277.12)", 800:"oklch(0.446 0.123 277.12)", 900:"oklch(0.395 0.100 277.12)", 950:"oklch(0.278 0.071 277.12)" },
-                            slate:    { 50:"oklch(0.977 0.014 257.42)", 100:"oklch(0.950 0.033 257.42)", 200:"oklch(0.905 0.063 257.42)", 300:"oklch(0.840 0.106 257.42)", 400:"oklch(0.754 0.150 257.42)", 500:"oklch(0.683 0.170 257.42)", 600:"oklch(0.598 0.169 257.42)", 700:"oklch(0.515 0.149 257.42)", 800:"oklch(0.446 0.123 257.42)", 900:"oklch(0.395 0.100 257.42)", 950:"oklch(0.278 0.071 257.42)" },
-                            cyan:     { 50:"oklch(0.977 0.014 205.00)", 100:"oklch(0.950 0.033 205.00)", 200:"oklch(0.905 0.063 205.00)", 300:"oklch(0.840 0.106 205.00)", 400:"oklch(0.754 0.150 205.00)", 500:"oklch(0.683 0.170 205.00)", 600:"oklch(0.598 0.169 205.00)", 700:"oklch(0.515 0.149 205.00)", 800:"oklch(0.446 0.123 205.00)", 900:"oklch(0.395 0.100 205.00)", 950:"oklch(0.278 0.071 205.00)" },
-                            fuchsia:  { 50:"oklch(0.977 0.014 330.00)", 100:"oklch(0.950 0.033 330.00)", 200:"oklch(0.905 0.063 330.00)", 300:"oklch(0.840 0.106 330.00)", 400:"oklch(0.754 0.150 330.00)", 500:"oklch(0.683 0.170 330.00)", 600:"oklch(0.598 0.169 330.00)", 700:"oklch(0.515 0.149 330.00)", 800:"oklch(0.446 0.123 330.00)", 900:"oklch(0.395 0.100 330.00)", 950:"oklch(0.278 0.071 330.00)" },
-                            red:      { 50:"oklch(0.977 0.014 25.00)", 100:"oklch(0.950 0.033 25.00)", 200:"oklch(0.905 0.063 25.00)", 300:"oklch(0.840 0.106 25.00)", 400:"oklch(0.754 0.150 25.00)", 500:"oklch(0.683 0.170 25.00)", 600:"oklch(0.598 0.169 25.00)", 700:"oklch(0.515 0.149 25.00)", 800:"oklch(0.446 0.123 25.00)", 900:"oklch(0.395 0.100 25.00)", 950:"oklch(0.278 0.071 25.00)" },
-                            lime:     { 50:"oklch(0.977 0.014 131.00)", 100:"oklch(0.950 0.033 131.00)", 200:"oklch(0.905 0.063 131.00)", 300:"oklch(0.840 0.106 131.00)", 400:"oklch(0.754 0.150 131.00)", 500:"oklch(0.683 0.170 131.00)", 600:"oklch(0.598 0.169 131.00)", 700:"oklch(0.515 0.149 131.00)", 800:"oklch(0.446 0.123 131.00)", 900:"oklch(0.395 0.100 131.00)", 950:"oklch(0.278 0.071 131.00)" },
-                            sky:      { 50:"oklch(0.977 0.014 230.00)", 100:"oklch(0.950 0.033 230.00)", 200:"oklch(0.905 0.063 230.00)", 300:"oklch(0.840 0.106 230.00)", 400:"oklch(0.754 0.150 230.00)", 500:"oklch(0.683 0.170 230.00)", 600:"oklch(0.598 0.169 230.00)", 700:"oklch(0.515 0.149 230.00)", 800:"oklch(0.446 0.123 230.00)", 900:"oklch(0.395 0.100 230.00)", 950:"oklch(0.278 0.071 230.00)" },
-                        };
+                        /* Renk paleti: hue + ton varyanti (soft/std/vivid/deep) uzerinden uretilir.
+                           Kayitli id ornekleri: "turquoise" (standart) veya "turquoise-vivid".
+                           Blade Themes sayfasindaki uretici ile birebir ayni degerleri verir. */
+                        var COLOR_HUES = { turquoise:"191.96", ocean:"259.82", emerald:"162.48", violet:"292.72", rose:"16.44", amber:"70.08", indigo:"277.12", slate:"257.42", cyan:"205.00", fuchsia:"330.00", red:"25.00", lime:"131.00", sky:"230.00" };
+                        var COLOR_TONES = { soft:{c:0.60,lo:0.04}, std:{c:1.00,lo:0.00}, vivid:{c:1.15,lo:0.12}, deep:{c:1.10,lo:-0.08} };
+                        var COLOR_BL = [0.977,0.950,0.905,0.840,0.754,0.683,0.598,0.515,0.446,0.395,0.278];
+                        var COLOR_BC = [0.014,0.033,0.063,0.106,0.150,0.170,0.169,0.149,0.123,0.100,0.071];
+                        var COLOR_LW = [0.0,0.2,0.45,0.7,0.9,1.0,1.0,0.92,0.8,0.65,0.5];
+                        var COLOR_SK = ["50","100","200","300","400","500","600","700","800","900","950"];
 
                         var colorId = pref("color", "color");
-                        if (colorId && colorId !== "default" && palettes[colorId]) {
-                            var shades = palettes[colorId];
-                            for (var shade in shades) {
-                                root.style.setProperty("--primary-" + shade, shades[shade]);
+                        if (colorId && colorId !== "default") {
+                            var cBase = colorId, cTone = "std";
+                            var cIdx = colorId.lastIndexOf("-");
+                            if (cIdx > -1) { var tk = colorId.slice(cIdx + 1); if (COLOR_TONES[tk]) { cTone = tk; cBase = colorId.slice(0, cIdx); } }
+                            var cHue = COLOR_HUES[cBase];
+                            if (cHue) {
+                                var tm = COLOR_TONES[cTone];
+                                for (var ci = 0; ci < COLOR_SK.length; ci++) {
+                                    var cL = Math.max(0, Math.min(0.995, COLOR_BL[ci] + tm.lo * COLOR_LW[ci]));
+                                    var cC = COLOR_BC[ci] * tm.c;
+                                    root.style.setProperty("--primary-" + COLOR_SK[ci], "oklch(" + cL.toFixed(3) + " " + cC.toFixed(3) + " " + cHue + ")");
+                                }
                             }
                         }
 

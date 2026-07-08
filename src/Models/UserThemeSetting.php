@@ -38,11 +38,17 @@ class UserThemeSetting extends Model
      */
     public static function settingsForUser(int|string $userId): array
     {
-        return Cache::remember(
+        $settings = Cache::remember(
             static::cacheKey($userId),
             now()->addDay(),
             fn () => static::query()->where('user_id', $userId)->first()?->settings ?? [],
         );
+
+        if (($settings['theme'] ?? null) === 'kutup') {
+            $settings['theme'] = 'ege';
+        }
+
+        return $settings;
     }
 
     /**

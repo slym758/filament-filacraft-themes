@@ -81,32 +81,6 @@
                     </div>
                 </div>
 
-                {{-- Kutup Isigi --}}
-                <div
-                    :class="currentTheme === 'kutup' ? 'ring-2 ring-primary-500' : 'ring-1 ring-gray-200 dark:ring-gray-700'"
-                    class="rounded-2xl bg-white dark:bg-gray-900 overflow-hidden transition-all duration-200"
-                >
-                    <div class="flex items-center justify-between px-6 py-4">
-                        <div class="flex items-center gap-3">
-                            <h3 class="text-base font-semibold text-gray-900 dark:text-white" x-text="t.kutupTitle"></h3>
-                            <span class="text-sm text-gray-500 dark:text-gray-400" x-text="t.kutupDesc"></span>
-                            <div x-show="currentTheme === 'kutup'" x-transition class="h-5 w-5 rounded-full bg-primary-500 text-white flex items-center justify-center">
-                                <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                            </div>
-                        </div>
-                        <button
-                            x-on:click="selectTheme('kutup')"
-                            :class="currentTheme === 'kutup' ? 'bg-primary-500 text-white' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 ring-1 ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'"
-                            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-colors"
-                            x-text="currentTheme === 'kutup' ? t.selected : t.select"
-                        ></button>
-                    </div>
-                    <div class="px-6 pb-6">
-                        <div class="rounded-xl overflow-hidden ring-1 ring-gray-200 dark:ring-gray-700">
-                            <img src="{{ asset('vendor/filacraft/img/kutup_isigi.png') }}" alt="Kutup Isigi" class="w-full h-auto">
-                        </div>
-                    </div>
-                </div>
 
                 {{-- Gun Batimi --}}
                 <div
@@ -270,23 +244,57 @@
                     >
                         <div
                             class="h-12 w-12 rounded-full transition-all duration-200 group-hover:scale-110 group-hover:shadow-lg"
-                            :class="currentColor === key
+                            :class="isBase(key)
                                 ? 'ring-2 ring-offset-2 ring-offset-white dark:ring-offset-gray-900 scale-110 shadow-lg'
                                 : 'ring-1 ring-black/10 dark:ring-white/10'"
                             :style="'background-color:' + palette.hex"
                         >
-                            <div x-show="currentColor === key" x-transition class="h-full w-full flex items-center justify-center">
+                            <div x-show="isBase(key)" x-transition class="h-full w-full flex items-center justify-center">
                                 <svg class="h-5 w-5 text-white drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
                             </div>
                         </div>
                         <span
                             class="text-xs transition-colors duration-200"
-                            :class="currentColor === key ? 'font-semibold text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'"
+                            :class="isBase(key) ? 'font-semibold text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'"
                             x-text="t.paletteLabels[key]"
                         ></span>
                     </button>
                 </template>
             </div>
+
+            {{-- Ton varyantlari — secili rengin 4 farkli tonu (tiklayinca acilir) --}}
+            <template x-if="expandedColor && expandedColor !== 'default'">
+                <div x-transition class="mt-6 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-white/5 p-4">
+                    <div class="flex items-center gap-2 mb-3.5">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400" x-text="t.toneTitle"></span>
+                        <span class="text-xs font-semibold text-gray-900 dark:text-white" x-text="t.paletteLabels[expandedColor]"></span>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <template x-for="tone in tones" :key="tone.key">
+                            <button x-on:click="selectTone(expandedColor, tone.key)" class="group relative flex flex-col items-center gap-2">
+                                <div
+                                    class="h-11 w-11 rounded-lg transition-all duration-200 group-hover:scale-110 group-hover:shadow-md"
+                                    :class="isTone(expandedColor, tone.key)
+                                        ? 'ring-2 ring-offset-2 ring-offset-white dark:ring-offset-gray-900 scale-110 shadow-md'
+                                        : 'ring-1 ring-black/10 dark:ring-white/10'"
+                                    :style="'background-color:' + toneSwatch(expandedColor, tone.key)"
+                                >
+                                    <div x-show="isTone(expandedColor, tone.key)" x-transition class="h-full w-full flex items-center justify-center">
+                                        <svg class="h-4 w-4 text-white drop-shadow" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                    </div>
+                                </div>
+                                <span class="text-[11px]" :class="isTone(expandedColor, tone.key) ? 'font-semibold text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'" x-text="t.toneLabels[tone.key]"></span>
+                            </button>
+                        </template>
+                    </div>
+                    {{-- Secili tonun tam gölge rampasi onizlemesi (50 → 950) --}}
+                    <div class="mt-4 flex h-7 rounded-lg overflow-hidden ring-1 ring-black/5 dark:ring-white/10">
+                        <template x-for="s in shadeKeys2" :key="s">
+                            <div class="flex-1" :style="'background-color:' + previewShade(expandedColor, s)"></div>
+                        </template>
+                    </div>
+                </div>
+            </template>
         </div>
 
         {{-- Divider --}}
@@ -626,8 +634,6 @@
                 egeDesc: 'Yumusak & yuvarlak pill stili',
                 akdenizTitle: 'Akdeniz Ruhu',
                 akdenizDesc: 'Pastel sidebar & navbar',
-                kutupTitle: 'Kutup Işığı',
-                kutupDesc: 'Ust navigasyon & buzul tonlari',
                 gunbatimiTitle: 'Gün Batımı',
                 gunbatimiDesc: 'Sicak tonlar & yumusak kenarlar',
                 atlasTitle: 'Atlas',
@@ -641,7 +647,9 @@
                 topbarVault: 'Vault',
                 topbarVaultDesc: 'Duz beyaz bar + gradient alt cizgi',
                 colorPalette: 'Renk Paleti',
-                colorPaletteDesc: 'Ana rengi secin — tum panel bu renge gore sekillenecek',
+                colorPaletteDesc: 'Ana rengi secin — tikladiginizda 4 farkli ton varyanti acilir',
+                toneTitle: 'Tonlar',
+                toneLabels: { 'soft': 'Yumusak', 'std': 'Standart', 'vivid': 'Canli', 'deep': 'Derin' },
                 fontPicker: 'Yazi Tipi',
                 fontPickerDesc: 'Panel genelinde kullanilacak fontu secin',
                 borderRadius: 'Kose Yuvarlaklik',
@@ -692,8 +700,6 @@
                 egeDesc: 'Soft & rounded pill style',
                 akdenizTitle: 'Mediterranean Soul',
                 akdenizDesc: 'Pastel sidebar & navbar',
-                kutupTitle: 'Northern Light',
-                kutupDesc: 'Top navigation & icy tones',
                 gunbatimiTitle: 'Sunset Glow',
                 gunbatimiDesc: 'Warm tones & soft edges',
                 atlasTitle: 'Atlas',
@@ -707,7 +713,9 @@
                 topbarVault: 'Vault',
                 topbarVaultDesc: 'Solid white bar + gradient accent line',
                 colorPalette: 'Color Palette',
-                colorPaletteDesc: 'Pick a primary color — the entire panel adapts to it',
+                colorPaletteDesc: 'Pick a primary color — click to reveal 4 tone variants',
+                toneTitle: 'Tones',
+                toneLabels: { 'soft': 'Soft', 'std': 'Standard', 'vivid': 'Vivid', 'deep': 'Deep' },
                 fontPicker: 'Font',
                 fontPickerDesc: 'Choose the font used across the panel',
                 borderRadius: 'Border Radius',
@@ -767,8 +775,9 @@
                     this.saveToDb();
                 },
 
-                currentTheme: (() => { var t = localStorage.getItem('filacraft-theme'); var m = {'brisk':'ege','nord':'kutup','sunset':'gunbatimi'}; if (t && m[t]) { t = m[t]; localStorage.setItem('filacraft-theme', t); } return t || 'ege'; })(),
+                currentTheme: (() => { var t = localStorage.getItem('filacraft-theme'); var m = {'brisk':'ege','nord':'ege','kutup':'ege','sunset':'gunbatimi'}; if (t && m[t]) { t = m[t]; localStorage.setItem('filacraft-theme', t); } return t || 'ege'; })(),
                 currentColor: localStorage.getItem('filacraft-color') || 'default',
+                expandedColor: null,
                 currentFont: localStorage.getItem('filacraft-font') || 'default',
                 currentRadius: localStorage.getItem('filacraft-radius') || 'default',
                 currentDensity: localStorage.getItem('filacraft-density') || 'default',
@@ -925,20 +934,97 @@
                     var previousTheme = this.currentTheme;
                     this.currentTheme = id;
                     localStorage.setItem('filacraft-theme', id);
-                    document.documentElement.classList.remove('filacraft-ege', 'filacraft-akdeniz', 'filacraft-kutup', 'filacraft-gunbatimi', 'filacraft-atlas', 'filacraft-safir');
+                    document.documentElement.classList.remove('filacraft-ege', 'filacraft-akdeniz', 'filacraft-gunbatimi', 'filacraft-atlas', 'filacraft-safir');
                     if (id !== 'ege') {
                         document.documentElement.classList.add('filacraft-' + id);
                     }
-                    var needsReload = (id === 'kutup' || previousTheme === 'kutup');
-                    if (needsReload) {
-                        this.saveToDbAndReload();
-                    } else {
-                        this.saveToDb();
-                    }
+                    this.saveToDb();
                 },
 
-                selectColor(id) {
+                // Ton varyantlari — c: chroma carpani, lo: lightness offset (aciklik kaydirmasi).
+                // std lo:0 & c:1 → orijinal palet (geriye uyumlu). vivid gercekten daha acik & canli.
+                tones: [
+                    { key: 'soft',  c: 0.60, lo:  0.04 },
+                    { key: 'std',   c: 1.00, lo:  0.00 },
+                    { key: 'vivid', c: 1.15, lo:  0.12 },
+                    { key: 'deep',  c: 1.10, lo: -0.08 },
+                ],
+                baseL: [0.977,0.950,0.905,0.840,0.754,0.683,0.598,0.515,0.446,0.395,0.278],
+                baseC: [0.014,0.033,0.063,0.106,0.150,0.170,0.169,0.149,0.123,0.100,0.071],
+                // Lightness offset agirligi: ortada (500) tam, acik uclarda ~0 → arka plan tint'i korunur
+                loW: [0.0,0.2,0.45,0.7,0.9,1.0,1.0,0.92,0.8,0.65,0.5],
+                shadeKeys2: ['50','100','200','300','400','500','600','700','800','900','950'],
+
+                // Mevcut palette shades'inden hue'yu cikar (500 tonundan)
+                hueOf(base) {
+                    var p = this.palettes[base];
+                    if (!p) return null;
+                    var m = String(p.shades['500']).match(/oklch\([0-9.]+ [0-9.]+ ([0-9.]+)/);
+                    return m ? m[1] : null;
+                },
+
+                toneOf(key) {
+                    for (var i = 0; i < this.tones.length; i++) { if (this.tones[i].key === key) return this.tones[i]; }
+                    return this.tones[1];
+                },
+
+                makeShades(hue, cMul, lOff) {
+                    var out = {};
+                    for (var i = 0; i < this.shadeKeys2.length; i++) {
+                        var L = Math.max(0, Math.min(0.995, this.baseL[i] + lOff * this.loW[i]));
+                        var C = this.baseC[i] * cMul;
+                        out[this.shadeKeys2[i]] = 'oklch(' + L.toFixed(3) + ' ' + C.toFixed(3) + ' ' + hue + ')';
+                    }
+                    return out;
+                },
+
+                // Renk id'sini taban + ton olarak coz ( or. 'turquoise-vivid' → {base:'turquoise', tone:'vivid'})
+                parseColor(id) {
+                    var base = id, tone = 'std';
+                    var idx = String(id).lastIndexOf('-');
+                    if (idx > -1) {
+                        var t = id.slice(idx + 1);
+                        if (t === 'soft' || t === 'vivid' || t === 'deep') { tone = t; base = id.slice(0, idx); }
+                    }
+                    return { base: base, tone: tone };
+                },
+
+                isBase(key) { return this.parseColor(this.currentColor).base === key; },
+                isTone(base, tone) { var p = this.parseColor(this.currentColor); return p.base === base && p.tone === tone; },
+
+                toneSwatch(base, toneKey) {
+                    var hue = this.hueOf(base); if (hue === null) return 'transparent';
+                    var t = this.toneOf(toneKey);
+                    return this.makeShades(hue, t.c, t.lo)['500'];
+                },
+
+                previewShade(base, shade) {
+                    var hue = this.hueOf(base); if (hue === null) return 'transparent';
+                    var p = this.parseColor(this.currentColor);
+                    var toneKey = (p.base === base) ? p.tone : 'std';
+                    var t = this.toneOf(toneKey);
+                    return this.makeShades(hue, t.c, t.lo)[shade];
+                },
+
+                selectColor(base) {
+                    this.expandedColor = base;
+                    if (base === 'default') {
+                        this.currentColor = 'default';
+                        localStorage.setItem('filacraft-color', 'default');
+                        this.applyColor('default');
+                        this.saveToDb();
+                        return;
+                    }
+                    // Ayni taban zaten seciliyse mevcut tonu koru, degilse standart uygula
+                    var cur = this.parseColor(this.currentColor);
+                    var tone = (cur.base === base) ? cur.tone : 'std';
+                    this.selectTone(base, tone);
+                },
+
+                selectTone(base, toneKey) {
+                    var id = (toneKey === 'std') ? base : base + '-' + toneKey;
                     this.currentColor = id;
+                    this.expandedColor = base;
                     localStorage.setItem('filacraft-color', id);
                     this.applyColor(id);
                     this.saveToDb();
@@ -946,16 +1032,16 @@
 
                 applyColor(id) {
                     var root = document.documentElement;
-                    var shadeKeys = ['50','100','200','300','400','500','600','700','800','900','950'];
                     if (id === 'default') {
-                        shadeKeys.forEach(function(s) { root.style.removeProperty('--primary-' + s); });
+                        this.shadeKeys2.forEach(function(s) { root.style.removeProperty('--primary-' + s); });
                         return;
                     }
-                    var palette = this.palettes[id];
-                    if (!palette) return;
-                    Object.keys(palette.shades).forEach(function(shade) {
-                        root.style.setProperty('--primary-' + shade, palette.shades[shade]);
-                    });
+                    var p = this.parseColor(id);
+                    var hue = this.hueOf(p.base);
+                    if (hue === null) return;
+                    var t = this.toneOf(p.tone);
+                    var shades = this.makeShades(hue, t.c, t.lo);
+                    Object.keys(shades).forEach(function(s) { root.style.setProperty('--primary-' + s, shades[s]); });
                 },
 
                 selectFont(id) {
@@ -1112,7 +1198,7 @@
                         if (!s || !s.theme) return;
                         var changed = false;
                         if (s.theme && s.theme !== self.currentTheme) { self.selectTheme(s.theme); changed = true; }
-                        if (s.color && s.color !== self.currentColor) { self.selectColor(s.color); changed = true; }
+                        if (s.color && s.color !== self.currentColor) { self.currentColor = s.color; localStorage.setItem('filacraft-color', s.color); self.applyColor(s.color); self.expandedColor = (s.color === 'default') ? null : self.parseColor(s.color).base; changed = true; }
                         if (s.font && s.font !== self.currentFont) { self.selectFont(s.font); changed = true; }
                         if (s.radius && s.radius !== self.currentRadius) { self.selectRadius(s.radius); changed = true; }
                         if (s.density && s.density !== self.currentDensity) { self.selectDensity(s.density); changed = true; }
@@ -1152,6 +1238,7 @@
                 init() {
                     if (this.currentColor && this.currentColor !== 'default') {
                         this.applyColor(this.currentColor);
+                        this.expandedColor = this.parseColor(this.currentColor).base;
                     }
                     if (this.currentFont && this.currentFont !== 'default') {
                         this.selectFont(this.currentFont);

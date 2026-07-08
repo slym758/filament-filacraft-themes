@@ -20,7 +20,7 @@ class ThemeSettingsController extends Controller
     {
         $validated = $request->validate([
             'settings' => 'required|array',
-            'settings.theme' => 'nullable|string|in:ege,akdeniz,kutup,gunbatimi,atlas,safir',
+            'settings.theme' => 'nullable|string|in:ege,akdeniz,gunbatimi,atlas,safir',
             'settings.color' => 'nullable|string|max:30',
             'settings.font' => 'nullable|string|max:50',
             'settings.radius' => 'nullable|string|in:sharp,small,default,large',
