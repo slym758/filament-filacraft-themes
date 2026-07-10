@@ -153,14 +153,15 @@
 
 /* Mobile: solid bar */
 .filacraft-safir .fi-topbar {
-    @apply bg-white ring-0 shadow-none border-0;
-    border-bottom: 1px solid oklch(from var(--primary-200) l c h / 0.4) !important;
+    @apply ring-0 shadow-none border-0;
+    background-color: var(--primary-200);
+    border-bottom: none !important;
 }
 
 .dark .filacraft-safir .fi-topbar,
 .dark.filacraft-safir .fi-topbar {
-    background-color: #111827;
-    border-bottom-color: rgba(51, 65, 85, 0.4) !important;
+    background-color: #0b1120;
+    border-bottom: none !important;
 }
 
 /* Desktop: topbar pulled out of block flow (position: fixed) so .fi-layout can
@@ -188,23 +189,20 @@
     }
 
     .filacraft-safir .fi-topbar {
-        @apply bg-white ring-1;
-        --tw-ring-color: oklch(from var(--primary-300) l c h / 0.3);
+        @apply ring-0;
+        background-color: var(--primary-200);
         border-radius: 1rem;
         margin: 0 !important;
         padding-left: 2rem;
         padding-right: 2rem;
         border-bottom: none !important;
-        box-shadow:
-            0 4px 16px -4px oklch(from var(--primary-600) l c h / 0.08),
-            0 1px 3px oklch(from var(--primary-600) l c h / 0.04);
+        box-shadow: none;
     }
 
     .dark .filacraft-safir .fi-topbar,
     .dark.filacraft-safir .fi-topbar {
-        background-color: #111827;
-        --tw-ring-color: rgba(51, 65, 85, 0.35);
-        box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.4);
+        background-color: #0b1120;
+        box-shadow: none;
         border-bottom: none !important;
     }
 
@@ -373,13 +371,11 @@
 
 /* Base sidebar colors + smooth collapse/expand animation */
 .filacraft-safir .fi-sidebar {
-    @apply bg-white ring-1;
-    --tw-ring-color: oklch(from var(--primary-300) l c h / 0.35);
+    @apply ring-0;
+    background-color: var(--primary-200);
     border-radius: 1rem;
     margin: 0.75rem;
-    box-shadow:
-        0 8px 32px -6px oklch(from var(--primary-600) l c h / 0.12),
-        0 2px 6px oklch(from var(--primary-600) l c h / 0.06);
+    box-shadow: none;
 }
 
 @media (min-width: 1024px) {
@@ -427,9 +423,8 @@
 
 .dark .filacraft-safir .fi-sidebar,
 .dark.filacraft-safir .fi-sidebar {
-    background-color: #111827;
-    --tw-ring-color: rgba(51, 65, 85, 0.4);
-    box-shadow: 0 8px 32px -6px rgba(0, 0, 0, 0.5);
+    background-color: #0b1120;
+    box-shadow: none;
 }
 
 /* Full-height sidebar — sticky positioning naturally reaches viewport top because
