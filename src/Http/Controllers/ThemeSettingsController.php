@@ -28,6 +28,7 @@ class ThemeSettingsController extends Controller
             'settings.errorStyle' => 'nullable|string|in:default,minimal,illustrated,gradient',
             'settings.decorations' => 'nullable|string|in:off,on',
             'settings.tableStyle' => 'nullable|string|in:default,card,glass,accent,flat',
+            'settings.background' => 'nullable|string|in:default,glow,mesh,aurora,login',
             'settings.lang' => 'nullable|string|in:tr,en',
         ]);
 

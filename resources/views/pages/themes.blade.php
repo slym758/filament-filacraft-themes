@@ -473,6 +473,34 @@
         {{-- Divider --}}
         <div class="border-t border-gray-200 dark:border-gray-700"></div>
 
+        {{-- Section: Role-select Background --}}
+        <div>
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1" x-text="t.background"></h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-5" x-text="t.backgroundDesc"></p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-w-4xl">
+                <template x-for="(opt, key) in backgroundOptions" :key="key">
+                    <button
+                        x-on:click="selectBackground(key)"
+                        :class="currentBackground === key
+                            ? 'ring-2 ring-primary-500 bg-primary-50 dark:bg-primary-950/30'
+                            : 'ring-1 ring-gray-200 dark:ring-gray-700 bg-white dark:bg-gray-900 hover:ring-gray-300 dark:hover:ring-gray-600'"
+                        class="relative rounded-xl p-4 text-left transition-all duration-200 hover:-translate-y-0.5"
+                    >
+                        {{-- Mini önizleme --}}
+                        <div class="mb-3 h-14 rounded-lg overflow-hidden ring-1 ring-black/5" :style="opt.preview"></div>
+                        <div class="text-xs font-medium text-gray-700 dark:text-gray-300 text-center" x-text="t.backgroundLabels[key]"></div>
+                        <div x-show="currentBackground === key" x-transition class="absolute top-2 right-2 h-4 w-4 rounded-full bg-primary-500 text-white flex items-center justify-center">
+                            <svg class="h-2.5 w-2.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                        </div>
+                    </button>
+                </template>
+            </div>
+        </div>
+
+        {{-- Divider --}}
+        <div class="border-t border-gray-200 dark:border-gray-700"></div>
+
         {{-- Section: Density --}}
         <div>
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1" x-text="t.density"></h2>
@@ -681,6 +709,9 @@
                 tableStyle: 'Tablo Stili',
                 tableStyleDesc: 'Tablolar icin gorsel stil',
                 tableStyleLabels: { 'default': 'Varsayilan', 'card': 'Kart', 'glass': 'Cam', 'accent': 'Vurgulu', 'flat': 'Duz' },
+                background: 'Rol Ekranı Arka Planı',
+                backgroundDesc: 'Rol seçme ekranı için arka plan',
+                backgroundLabels: { 'default': 'Düz', 'glow': 'Işık Lekeleri', 'mesh': 'Mesh', 'aurora': 'Aurora', 'login': 'Login' },
                 tablePreviewTitle: 'Canli Onizleme',
                 tablePreviewSearch: 'Ara...',
                 tablePreviewFilter: 'Filtre',
@@ -747,6 +778,9 @@
                 tableStyle: 'Table Style',
                 tableStyleDesc: 'Visual style for tables',
                 tableStyleLabels: { 'default': 'Default', 'card': 'Card', 'glass': 'Glass', 'accent': 'Accent', 'flat': 'Flat' },
+                background: 'Role Screen Background',
+                backgroundDesc: 'Background for the role-select screen',
+                backgroundLabels: { 'default': 'Plain', 'glow': 'Glow', 'mesh': 'Mesh', 'aurora': 'Aurora', 'login': 'Login' },
                 tablePreviewTitle: 'Live Preview',
                 tablePreviewSearch: 'Search...',
                 tablePreviewFilter: 'Filter',
@@ -784,6 +818,7 @@
                 currentTopbar: localStorage.getItem('filacraft-topbar') || 'default',
                 currentDecorations: localStorage.getItem('filacraft-decorations') || 'off',
                 currentTableStyle: localStorage.getItem('filacraft-table-style') || 'default',
+                currentBackground: localStorage.getItem('filacraft-background') || 'default',
                 currentErrorStyle: (() => {
                     var match = document.cookie.match(/filacraft-error-style=([^;]+)/);
                     return match ? match[1] : 'default';
@@ -867,6 +902,14 @@
                             { style: 'padding:0 4px', cellStyle: 'background:#f3f4f6; height:7px' },
                         ]
                     },
+                },
+
+                backgroundOptions: {
+                    'default': { preview: 'background:var(--primary-200)' },
+                    'glow':    { preview: 'background:radial-gradient(120% 90% at 15% -10%, var(--primary-300), transparent 60%), linear-gradient(160deg, var(--primary-100), #fff)' },
+                    'mesh':    { preview: 'background:radial-gradient(50% 60% at 20% 25%, var(--primary-300), transparent 70%), radial-gradient(50% 60% at 80% 80%, var(--primary-200), transparent 70%), var(--primary-50)' },
+                    'aurora':  { preview: 'background:linear-gradient(115deg, var(--primary-200) 0%, transparent 45%), linear-gradient(245deg, var(--primary-300) 0%, transparent 50%), var(--primary-50)' },
+                    'login':   { preview: 'background:linear-gradient(135deg, var(--primary-100) 0%, #fff 50%, var(--primary-100) 100%)' },
                 },
 
                 tablePreviewSelected: null,
@@ -1107,6 +1150,17 @@
                     this.saveToDb();
                 },
 
+                selectBackground(id) {
+                    this.currentBackground = id;
+                    localStorage.setItem('filacraft-background', id);
+                    if (id === 'default') {
+                        document.documentElement.removeAttribute('data-bg');
+                    } else {
+                        document.documentElement.setAttribute('data-bg', id);
+                    }
+                    this.saveToDb();
+                },
+
                 errorPreviewUrl: null,
                 errorPreviewCode: '404',
                 errorPreviewStyle: null,
@@ -1181,6 +1235,7 @@
                                 density: self.currentDensity,
                                 decorations: self.currentDecorations,
                                 tableStyle: self.currentTableStyle,
+                                background: self.currentBackground,
                                 errorStyle: self.currentErrorStyle,
                                 lang: self.lang,
                             }
@@ -1204,6 +1259,7 @@
                         if (s.density && s.density !== self.currentDensity) { self.selectDensity(s.density); changed = true; }
                         if (s.decorations && s.decorations !== self.currentDecorations) { self.currentDecorations = s.decorations; localStorage.setItem('filacraft-decorations', s.decorations); if (s.decorations === 'on') { document.documentElement.setAttribute('data-decorations', 'on'); } else { document.documentElement.removeAttribute('data-decorations'); } changed = true; }
                         if (s.tableStyle && s.tableStyle !== self.currentTableStyle) { self.selectTableStyle(s.tableStyle); changed = true; }
+                        if (s.background && s.background !== self.currentBackground) { self.selectBackground(s.background); changed = true; }
                         if (s.errorStyle && s.errorStyle !== self.currentErrorStyle) { self.selectErrorStyle(s.errorStyle); changed = true; }
                         if (s.lang && s.lang !== self.lang) { self.setLang(s.lang); changed = true; }
                     })
@@ -1219,6 +1275,7 @@
                     localStorage.removeItem('filacraft-density');
                     localStorage.removeItem('filacraft-decorations');
                     localStorage.removeItem('filacraft-table-style');
+                    localStorage.removeItem('filacraft-background');
                     localStorage.removeItem('filacraft-topbar');
                     localStorage.removeItem('filacraft-lang');
                     document.cookie = 'filacraft-error-style=;path=/;max-age=0';
@@ -1254,6 +1311,9 @@
                     }
                     if (this.currentTableStyle && this.currentTableStyle !== 'default') {
                         document.documentElement.setAttribute('data-table-style', this.currentTableStyle);
+                    }
+                    if (this.currentBackground && this.currentBackground !== 'default') {
+                        document.documentElement.setAttribute('data-bg', this.currentBackground);
                     }
                     this.loadFromDb();
                 }

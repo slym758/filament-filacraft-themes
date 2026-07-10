@@ -88,7 +88,7 @@ class FilaCraftPlugin implements Plugin
                            degil. Bu tarayicidaki ayarlar baska bir kullaniciya aitse temizle ki her
                            kullanici KENDI kayitli temasini gorsun (aksi halde ayni tarayicida ikinci
                            kullanici birincinin temasini gorur). */
-                        var THEME_KEYS = ["theme", "color", "font", "radius", "density", "decorations", "table-style", "topbar", "lang"];
+                        var THEME_KEYS = ["theme", "color", "font", "radius", "density", "decorations", "table-style", "background", "topbar", "lang"];
                         if (UID !== null && localStorage.getItem("filacraft-uid") !== UID) {
                             THEME_KEYS.forEach(function (k) { localStorage.removeItem("filacraft-" + k); });
                             root.style.removeProperty("--font-family");
@@ -171,6 +171,12 @@ class FilaCraftPlugin implements Plugin
                         var tableStyle = pref("table-style", "tableStyle");
                         if (tableStyle && tableStyle !== "default") {
                             root.setAttribute("data-table-style", tableStyle);
+                        }
+
+                        /* Role-select Background */
+                        var background = pref("background", "background");
+                        if (background && background !== "default") {
+                            root.setAttribute("data-bg", background);
                         }
 
                         /* Topbar variant (yalnizca localStorage) */

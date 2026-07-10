@@ -1,0 +1,98 @@
+/* ══════════════════════════════════════════════════════════════
+   Rol Seçme (role-switch) + Giriş (login) ekranları — seçilebilir
+   arka planlar. <html data-bg="..."> attribute'una göre uygulanır
+   (Themes sayfası). --primary-*'tan türer → her tema kendi tonunda.
+   data-bg yoksa: rol ekranı preset'in düz zeminini, login ekranı
+   ise login.css'in kendi degradesini korur (bu kurallar login.css'i
+   yalnızca bir arka plan seçildiğinde specificity ile geçersiz kılar).
+   ══════════════════════════════════════════════════════════════ */
+
+/* 1 · Işık Lekeleri */
+html[data-bg="glow"] .fi-body:has(.astart-role-card-grid),
+html[data-bg="glow"] .fi-simple-main-ctn {
+    background-color: var(--primary-50);
+    background-image:
+        radial-gradient(1200px 620px at 12% -12%, color-mix(in srgb, var(--primary-300) 45%, transparent), transparent 60%),
+        radial-gradient(900px 520px at 105% 0%,  color-mix(in srgb, var(--primary-200) 55%, transparent), transparent 55%),
+        radial-gradient(1000px 720px at 50% 118%, color-mix(in srgb, var(--primary-400) 30%, transparent), transparent 60%),
+        linear-gradient(160deg, var(--primary-100) 0%, var(--primary-50) 45%, #fff 100%);
+    background-attachment: fixed; background-repeat: no-repeat;
+}
+.dark html[data-bg="glow"] .fi-body:has(.astart-role-card-grid),
+html.dark[data-bg="glow"] .fi-body:has(.astart-role-card-grid),
+.dark html[data-bg="glow"] .fi-simple-main-ctn,
+html.dark[data-bg="glow"] .fi-simple-main-ctn {
+    background-color: #0b1120;
+    background-image:
+        radial-gradient(1200px 620px at 12% -12%, color-mix(in srgb, var(--primary-500) 28%, transparent), transparent 60%),
+        radial-gradient(900px 520px at 105% 0%,  color-mix(in srgb, var(--primary-700) 38%, transparent), transparent 55%),
+        radial-gradient(1000px 720px at 50% 118%, color-mix(in srgb, var(--primary-600) 22%, transparent), transparent 60%),
+        linear-gradient(160deg, #0d1526 0%, #0b1120 55%, #090d18 100%);
+}
+
+/* 2 · Mesh Gradient */
+html[data-bg="mesh"] .fi-body:has(.astart-role-card-grid),
+html[data-bg="mesh"] .fi-simple-main-ctn {
+    background-color: var(--primary-50);
+    background-image:
+        radial-gradient(45% 55% at 18% 22%, color-mix(in srgb, var(--primary-300) 75%, transparent), transparent 70%),
+        radial-gradient(40% 50% at 82% 18%, color-mix(in srgb, var(--primary-400) 60%, transparent), transparent 70%),
+        radial-gradient(50% 55% at 75% 85%, color-mix(in srgb, var(--primary-200) 85%, transparent), transparent 70%),
+        radial-gradient(45% 50% at 20% 88%, color-mix(in srgb, var(--primary-500) 40%, transparent), transparent 72%);
+    background-attachment: fixed; background-repeat: no-repeat;
+}
+.dark html[data-bg="mesh"] .fi-body:has(.astart-role-card-grid),
+html.dark[data-bg="mesh"] .fi-body:has(.astart-role-card-grid),
+.dark html[data-bg="mesh"] .fi-simple-main-ctn,
+html.dark[data-bg="mesh"] .fi-simple-main-ctn {
+    background-color: #0b1120;
+    background-image:
+        radial-gradient(45% 55% at 18% 22%, color-mix(in srgb, var(--primary-600) 42%, transparent), transparent 70%),
+        radial-gradient(40% 50% at 82% 18%, color-mix(in srgb, var(--primary-500) 34%, transparent), transparent 70%),
+        radial-gradient(50% 55% at 75% 85%, color-mix(in srgb, var(--primary-700) 46%, transparent), transparent 70%),
+        radial-gradient(45% 50% at 20% 88%, color-mix(in srgb, var(--primary-600) 30%, transparent), transparent 72%);
+}
+
+/* 3 · Aurora Bantları */
+html[data-bg="aurora"] .fi-body:has(.astart-role-card-grid),
+html[data-bg="aurora"] .fi-simple-main-ctn {
+    background-color: var(--primary-50);
+    background-image:
+        linear-gradient(115deg, color-mix(in srgb, var(--primary-200) 80%, transparent) 0%, transparent 42%),
+        linear-gradient(245deg, color-mix(in srgb, var(--primary-300) 62%, transparent) 0%, transparent 46%),
+        radial-gradient(80% 60% at 50% 120%, color-mix(in srgb, var(--primary-400) 30%, transparent), transparent 60%),
+        linear-gradient(180deg, #fff, var(--primary-50));
+    background-attachment: fixed; background-repeat: no-repeat;
+}
+.dark html[data-bg="aurora"] .fi-body:has(.astart-role-card-grid),
+html.dark[data-bg="aurora"] .fi-body:has(.astart-role-card-grid),
+.dark html[data-bg="aurora"] .fi-simple-main-ctn,
+html.dark[data-bg="aurora"] .fi-simple-main-ctn {
+    background-color: #0b1120;
+    background-image:
+        linear-gradient(115deg, color-mix(in srgb, var(--primary-600) 40%, transparent) 0%, transparent 42%),
+        linear-gradient(245deg, color-mix(in srgb, var(--primary-700) 34%, transparent) 0%, transparent 46%),
+        radial-gradient(80% 60% at 50% 120%, color-mix(in srgb, var(--primary-600) 22%, transparent), transparent 60%),
+        linear-gradient(180deg, #0d1526, #0b1120);
+}
+
+/* 4 · Login Degradesi (giriş ekranıyla uyumlu) */
+html[data-bg="login"] .fi-body:has(.astart-role-card-grid),
+html[data-bg="login"] .fi-simple-main-ctn {
+    background-color: var(--primary-50);
+    background-image:
+        radial-gradient(38% 46% at 100% 0%, color-mix(in srgb, var(--primary-300) 45%, transparent), transparent 70%),
+        radial-gradient(46% 52% at 0% 100%, color-mix(in srgb, var(--primary-400) 34%, transparent), transparent 72%),
+        linear-gradient(135deg, var(--primary-50) 0%, #fff 50%, var(--primary-50) 100%);
+    background-attachment: fixed; background-repeat: no-repeat;
+}
+.dark html[data-bg="login"] .fi-body:has(.astart-role-card-grid),
+html.dark[data-bg="login"] .fi-body:has(.astart-role-card-grid),
+.dark html[data-bg="login"] .fi-simple-main-ctn,
+html.dark[data-bg="login"] .fi-simple-main-ctn {
+    background-color: #0b1120;
+    background-image:
+        radial-gradient(38% 46% at 100% 0%, color-mix(in srgb, var(--primary-600) 26%, transparent), transparent 70%),
+        radial-gradient(46% 52% at 0% 100%, color-mix(in srgb, var(--primary-700) 30%, transparent), transparent 72%),
+        linear-gradient(135deg, #0d1526 0%, #0b1120 50%, #090d18 100%);
+}
