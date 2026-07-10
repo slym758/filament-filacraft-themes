@@ -2,11 +2,8 @@
    Seçilebilir arka planlar — <html data-bg="..."> attribute'una göre
    uygulanır (Themes sayfası). --primary-*'tan türer → her tema kendi
    tonunda. Kapsam:
-     • Panel arka zemini (.fi-body), üst çubuk (.fi-topbar) ve kenar
-       çubuğu (.fi-sidebar) — aynı degrade `background-attachment: fixed`
-       ile hepsine boyanır; viewport'a sabit olduğu için tek sürekli
-       yüzey gibi hizalanır. İçerik kartı (.fi-main-ctn) opak kaldığı
-       için tabloların/metnin okunabilirliği bozulmaz.
+     • Tüm panel arka zemini (.fi-body) — içerik kartı (.fi-main-ctn)
+       opak olduğu için degrade yalnız kenar boşluklarında görünür.
      • Giriş (login) ekranı (.fi-simple-main-ctn).
    data-bg yoksa: panel preset'in düz primary-50 zeminini, login ise
    login.css'in kendi degradesini korur (bu kurallar yalnız bir arka
@@ -15,8 +12,6 @@
 
 /* 1 · Işık Lekeleri */
 html[data-bg="glow"] .fi-body,
-html[data-bg="glow"] .fi-topbar,
-html[data-bg="glow"] .fi-sidebar,
 html[data-bg="glow"] .fi-simple-main-ctn {
     background-color: var(--primary-50);
     background-image:
@@ -26,10 +21,10 @@ html[data-bg="glow"] .fi-simple-main-ctn {
         linear-gradient(160deg, var(--primary-100) 0%, var(--primary-50) 45%, #fff 100%);
     background-attachment: fixed; background-repeat: no-repeat;
 }
-.dark html[data-bg="glow"] .fi-body,      html.dark[data-bg="glow"] .fi-body,
-.dark html[data-bg="glow"] .fi-topbar,    html.dark[data-bg="glow"] .fi-topbar,
-.dark html[data-bg="glow"] .fi-sidebar,   html.dark[data-bg="glow"] .fi-sidebar,
-.dark html[data-bg="glow"] .fi-simple-main-ctn, html.dark[data-bg="glow"] .fi-simple-main-ctn {
+.dark html[data-bg="glow"] .fi-body,
+html.dark[data-bg="glow"] .fi-body,
+.dark html[data-bg="glow"] .fi-simple-main-ctn,
+html.dark[data-bg="glow"] .fi-simple-main-ctn {
     background-color: #0b1120;
     background-image:
         radial-gradient(1200px 620px at 12% -12%, color-mix(in srgb, var(--primary-500) 28%, transparent), transparent 60%),
@@ -40,8 +35,6 @@ html[data-bg="glow"] .fi-simple-main-ctn {
 
 /* 2 · Mesh Gradient */
 html[data-bg="mesh"] .fi-body,
-html[data-bg="mesh"] .fi-topbar,
-html[data-bg="mesh"] .fi-sidebar,
 html[data-bg="mesh"] .fi-simple-main-ctn {
     background-color: var(--primary-50);
     background-image:
@@ -51,10 +44,10 @@ html[data-bg="mesh"] .fi-simple-main-ctn {
         radial-gradient(45% 50% at 20% 88%, color-mix(in srgb, var(--primary-500) 40%, transparent), transparent 72%);
     background-attachment: fixed; background-repeat: no-repeat;
 }
-.dark html[data-bg="mesh"] .fi-body,      html.dark[data-bg="mesh"] .fi-body,
-.dark html[data-bg="mesh"] .fi-topbar,    html.dark[data-bg="mesh"] .fi-topbar,
-.dark html[data-bg="mesh"] .fi-sidebar,   html.dark[data-bg="mesh"] .fi-sidebar,
-.dark html[data-bg="mesh"] .fi-simple-main-ctn, html.dark[data-bg="mesh"] .fi-simple-main-ctn {
+.dark html[data-bg="mesh"] .fi-body,
+html.dark[data-bg="mesh"] .fi-body,
+.dark html[data-bg="mesh"] .fi-simple-main-ctn,
+html.dark[data-bg="mesh"] .fi-simple-main-ctn {
     background-color: #0b1120;
     background-image:
         radial-gradient(45% 55% at 18% 22%, color-mix(in srgb, var(--primary-600) 42%, transparent), transparent 70%),
@@ -65,8 +58,6 @@ html[data-bg="mesh"] .fi-simple-main-ctn {
 
 /* 3 · Aurora Bantları */
 html[data-bg="aurora"] .fi-body,
-html[data-bg="aurora"] .fi-topbar,
-html[data-bg="aurora"] .fi-sidebar,
 html[data-bg="aurora"] .fi-simple-main-ctn {
     background-color: var(--primary-50);
     background-image:
@@ -76,10 +67,10 @@ html[data-bg="aurora"] .fi-simple-main-ctn {
         linear-gradient(180deg, #fff, var(--primary-50));
     background-attachment: fixed; background-repeat: no-repeat;
 }
-.dark html[data-bg="aurora"] .fi-body,      html.dark[data-bg="aurora"] .fi-body,
-.dark html[data-bg="aurora"] .fi-topbar,    html.dark[data-bg="aurora"] .fi-topbar,
-.dark html[data-bg="aurora"] .fi-sidebar,   html.dark[data-bg="aurora"] .fi-sidebar,
-.dark html[data-bg="aurora"] .fi-simple-main-ctn, html.dark[data-bg="aurora"] .fi-simple-main-ctn {
+.dark html[data-bg="aurora"] .fi-body,
+html.dark[data-bg="aurora"] .fi-body,
+.dark html[data-bg="aurora"] .fi-simple-main-ctn,
+html.dark[data-bg="aurora"] .fi-simple-main-ctn {
     background-color: #0b1120;
     background-image:
         linear-gradient(115deg, color-mix(in srgb, var(--primary-600) 40%, transparent) 0%, transparent 42%),
@@ -90,8 +81,6 @@ html[data-bg="aurora"] .fi-simple-main-ctn {
 
 /* 4 · Login Degradesi (giriş ekranıyla uyumlu) */
 html[data-bg="login"] .fi-body,
-html[data-bg="login"] .fi-topbar,
-html[data-bg="login"] .fi-sidebar,
 html[data-bg="login"] .fi-simple-main-ctn {
     background-color: var(--primary-50);
     background-image:
@@ -100,10 +89,10 @@ html[data-bg="login"] .fi-simple-main-ctn {
         linear-gradient(135deg, var(--primary-50) 0%, #fff 50%, var(--primary-50) 100%);
     background-attachment: fixed; background-repeat: no-repeat;
 }
-.dark html[data-bg="login"] .fi-body,      html.dark[data-bg="login"] .fi-body,
-.dark html[data-bg="login"] .fi-topbar,    html.dark[data-bg="login"] .fi-topbar,
-.dark html[data-bg="login"] .fi-sidebar,   html.dark[data-bg="login"] .fi-sidebar,
-.dark html[data-bg="login"] .fi-simple-main-ctn, html.dark[data-bg="login"] .fi-simple-main-ctn {
+.dark html[data-bg="login"] .fi-body,
+html.dark[data-bg="login"] .fi-body,
+.dark html[data-bg="login"] .fi-simple-main-ctn,
+html.dark[data-bg="login"] .fi-simple-main-ctn {
     background-color: #0b1120;
     background-image:
         radial-gradient(38% 46% at 100% 0%, color-mix(in srgb, var(--primary-600) 26%, transparent), transparent 70%),
